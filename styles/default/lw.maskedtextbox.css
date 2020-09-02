@@ -1,0 +1,36 @@
+
+/* lw-masked-text-box */
+
+lw-masked-text-box {
+    width: var(--lw-text-box-default-width);
+    height: var(--lw-text-box-default-height);
+}
+
+    lw-masked-text-box.lw-element {
+        border: 1px solid var(--lw-border);
+        background: var(--lw-background);
+        overflow: visible;
+        border-radius: var(--lw-border-radius);
+    }
+
+.lw-masked-text-box > .lw-container {
+    position: relative;
+}
+
+.lw-masked-text-box .lw-input {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+}
+
+/*---  Right-To-Left --- */
+
+.lw-masked-text-box[right-to-left] .lw-container {
+    direction: rtl;
+}
+
+/* --- */

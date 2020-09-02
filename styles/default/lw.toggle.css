@@ -1,0 +1,202 @@
+
+
+/* lw-check-box and lw-radio-button*/
+
+.lw-toggle-box {
+    display: inline-block;
+    outline: none;
+    height: var(--lw-editor-height);
+    cursor: pointer;
+}
+
+    .lw-toggle-box.lw-element {
+        border: none;
+        background: transparent;
+    }
+
+    .lw-toggle-box[check-mode="input"] {
+        cursor: default;
+    }
+
+    .lw-toggle-box .lw-container,
+    .lw-toggle-box.lw-container{
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .lw-toggle-box .lw-ripple {
+        background: var(--lw-primary);
+    }
+
+    .lw-toggle-box .lw-overlay {
+        top: 0;
+        height: 100%;
+        background: var(--lw-primary);
+        width: var(--lw-editor-height);
+        position: absolute;
+        left: 2px;
+        border-radius: 100%;
+        padding: 0px;
+        opacity: 0;
+        box-sizing: content-box;
+        transition: opacity 280ms ease-in-out;
+        margin:0px;
+    }
+
+    .lw-toggle-box[active]:focus .lw-overlay,
+    .lw-toggle-box[active][focus] .lw-overlay {
+        opacity: 0.4;
+    }
+
+    .lw-toggle-box:focus .lw-overlay,
+    .lw-toggle-box[focus] .lw-overlay {
+        opacity: 0.3;
+    }
+
+    .lw-toggle-box .lw-label {
+        color: var(--lw-background-color);
+        background: inherit;
+        font-size: inherit;
+        font-family: inherit;
+        margin: 0 8px 0 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: auto;
+    }
+
+    .lw-toggle-box[check-mode="label"] .lw-label {
+        cursor: pointer;
+    }
+
+	.lw-check-box.lw-toggle-box .lw-input {
+        width: var(--lw-check-box-default-size);
+        min-width: var(--lw-check-box-default-size);
+        height: var(--lw-check-box-default-size);
+        min-height: var(--lw-check-box-default-size);
+        background-color: var(--lw-background);
+        box-sizing: initial;
+        border: var(--lw-border-width) solid var(--lw-border);
+        display: inline-block;
+        color: var(--lw-background-color);
+        border-top-left-radius: var(--lw-border-top-left-radius);
+        border-top-right-radius: var(--lw-border-top-right-radius);
+        border-bottom-left-radius: var(--lw-border-bottom-left-radius);
+        border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+        margin: 0 0 0 8px;
+        transition: background linear 0.2s;
+        position: relative;
+    }
+
+    .lw-radio-button.lw-toggle-box .lw-input {
+        width: var(--lw-radio-button-default-size);
+        min-width: var(--lw-radio-button-default-size);
+        height: var(--lw-radio-button-default-size);
+        min-height: var(--lw-radio-button-default-size);
+        background-color: var(--lw-background);
+        box-sizing: initial;
+        border-style: solid;
+        border-width: var(--lw-border-width);
+        border-color: var(--lw-border);
+        display: inline-block;
+        border-radius: 100%;
+        color: var(--lw-background-color);
+        margin: 0 0 0 8px;
+        position: relative;
+    }
+
+
+    .lw-radio-button.lw-toggle-box .lw-input:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 50%;
+        font-style: normal;
+        text-decoration: inherit;
+        font-variant: normal;
+        text-transform: none;
+        color: inherit;
+        border-radius: 50%;
+        line-height: 100%;
+    }
+
+    .lw-radio-button.lw-toggle-box[checked] .lw-input:after {
+        font-size: 15px;
+        font-weight: 100;
+        background: var(--lw-primary-color);
+    }
+
+    .lw-toggle-box[check-mode="input"] .lw-input {
+        cursor: pointer;
+    }
+
+    .lw-toggle-box[readonly],
+    .lw-toggle-box[readonly] .lw-input,
+    .lw-toggle-box[readonly] .lw-label {
+        cursor: initial;
+    }
+
+    .lw-toggle-box[active] .lw-input,
+    .lw-toggle-box[checked] .lw-input {
+        border-color: var(--lw-ui-state-border-active);
+        background-color: var(--lw-ui-state-active);
+        color: var(--lw-ui-state-color-active);
+    }
+
+    .lw-toggle-box[hover] .lw-input {
+        border-color: var(--lw-ui-state-border-hover);
+        background-color: var(--lw-ui-state-hover);
+        color: var(--lw-ui-state-color-hover);
+    }
+
+    .lw-radio-button.lw-toggle-box[checked][hover]:not([focus]) .lw-input::after {
+        background: var(--lw-ui-state-color-hover);
+    }
+
+    .lw-toggle-box:focus .lw-input,
+    .lw-toggle-box[focus] .lw-input {
+        outline: none;
+        overflow: visible;
+        border-color: var(--lw-primary);
+        background-color: var(--lw-primary);
+        color: var(--lw-primary-color);
+    }
+
+    .lw-check-box.lw-toggle-box .lw-input:after {
+        font-family: var(--lw-font-family-icon);
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin-top: 1px;
+    }
+
+    .lw-check-box.lw-toggle-box[checked] .lw-input:after {
+        font-weight: 100;
+        content: var(--lw-icon-check);
+    }
+
+    .lw-check-box.lw-toggle-box[checked="null"] .lw-input:after {
+        content: '-';
+    }
+
+    /* --- Right-To-Left --- */
+
+    .lw-toggle-box[right-to-left] .lw-container,
+    .lw-toggle-box[right-to-left] .lw-hidden-input {
+        direction: rtl;
+    }
+
+    .lw-toggle-box[right-to-left] .lw-overlay {
+        left: initial;
+        right: 2px;
+    }
+
+    .lw-toggle-box[right-to-left] .lw-input {
+        margin: 0 8px 0 0;
+    }
+
+/* --- */

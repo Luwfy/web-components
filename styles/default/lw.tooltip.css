@@ -1,0 +1,125 @@
+/* .lw-tooltip */
+
+lw-tooltip {
+    position: absolute;
+    text-align: center;
+    z-index: var(--lw-editor-drop-down-z-index);
+    font-family: var(--lw-font-family);
+    font-size: var(--lw-font-size);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+lw-tooltip.lw-element {
+	background: transparent;
+	overflow: visible;
+}
+
+.lw-tooltip[visible] {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.lw-tooltip .lw-tooltip-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: var(--lw-tooltip-padding);
+    background-color: var(--lw-secondary);
+    color: var(--lw-secondary-color);
+    border: var(--lw-border-width) solid var(--lw-secondary);
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+	box-shadow: var(--lw-elevation-6);
+    font-family: var(--lw-font-family);
+	border-top-left-radius: var(--lw-border-top-left-radius);
+	border-bottom-left-radius: var(--lw-border-bottom-left-radius);
+	border-top-right-radius: var(--lw-border-top-right-radius);
+	border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+	
+}
+
+.lw-tooltip[arrow],
+.lw-tooltip[arrow][arrow-direction="bottom"] {
+    padding-bottom: var(--lw-tooltip-arrow-width);
+}
+
+    .lw-tooltip[arrow][arrow-direction="top"] {
+        padding-bottom: initial;
+        padding-top: var(--lw-tooltip-arrow-width);
+    }
+
+    .lw-tooltip[arrow][arrow-direction="left"] {
+        padding-bottom: initial;
+        padding-left: var(--lw-tooltip-arrow-width);
+    }
+
+    .lw-tooltip[arrow][arrow-direction="right"] {
+        padding-bottom: initial;
+        padding-right: var(--lw-tooltip-arrow-width);
+    }
+
+    .lw-tooltip[arrow] .lw-tooltip-content:after,
+    .lw-tooltip[arrow][arrow-direction="bottom"] .lw-tooltip-content:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: var(--lw-tooltip-arrow-width) solid transparent;
+        border-right: var(--lw-tooltip-arrow-width) solid transparent;
+        border-top: var(--lw-tooltip-arrow-width) solid var(--lw-tooltip-arrow-color);
+        position: absolute;
+        bottom: 0;
+        left: calc(100% / 2 - var(--lw-tooltip-arrow-width));
+        transform: translateX(var(--lw-tooltip-arrow-translate));
+    }
+
+    .lw-tooltip[arrow][arrow-direction="top"] .lw-tooltip-content:after {
+        border-left: var(--lw-tooltip-arrow-width) solid transparent;
+        border-right: var(--lw-tooltip-arrow-width) solid transparent;
+        border-bottom: var(--lw-tooltip-arrow-width) solid var(--lw-tooltip-arrow-color);
+        border-top: initial;
+        top: 0;
+        bottom: calc(100% + var(--lw-tooltip-arrow-width));
+        transform: translateX(var(--lw-tooltip-arrow-translate));
+    }
+
+    .lw-tooltip[arrow][arrow-direction="right"] .lw-tooltip-content:after {
+        border-bottom: var(--lw-tooltip-arrow-width) solid transparent;
+        border-top: var(--lw-tooltip-arrow-width) solid transparent;
+        border-left: var(--lw-tooltip-arrow-width) solid var(--lw-tooltip-arrow-color);
+        border-right: initial;
+        left: calc(100% - var(--lw-tooltip-arrow-width));
+        top: calc(50% - var(--lw-tooltip-arrow-width));
+        transform: translateY(var(--lw-tooltip-arrow-translate));
+    }
+
+    .lw-tooltip[arrow][arrow-direction="left"] .lw-tooltip-content:after {
+        border-bottom: var(--lw-tooltip-arrow-width) solid transparent;
+        border-top: var(--lw-tooltip-arrow-width) solid transparent;
+        border-right: var(--lw-tooltip-arrow-width) solid var(--lw-tooltip-arrow-color);
+        border-left: initial;
+        left: 0;
+        top: calc(50% - var(--lw-tooltip-arrow-width));
+        transform: translateY(var(--lw-tooltip-arrow-translate));
+    }
+
+lw-tooltip:not([animation='none']) {
+    visibility: visible;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+    lw-tooltip:not([animation='none'])[visible] {
+        opacity: 1;
+    }
+
+/* --- Right To Left --- */
+
+.lw-tooltip[right-to-left] .lw-tooltip-content {
+    direction: rtl;
+}
+
+/* --- */

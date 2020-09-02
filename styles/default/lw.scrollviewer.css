@@ -1,0 +1,115 @@
+
+/* lw-scroll-viewer */
+
+lw-scroll-viewer {
+    /*min-width: 100px;*/
+    display: block;
+    width: var(--lw-editor-width);
+    min-width: var(--lw-scroll-viewer-min-width);
+    max-width: var(--lw-scroll-viewer-max-width);
+    height: var(--lw-list-box-default-height);
+    min-height: var(--lw-scroll-viewer-min-height);
+    max-height: var(--lw-scroll-viewer-max-height);
+    padding: 3px;
+}
+
+
+    lw-scroll-viewer > .lw-container,
+    .lw-scroll-viewer.lw-container {
+        height: 100%;
+        width: 100%;
+        border: none;
+        position: relative;
+        overflow: hidden;
+    }
+
+.lw-scroll-viewer lw-scroll-bar {
+    overflow: visible;
+    position: absolute;
+    bottom: 0;
+    height: calc(var(--lw-scroll-bar-size));
+    width: 100%;
+}
+
+    .lw-scroll-viewer lw-scroll-bar.bottom-corner {
+        width: calc(100% - var(--lw-scroll-bar-size));
+    }
+
+    .lw-scroll-viewer lw-scroll-bar::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: var(--lw-scroll-bar-size);
+        background-color: var(--lw-surface);
+        left: 100%;
+    }
+
+    .lw-scroll-viewer lw-scroll-bar[orientation="vertical"] {
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: calc(var(--lw-scroll-bar-size));
+    }
+
+        .lw-scroll-viewer lw-scroll-bar[orientation="vertical"].bottom-corner {
+            height: calc(100% - var(--lw-scroll-bar-size));
+        }
+
+.lw-scroll-viewer .lw-scroll-viewer-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: transparent;
+}
+
+.lw-scroll-viewer .lw-scroll-viewer-content-container {
+    width: auto;
+    height: auto;
+    display: inline-block;
+    padding: 5px;
+    position: relative;
+    background-color: transparent;
+}
+
+.lw-scroll-viewer .lw-scroll-viewer-container.hscroll {
+    height: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-scroll-viewer .lw-scroll-viewer-container.vscroll {
+    width: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-scroll-viewer > .lw-container,
+.lw-scroll-viewer > .lw-container > .lw-scroll-viewer-container {
+    max-height: inherit;
+    min-height: inherit;
+    max-width: inherit;
+    min-width: inherit;
+}
+
+/* --- Right-To-Left --- */
+
+.lw-scroll-viewer[right-to-left] lw-scroll-bar,
+.lw-scroll-viewer[right-to-left] .lw-scroll-viewer-container.vscroll {
+    left: var(--lw-scroll-bar-size);
+    right: 0;
+}
+
+    .lw-scroll-viewer[right-to-left] lw-scroll-bar::after {
+        left: -100%;
+    }
+
+    .lw-scroll-viewer[right-to-left] lw-scroll-bar[orientation="vertical"] {
+        left: 0;
+        right: initial;
+    }
+
+        .lw-scroll-viewer[right-to-left] lw-scroll-bar[orientation="vertical"]::after {
+            content: none;
+        }
+
+.lw-scroll-viewer[right-to-left] .lw-scroll-viewer-container {
+    direction: rtl;
+}
+/* --- */

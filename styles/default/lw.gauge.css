@@ -1,0 +1,190 @@
+
+/* lw-gauge */
+lw-gauge {
+    display: block;
+    width: var(--lw-gauge-default-width);
+    height: var(--lw-gauge-default-height);
+    min-width: 125px;
+    min-height: 125px;
+    fill: var(--lw-background-color);
+}
+
+    lw-gauge.lw-element {
+        border: none;
+    }
+
+    lw-gauge[disabled] {
+        user-select: none;
+    }
+
+    lw-gauge[size-mode="auto"] {
+        min-height: initial;
+    }
+
+    lw-gauge:focus {
+        outline: none;
+    }
+
+.lw-gauge .drawContainer > svg {
+    fill: var(--lw-gauge-label-fill-state);
+    stroke: var(--lw-gauge-label-stroke);
+}
+
+.lw-gauge[dragged],
+.lw-gauge[dragged] .lw-label {
+    cursor: pointer;
+}
+
+.lw-gauge .lw-container,
+.lw-gauge.lw-container {
+    position: relative;
+    border-radius: 50%;
+}
+
+.lw-gauge .lw-svg-container {
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+}
+
+.lw-gauge .lw-tick,
+:host(lw-gauge) .lw-tick {
+    stroke: var(--lw-border);
+    stroke-width: 1px;
+    width: 15px;
+    pointer-events: none;
+}
+
+.lw-gauge[analog-display-type="fill"][ticks-position="track"] .lw-tick,
+.lw-gauge[analog-display-type="line"][ticks-position="track"] .lw-tick {
+    stroke: #F2F2F2;
+}
+
+.lw-gauge .lw-tick-minor,
+:host(lw-gauge) .lw-tick-minor {
+    width: 5px;
+}
+
+.lw-gauge[ticks-visibility="major"] .lw-tick-minor,
+.lw-gauge[labels-visibility="endPoints"] .lw-label-middle {
+    visibility: hidden;
+}
+
+.lw-gauge .lw-needle,
+:host(lw-gauge) .lw-needle {
+    width: 20px;
+    height: 110px;
+    fill: var(--lw-background-color);
+}
+
+.lw-gauge .lw-needle-central-circle {
+    fill: var(--lw-background-color);
+}
+
+.lw-gauge:focus .lw-needle,
+:host(lw-gauge:focus) .lw-needle,
+.lw-gauge:focus .lw-needle-central-circle,
+:host(lw-gauge:focus) .lw-needle-central-circle {
+    fill: var(--lw-primary);
+}
+
+.lw-gauge .lw-track,
+:host(lw-gauge) .lw-track {
+    width: 15px;
+    stroke: var(--lw-border);
+    stroke-width: 2px;
+    fill: var(--lw-background);
+}
+
+.lw-gauge[show-ranges][ranges] .lw-track {
+    opacity: 0;
+}
+
+.lw-gauge .lw-value,
+:host(lw-gauge) .lw-value {
+    stroke: var(--lw-ui-state-border-active);
+    stroke-width: 2px;
+    fill: var(--lw-ui-state-active);
+}
+
+.lw-gauge .lw-line,
+:host(lw-gauge) .lw-line {
+    stroke: var(--lw-background-color);
+    stroke-width: 5px;
+}
+
+.lw-gauge .lw-range,
+:host(lw-gauge) .lw-range {
+    width: 75px;
+    fill: #D8D8D8;
+}
+
+.lw-gauge .lw-digital-display-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+}
+
+.lw-gauge .lw-digital-display {
+    --lw-numeric-text-box-background: transparent;
+    --lw-numeric-text-box-text-align: center;
+    position: absolute;
+    display: none;
+    width: 80px;
+    height: auto;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: inherit;
+    pointer-events: initial;
+}
+
+.lw-gauge[digital-display] .lw-digital-display {
+    display: inline-block;
+}
+
+.lw-gauge[digital-display-position="top"] .lw-digital-display {
+    top: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.lw-gauge[digital-display-position="right"] .lw-digital-display {
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+
+.lw-gauge[digital-display-position="left"] .lw-digital-display {
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.lw-gauge[digital-display-position="center"] .lw-digital-display {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.lw-gauge[show-unit] .lw-digital-display {
+    --lw-numeric-text-box-text-align: right;
+}
+
+    .lw-gauge[show-unit] .lw-digital-display input.lw-input {
+        border-right: none;
+    }
+
+/* --- Right-To-Left --- */
+
+.lw-gauge[right-to-left] .lw-label,
+.lw-gauge[right-to-left] .lw-label-middle {
+    direction: rtl;
+    text-anchor: end;
+}
+
+/* --- */

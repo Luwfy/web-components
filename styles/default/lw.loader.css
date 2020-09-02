@@ -1,0 +1,250 @@
+
+.lw-grid .lw-loader.lw-hidden,
+.lw-list-box .lw-loader.lw-hidden,
+.lw-list-menu .lw-loader.lw-hidden,
+.lw-list-menu-view.lw-drop-down-repositioned .lw-loader.lw-hidden,
+.lw-tree .lw-loader.lw-hidden {
+    display: none;
+}
+
+.lw-grid .lw-loader,
+.lw-list-box .lw-loader,
+.lw-list-menu .lw-loader,
+.lw-list-menu-view.lw-drop-down-repositioned .lw-loader,
+lw-tree .lw-loader {
+    margin: inherit;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0.85;
+    text-align: left;
+    border: 6px solid var(--lw-theme-border);
+    box-sizing: border-box;
+    background-clip: padding-box;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.lw-grid .lw-loader,
+.lw-grid[loading-indicator-position="center"] .lw-loader,
+.lw-list-box .lw-loader,
+.lw-list-box[loading-indicator-position="center"] .lw-loader,
+.lw-list-menu .lw-loader,
+.lw-list-menu[loading-indicator-position="center"] .lw-loader,
+.lw-list-menu-view.lw-drop-down-repositioned .lw-loader,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="center"] .lw-loader,
+.lw-tree .lw-loader,
+.lw-tree[loading-indicator-position="center"] .lw-loader {
+    width: calc(var(--lw-loader-size) + 10px);
+    height: calc(var(--lw-loader-size) + 10px);
+}
+
+.lw-grid[loading-indicator-position="top"] .lw-loader,
+.lw-grid[loading-indicator-position="bottom"] .lw-loader,
+.lw-list-box[loading-indicator-position="top"] .lw-loader,
+.lw-list-box[loading-indicator-position="bottom"] .lw-loader,
+.lw-list-menu[loading-indicator-position="top"] .lw-loader,
+.lw-list-menu[loading-indicator-position="bottom"] .lw-loader,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="top"] .lw-loader,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="bottom"] .lw-loader,
+.lw-tree[loading-indicator-position="top"] .lw-loader,
+.lw-tree[loading-indicator-position="bottom"] .lw-loader {
+    width: var(--lw-loader-size);
+    height: var(--lw-loader-size);
+}
+
+.lw-grid[loading-indicator-position="bottom"] .lw-loader-container.lw-hidden,
+.lw-grid[loading-indicator-position="top"] .lw-loader-container.lw-hidden,
+.lw-list-box[loading-indicator-position="bottom"] .lw-loader-container.lw-hidden,
+.lw-list-box[loading-indicator-position="top"] .lw-loader-container.lw-hidden,
+.lw-list-menu[loading-indicator-position="bottom"] .lw-loader-container.lw-hidden,
+.lw-list-menu[loading-indicator-position="top"] .lw-loader-container.lw-hidden,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="bottom"] .lw-loader-container.lw-hidden,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="top"] .lw-loader-container.lw-hidden,
+.lw-tree[loading-indicator-position="bottom"] .lw-loader-container.lw-hidden,
+.lw-tree[loading-indicator-position="top"] .lw-loader-container.lw-hidden {
+    display: none;
+}
+
+.lw-grid[loading-indicator-position="top"] .lw-loader-container,
+.lw-grid[loading-indicator-position="bottom"] .lw-loader-container,
+.lw-list-box[loading-indicator-position="top"] .lw-loader-container,
+.lw-list-box[loading-indicator-position="bottom"] .lw-loader-container,
+.lw-list-menu[loading-indicator-position="top"] .lw-loader-container,
+.lw-list-menu[loading-indicator-position="bottom"] .lw-loader-container,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="top"] .lw-loader-container,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="bottom"] .lw-loader-container,
+.lw-tree[loading-indicator-position="top"] .lw-loader-container,
+.lw-tree[loading-indicator-position="bottom"] .lw-loader-container {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 10%;
+    background-color: var(--lw-theme);
+    color: var(--lw-on-theme);
+    overflow: hidden;
+    animation: lw-loader-container-pop-up-down 0.3s linear;
+}
+
+.lw-grid[loading-indicator-position="bottom"] .lw-loader-container,
+.lw-list-box[loading-indicator-position="bottom"] .lw-loader-container,
+.lw-list-menu[loading-indicator-position="bottom"] .lw-loader-container,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="bottom"] .lw-loader-container,
+.lw-tree[loading-indicator-position="bottom"] .lw-loader-container {
+    top: -10%;
+}
+
+.lw-grid[loading-indicator-position="top"] .lw-loader-container,
+.lw-list-box[loading-indicator-position="top"] .lw-loader-container,
+.lw-list-menu[loading-indicator-position="top"] .lw-loader-container,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="top"] .lw-loader-container,
+.lw-tree[loading-indicator-position="top"] .lw-loader-container {
+    top: 0;
+    position: absolute;
+    animation: lw-loader-container-pop-up-top 0.3s linear;
+}
+
+.lw-grid[loading-indicator-position="top"] .lw-loader,
+.lw-grid[loading-indicator-position="bottom"] .lw-loader,
+.lw-list-box[loading-indicator-position="top"] .lw-loader,
+.lw-list-box[loading-indicator-position="bottom"] .lw-loader,
+.lw-list-menu[loading-indicator-position="top"] .lw-loader,
+.lw-list-menu[loading-indicator-position="bottom"] .lw-loader,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="top"] .lw-loader,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="bottom"] .lw-loader,
+.lw-tree[loading-indicator-position="top"] .lw-loader,
+.lw-tree[loading-indicator-position="bottom"] .lw-loader {
+    left: 20%;
+}
+
+.lw-list-box[loading-indicator-position="top"] .lw-loader-label,
+.lw-list-box[loading-indicator-position="bottom"] .lw-loader-label,
+.lw-grid[loading-indicator-position="top"] .lw-loader-label,
+.lw-grid[loading-indicator-position="bottom"] .lw-loader-label,
+.lw-list-menu[loading-indicator-position="top"] .lw-loader-label,
+.lw-list-menu[loading-indicator-position="bottom"] .lw-loader-label,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="top"] .lw-loader-label,
+.lw-list-menu-view.lw-drop-down-repositioned[loading-indicator-position="bottom"] .lw-loader-label,
+.lw-tree[loading-indicator-position="top"] .lw-loader-label,
+.lw-tree[loading-indicator-position="bottom"] .lw-loader-label {
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    left: 60%;
+    font-family: inherit;
+    font-size: inherit;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.lw-list-box .lw-loader::after,
+.lw-list-box .lw-loader::before,
+.lw-grid .lw-loader::after,
+.lw-grid .lw-loader::before,
+.lw-list-menu .lw-loader::after,
+.lw-list-menu .lw-loader::before,
+.lw-list-menu-view.lw-drop-down-repositioned .lw-loader::after,
+.lw-list-menu-view.lw-drop-down-repositioned .lw-loader::before,
+.lw-tree .lw-loader::after,
+.lw-tree .lw-loader::before {
+    content: "";
+    position: absolute;
+    margin: -6px;
+    box-sizing: inherit;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    opacity: 1;
+    border: inherit;
+    border-color: transparent;
+    border-top-color: transparent;
+    border-width: 6px;
+    animation-delay: 0.44s;
+    animation: lw-loader-spin 1.1s cubic-bezier(0.6, 0.2, 0, 0.8) infinite, lw-loader-spin-fade 1.1s linear infinite;
+}
+
+.lw-list-box[disabled] .lw-loader::before,
+.lw-list-box[disabled] .lw-loader::after,
+.lw-grid[disabled] .lw-loader::before,
+.lw-grid[disabled] .lw-loader::after,
+.lw-list-menu[disabled] .lw-loader::before,
+.lw-list-menu[disabled] .lw-loader::after,
+.lw-tree[disabled] .lw-loader::before,
+.lw-tree[disabled] .lw-loader::after {
+    animation: none;
+}
+
+@keyframes lw-loader-container-pop-up-down {
+    0% {
+        top: 0;
+    }
+
+    20% {
+        top: -2%;
+    }
+
+    35% {
+        top: -6%;
+    }
+
+    60% {
+        top: -8%;
+    }
+
+    100% {
+        top: -10%;
+    }
+}
+
+@keyframes lw-loader-container-pop-up-top {
+    0% {
+        top: -10%;
+    }
+
+    20% {
+        top: -8%;
+    }
+
+    35% {
+        top: -6%;
+    }
+
+    60% {
+        top: -2%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes lw-loader-spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes lw-loader-spin-fade {
+    0% {
+        border-top-color: var(--lw-theme-border);
+    }
+
+    20% {
+        border-top-color: var(--lw-theme-border);
+    }
+
+    35% {
+        border-top-color: transparent;
+    }
+
+    60% {
+        border-top-color: var(--lw-theme-border);
+    }
+
+    100% {
+        border-top-color: var(--lw-theme-border);
+    }
+}

@@ -1,0 +1,60 @@
+
+/*lw-card*/
+.lw-cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--lw-surface);
+}
+
+lw-card {
+    display: inline-block;
+    width: 30.5%;
+    min-height: 20px;
+    margin: 1%;
+    box-shadow: var(--lw-elevation-2);
+    box-sizing: border-box;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+    lw-card:hover {
+        box-shadow: var(--lw-elevation-4);
+    }
+
+/* Mobile (landscape) ----------- */
+@media only screen and (max-width : 1024px) {
+    lw-card {
+        display: inline-block;
+        width: 47%;
+    }
+}
+
+/* Mobile (portrait) ----------- */
+@media only screen and (max-width : 768px) {
+    lw-card {
+        display: block;
+        width: 100%;
+        margin: 0px;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .lw-cards lw-card {
+        margin: 0px 10px 10px 10px;
+    }
+}
+
+/* --- Right-To-Left --- */
+
+.lw-card[right-to-left] > .lw-container,
+.lw-card[right-to-left].lw-container {
+    direction: rtl;
+}
+
+/* --- */

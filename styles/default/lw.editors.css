@@ -1,0 +1,182 @@
+
+/* lw-multiline-text-box */
+
+lw-multiline-text-box {
+    display: inline-block;
+    width: var(--lw-multiline-text-box-default-width);
+    height: var(--lw-multiline-text-box-default-height);
+    border: 1px solid #A9A9A9;
+    color: #A9A9A9;
+}
+
+    lw-multiline-text-box[cols],
+    lw-multiline-text-box[rows] {
+        width: auto;
+        height: auto;
+    }
+
+    lw-multiline-text-box .lw-container,
+    lw-multiline-text-box .lw-inner-container {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        font-style: inherit;
+        overflow: hidden;
+        color: inherit;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    lw-multiline-text-box .lw-initialization-value {
+        display: none;
+    }
+
+
+    lw-multiline-text-box textarea {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        color: inherit;
+        border: none;
+        padding: 2px;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        font-style: inherit;
+        background-color: inherit;
+        overflow: hidden;
+        resize: none;
+        float: left;
+    }
+
+
+        lw-multiline-text-box textarea.lw-text-box-hidden {
+            visibility: hidden;
+            width: 100%;
+            height: 0px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+
+    lw-multiline-text-box[auto-capitalize="words"] textarea {
+        text-transform: capitalize;
+    }
+
+    lw-multiline-text-box[auto-capitalize="characters"] textarea {
+        text-transform: uppercase;
+    }
+
+    lw-multiline-text-box[cols] textarea,
+    lw-multiline-text-box[rows] textarea {
+        width: inherit;
+        height: inherit;
+    }
+
+    lw-multiline-text-box textarea::selection {
+        background: #FFBB00;
+    }
+
+    lw-multiline-text-box.hovered,
+    lw-multiline-text-box:focus.hovered {
+        border-color: #FFBB00;
+    }
+
+    lw-multiline-text-box[disabled],
+    lw-multiline-text-box[disabled] textarea.hovered,
+    lw-multiline-text-box[disabled].hovered {
+        border-color: #A9A9A9;
+        outline: none;
+    }
+
+    lw-multiline-text-box lw-scroll-bar[disabled] {
+        pointer-events: none;
+    }
+
+    lw-multiline-text-box:focus {
+        border-color: #555555;
+    }
+
+    lw-multiline-text-box lw-scroll-bar {
+        display: none;
+    }
+
+    lw-multiline-text-box .lw-container textarea {
+        height: 100%;
+    }
+
+    lw-multiline-text-box .lw-container.hscroll textarea {
+        height: calc(100% - var(--lw-scroll-bar-size));
+    }
+
+    lw-multiline-text-box .lw-container.vscroll textarea {
+        width: calc(100% - var(--lw-scroll-bar-size));
+    }
+
+    lw-multiline-text-box .lw-container.hscroll lw-scroll-bar {
+        width: 100%;
+        height: calc(var(--lw-scroll-bar-size));
+        display: block;
+    }
+
+        lw-multiline-text-box .lw-container.hscroll lw-scroll-bar[orientation="vertical"] {
+            display: none;
+        }
+
+    lw-multiline-text-box .lw-container.vscroll lw-scroll-bar[orientation="vertical"] {
+        float: right;
+        width: calc(var(--lw-scroll-bar-size));
+        height: 100%;
+        display: block;
+    }
+
+    lw-multiline-text-box[resizable] .lw-container.hscroll lw-scroll-bar lw-multiline-text-box .lw-container.vscroll.hscroll lw-scroll-bar {
+        height: calc(var(--lw-scroll-bar-size));
+        width: calc(100% - var(--lw-scroll-bar-size));
+    }
+
+    lw-multiline-text-box[resizable] .lw-container.vscroll lw-scroll-bar[orientation="vertical"],
+    lw-multiline-text-box .lw-container.vscroll.hscroll lw-scroll-bar[orientation="vertical"] {
+        height: calc(100% - var(--lw-scroll-bar-size));
+        width: calc(var(--lw-scroll-bar-size));
+    }
+
+    lw-multiline-text-box[resizable] .lw-container.hscroll lw-scroll-bar {
+        width: calc(100% - var(--lw-scroll-bar-size));
+    }
+
+    lw-multiline-text-box[display-mode="escaped"] textarea {
+        white-space: nowrap;
+    }
+
+    lw-multiline-text-box .lw-resize-element {
+        box-sizing: border-box;
+        height: calc(var(--lw-scroll-bar-size));
+        width: calc(var(--lw-scroll-bar-size));
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        background-color: lightgray;
+        background-clip: content-box;
+        border: #ddd solid 1px;
+        display: none;
+        padding: 2px 0px 0px 2px;
+        cursor: nw-resize;
+    }
+
+    lw-multiline-text-box[resizable] .lw-resize-element {
+        display: block;
+    }
+
+    lw-multiline-text-box[resizable] .lw-resize,
+    lw-multiline-text-box[resizable] .lw-resize textarea {
+        user-select: none;
+    }
+
+    lw-multiline-text-box .lw-label,
+    lw-multiline-text-box .lw-hint,
+    lw-multiline-text-box .lw-required-message {
+        display: none;
+    }

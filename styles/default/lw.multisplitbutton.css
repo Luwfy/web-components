@@ -1,0 +1,103 @@
+
+/* lw-multi-split-button */
+
+lw-multi-split-button {
+    width: var(--lw-multi-split-button-default-width);
+    height: var(--lw-multi-split-button-default-height);
+    overflow: initial;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+    /* Overrides lwWidgets Framework - base.css selector */
+    lw-multi-split-button.lw-element {
+        overflow: visible;
+        visibility: inherit;
+        border-width: 0px;
+    }
+
+/*ListBox*/
+.lw-multi-split-button lw-list-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: initial;
+    padding: initial;
+    overflow: hidden;
+    font-size: inherit;
+    font-family: inherit;
+    outline: none;
+}
+
+.lw-multi-split-button .lw-buttons-container .lw-input .lw-token {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 2px;
+    user-select: none;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.lw-multi-split-button[selection-display-mode="tokens"] .lw-multi-split-button-unselect-button,
+.lw-multi-split-button[selection-display-mode="tokens"] .lw-multi-split-button-unselect-button {
+    pointer-events: initial;
+}
+
+.lw-multi-split-button[selection-display-mode="plain"] .lw-multi-split-button-unselect-button,
+.lw-multi-split-button[selection-display-mode="plain"] .lw-multi-split-button-unselect-button {
+    pointer-events: none;
+}
+
+.lw-multi-split-button .lw-drop-down.lw-visibility-hidden {
+    transform: scale(0);
+    transition: transform 0.2s ease-in;
+    transform-origin: left top 0px;
+}
+
+.lw-multi-split-button .lw-template-container {
+    width: 100%;
+    height: 100%;
+}
+
+.lw-multi-split-button .lw-multi-split-button-buttons {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+    .lw-multi-split-button .lw-multi-split-button-buttons .lw-action-split-button {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .lw-multi-split-button .lw-multi-split-button-buttons .lw-action-split-button[hover] {
+            background: var(--lw-ui-state-hover);
+            border: var(--lw-ui-state-border-hover);
+            color: var(--lw-ui-state-color-hover);
+        }
+
+        .lw-multi-split-button .lw-multi-split-button-buttons .lw-action-split-button[active] {
+            background: var(--lw-ui-state-active);
+            border: var(--lw-ui-state-border-active);
+            color: var(--lw-ui-state-color-active);
+        }
+
+
+/* --- Right-to-Left --- */
+
+lw-multi-split-button[right-to-left] .lw-content,
+lw-multi-split-button[right-to-left] .lw-label,
+lw-multi-split-button[right-to-left] .lw-hint {
+    direction: rtl;
+}
+
+lw-multi-split-button[right-to-left] .lw-drop-down {
+    direction: initial;
+}

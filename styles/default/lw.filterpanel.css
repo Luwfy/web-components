@@ -1,0 +1,121 @@
+lw-filter-panel {
+    width: var(--lw-filter-panel-default-width);
+    height: var(--lw-filter-panel-default-height);
+}
+
+    lw-filter-panel.lw-element {
+        padding: var(--lw-filter-panel-padding);
+        border: none;
+    }
+
+.lw-filter-panel .lw-filter-panel-label,
+.lw-filter-panel .lw-filter-panel-list,
+.lw-filter-panel .lw-filter-panel-input,
+.lw-filter-panel .lw-filter-panel-operator-list,
+.lw-filter-panel lw-tree,
+.lw-filter-panel lw-filter-builder {
+    margin-bottom: var(--lw-filter-panel-vertical-offset);
+}
+
+.lw-filter-panel .lw-filter-panel-list {
+    width: 100%;
+}
+
+.lw-filter-panel .lw-filter-panel-operator-list {
+    width: 80px;
+}
+
+.lw-filter-panel .lw-filter-panel-button-container {
+    width: 100%;
+    min-height: 33px;
+    height: var(--lw-editor-height);
+    display: flex;
+    justify-content: space-around;
+}
+
+    .lw-filter-panel .lw-filter-panel-button-container > lw-button {
+        width: 80px;
+    }
+
+        .lw-filter-panel .lw-filter-panel-button-container > lw-button button {
+            padding: 8px;
+        }
+
+.lw-filter-panel .lw-filter-panel-input {
+    height: var(--lw-editor-height);
+    width: 100%;
+    display: block;
+}
+
+.lw-filter-panel lw-numeric-text-box.lw-filter-panel-input input {
+    text-align: right;
+}
+
+.lw-filter-panel lw-tree,
+.lw-filter-panel lw-filter-builder {
+    width: 100%;
+    height: var(--lw-filter-panel-main-element-height);
+}
+
+    .lw-filter-panel lw-tree.standard-excel .lw-tree-items-group-arrow,
+    .lw-filter-panel lw-tree.date-excel lw-tree-items-group[level="1"] > .lw-tree-item-label-container > .lw-tree-items-group-arrow {
+        visibility: hidden;
+    }
+
+    .lw-filter-panel lw-tree.standard-excel lw-tree-item:not([level="1"]) > .lw-tree-item-label-container {
+        margin-left: -30px;
+    }
+
+.lw-filter-panel lw-filter-builder {
+    --lw-filter-builder-item-width: 150px;
+    display: block;
+}
+
+.lw-filter-panel[filter-type="string"] lw-filter-builder {
+    height: calc(var(--lw-filter-panel-main-element-height) - var(--lw-editor-height));
+    margin-bottom: 0;
+}
+
+.lw-filter-panel[filter-type="string"] .case-sensitive {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: calc(var(--lw-filter-panel-vertical-offset) - 5px);
+}
+
+.lw-filter-panel[filter-type="boolean"] lw-filter-builder {
+    --lw-filter-builder-item-width: 34px;
+}
+
+    .lw-filter-panel[filter-type="boolean"] lw-filter-builder .lw-filter-value,
+    .lw-filter-panel[filter-type="boolean"] lw-filter-builder .lw-editors-container {
+        min-width: initial;
+    }
+
+    .lw-filter-panel[filter-type="boolean"] lw-filter-builder .lw-value-container {
+        width: 100px;
+    }
+
+    .lw-filter-panel[filter-type="boolean"] lw-filter-builder .lw-editors-container[open] .lw-check-box-editor {
+        width: 100%;
+    }
+
+.lw-filter-panel lw-filter-builder .lw-filter-field-name {
+    display: none;
+}
+
+.lw-filter-panel lw-filter-builder .lw-scroll-viewer-content-container {
+    padding: 0;
+}
+
+.lw-filter-panel lw-filter-builder .lw-content-container > .lw-filter-group > .lw-filter-group-operator {
+    margin-left: 15px;
+}
+
+.lw-filter-panel lw-filter-builder .lw-filter-group-condition-container {
+    padding-left: 15px;
+}
+
+.lw-filter-panel lw-menu-item[value="notand"],
+.lw-filter-panel lw-menu-item[value="notor"] {
+    display: none;
+}

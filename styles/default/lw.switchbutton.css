@@ -1,0 +1,344 @@
+
+lw-switch-button {
+    width: var(--lw-switch-button-default-width);
+    height: var(--lw-switch-button-default-height);
+}
+
+    lw-switch-button.lw-element {
+        display: inline-block;
+        border: none;
+        background: none;
+        overflow: visible;
+    }
+
+.lw-switch-button[readonly] {
+    pointer-events: none;
+}
+
+.lw-switch-button .lw-container,
+:host(lw-switch-button) .lw-container {
+    font-size: inherit;
+    position: relative;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    touch-action: none;
+}
+
+.lw-switch-button .lw-inner-container {
+    width: calc(2 * var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size));
+    height: 100%;
+    position: absolute;
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    pointer-events: none;
+}
+
+.lw-switch-button .lw-thumb {
+    border: var(--lw-border-width) solid var(--lw-border);
+    border-radius: 100%;
+    width: var(--lw-switch-button-thumb-size);
+    height: var(--lw-switch-button-thumb-size);
+    background-color: var(--lw-surface);
+    box-shadow: var(--lw-elevation-2);
+    align-self: center;
+    position: relative;
+    cursor: pointer;
+    order: 2;
+    pointer-events: all;
+}
+
+.lw-switch-button[orientation="vertical"] .lw-thumb {
+    width: 100%;
+    height: var(--lw-switch-button-thumb-size);
+}
+
+.lw-switch-button[checked="null"] .lw-thumb {
+    background-color: var(--lw-surface);
+    border-color: var(--lw-border);
+}
+
+
+.lw-switch-button[checked] .lw-thumb,
+.lw-switch-button:focus .lw-thumb {
+    background-color: var(--lw-ui-state-active);
+    border-color: var(--lw-ui-state-border-active);
+}
+
+.lw-switch-button .lw-true-content-container,
+.lw-switch-button .lw-false-content-container {
+    width: calc(var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size));
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-clip: content-box;
+    padding: 2px 0px 2px 0px;
+    color: inherit;
+    overflow: hidden;
+    order: 1;
+}
+
+.lw-switch-button[orientation="vertical"] .lw-true-content-container,
+.lw-switch-button[orientation="vertical"] .lw-false-content-container {
+    height: calc(var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size));
+    width: 100%;
+    padding: 0px 2px 0px 2px;
+}
+
+.lw-switch-button[orientation="vertical"] .lw-inner-container {
+    height: calc(2 * var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size));
+    width: 100%;
+    flex-direction: column;
+}
+
+.lw-switch-button[inverted] .lw-false-content-container,
+.lw-switch-button .lw-true-content-container {
+    order: 1;
+}
+
+.lw-switch-button[inverted] .lw-true-content-container,
+.lw-switch-button .lw-false-content-container {
+    order: 3;
+}
+
+.lw-switch-button .lw-inner-container,
+.lw-switch-button[checked][inverted] .lw-inner-container,
+.lw-switch-button[orientation="vertical"] .lw-inner-container,
+.lw-switch-button[orientation="vertical"][checked] .lw-inner-container,
+.lw-switch-button[orientation="vertical"][inverted] .lw-inner-container,
+.lw-switch-button[orientation="vertical"][checked="null"][inverted] .lw-inner-container {
+    left: 0;
+}
+
+.lw-switch-button[inverted] .lw-inner-container,
+.lw-switch-button[checked] .lw-inner-container {
+    left: calc(-1 * (var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size)));
+}
+
+.lw-switch-button[orientation="vertical"] .lw-inner-container,
+.lw-switch-button[orientation="vertical"][checked][inverted] .lw-inner-container {
+    top: 0;
+}
+
+.lw-switch-button[orientation="vertical"][checked] .lw-inner-container,
+.lw-switch-button[orientation="vertical"][inverted] .lw-inner-container {
+    top: calc(-1 * (var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size)));
+}
+
+.lw-switch-button[checked="null"] .lw-inner-container,
+.lw-switch-button[checked="null"][inverted] .lw-inner-container {
+    left: calc(-1 * var(--lw-switch-button-default-width)/ 2 + var(--lw-switch-button-thumb-size)/2);
+}
+
+.lw-switch-button[orientation="vertical"][checked="null"] .lw-inner-container,
+.lw-switch-button[orientation="vertical"][checked="null"][inverted] .lw-inner-container {
+    top: calc(-1 * var(--lw-switch-button-default-width)/ 2 + var(--lw-switch-button-thumb-size)/2);
+}
+
+/* those classes are set in demos for the content inside the true/false content-container */
+
+.lw-switch-button .lw-true-content,
+.lw-switch-button .lw-false-content {
+    font-size: inherit;
+    font-weight: inherit;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    color: inherit;
+}
+
+.lw-switch-button[checked="null"] .lw-true-content-container,
+.lw-switch-button[checked="null"] .lw-false-content-container {
+    color: transparent;
+}
+
+.lw-switch-button[checked="null"] .lw-true-content,
+.lw-switch-button[checked="null"] .lw-false-content {
+    visibility: hidden;
+}
+
+.lw-switch-button[hover] {
+    border-color: var(--lw-ui-state-hover);
+}
+
+.lw-switch-button .lw-inner-container {
+    width: calc(2 * var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size));
+}
+
+.lw-switch-button[orientation="vertical"] .lw-inner-container {
+    height: calc(2 * var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size));
+}
+
+.lw-switch-button[orientation="vertical"] .lw-thumb {
+    height: var(--lw-switch-button-thumb-size);
+}
+
+.lw-switch-button .lw-true-content-container,
+.lw-switch-button .lw-false-content-container {
+    width: calc(var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size));
+}
+
+.lw-switch-button[orientation="vertical"] .lw-true-content-container,
+.lw-switch-button[orientation="vertical"] .lw-false-content-container {
+    height: calc(var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size));
+}
+
+.lw-switch-button[checked="null"] .lw-inner-container,
+.lw-switch-button[checked="null"] .lw-inner-container {
+    left: calc(-1 * var(--lw-switch-button-default-width) / 2 + var(--lw-switch-button-thumb-size)/2);
+}
+
+.lw-switch-button[checked][orientation="vertical"] .lw-thumb,
+.lw-switch-button[checked] .lw-thumb {
+    background-color: var(--lw-ui-state-active);
+}
+
+.lw-switch-button .lw-container::before,
+:host(lw-switch-button) .lw-container::before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 50%;
+    left: 5%;
+    top: 25%;
+    border-radius: 10px;
+    background-color: var(--lw-surface);
+}
+
+.lw-switch-button:not([animation="none"]) .lw-container::before,
+:host(lw-switch-button:not([animation="none"])) .lw-container::before {
+    transition: opacity 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+.lw-switch-button[checked][orientation="vertical"] .lw-container::before,
+.lw-switch-button[checked] .lw-container::before,
+:host(lw-switch-button[checked][orientation="vertical"]) .lw-container::before,
+:host(lw-switch-button[checked]) .lw-container::before {
+    background-color: var(--lw-ui-state-active);
+    opacity: 0.4;
+}
+
+/* Material Button Circle Effect */
+
+.lw-switch-button .lw-thumb::before {
+    background-color: var(--lw-ui-state-active);
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    left: 50%;
+    top: 50%;
+    transition: 0.2s;
+    display: block;
+    border-radius: 100%;
+    content: "";
+    transform: scale(0) translate(-50%, -50%);
+    transform-origin: left top;
+    opacity: 0.2;
+}
+
+.lw-switch-button[disabled] .lw-thumb::before {
+    content: none;
+}
+
+.lw-switch-button[checked][orientation="vertical"] .lw-thumb:active::before,
+.lw-switch-button[checked][orientation="vertical"]:focus .lw-thumb::before,
+.lw-switch-button:focus .lw-thumb::before,
+.lw-switch-button[checked] .lw-thumb:active::before,
+.lw-switch-button[checked]:focus .lw-thumb::before {
+    transform: scale(1) translate(-50%, -50%);
+    background-color: var(--lw-ui-state-active);
+}
+
+.lw-switch-button[checked][orientation="vertical"]:not([animation="none"]) .lw-thumb:active::before,
+.lw-switch-button[checked][orientation="vertical"]:not([animation="none"]):focus .lw-thumb::before,
+.lw-switch-button[checked]:not([animation="none"]) .lw-thumb:active::before,
+.lw-switch-button[checked]:not([animation="none"]):focus .lw-thumb::before,
+.lw-switch-button[orientation="vertical"] .lw-thumb:active::before,
+.lw-switch-button[orientation="vertical"]:focus .lw-thumb::before,
+.lw-switch-button .lw-thumb:active::before,
+.lw-switch-button:focus .lw-thumb::before {
+    animation: button-wave-effect 0.1s ease-in;
+}
+
+.lw-switch-button[orientation="vertical"] .lw-thumb:active::before,
+.lw-switch-button[orientation="vertical"]:focus .lw-thumb::before,
+.lw-switch-button .lw-thumb:active::before,
+.lw-switch-button:focus .lw-thumb::before,
+:host(lw-switch-button:focus) .lw-thumb::before {
+    transform: scale(1) translate(-50%, -50%);
+}
+
+.lw-switch-button[orientation="vertical"] {
+    height: var(--lw-switch-button-default-width);
+    width: var(--lw-switch-button-default-height);
+}
+
+    .lw-switch-button[orientation="vertical"] .lw-thumb {
+        width: var(--lw-switch-button-thumb-size);
+        height: var(--lw-switch-button-thumb-size);
+        box-shadow: var(--lw-elevation-2);
+    }
+
+    .lw-switch-button[orientation="vertical"] .lw-container::before,
+    :host(lw-switch-button[orientation="vertical"]) .lw-container::before {
+        content: "";
+        position: absolute;
+        width: 50%;
+        height: 90%;
+        left: 25%;
+        top: 5%;
+        border-radius: 10px;
+    }
+
+    .lw-switch-button[orientation="vertical"] .lw-thumb::before {
+        border: var(--lw-border-width) solid var(--lw-border);
+    }
+
+.lw-switch-button:not([animation="none"]):not([dragged]):not([checked="null"]) .lw-inner-container {
+    transition: left 0.2s ease-in-out;
+}
+
+.lw-switch-button:not([animation="none"])[orientation="vertical"]:not([dragged]):not([checked="null"]) .lw-inner-container {
+    transition: top 0.2s ease-in-out;
+}
+
+@keyframes button-wave-effect {
+    0% {
+        transform: scale(0.2) translate(-50%, -50%);
+    }
+
+    50% {
+        transform: scale(0.5) translate(-50%, -50%);
+    }
+
+    100% {
+        transform: scale(1) translate(-50%, -50%);
+    }
+}
+
+/* --- Right To Left --- */
+
+.lw-switch-button[checked][right-to-left]:not([orientation="vertical"]) .lw-inner-container,
+.lw-switch-button[right-to-left][inverted]:not([orientation="vertical"]) .lw-inner-container,
+:host(.lw-switch-button[checked][right-to-left]:not([orientation="vertical"])) .lw-inner-container,
+:host(.lw-switch-button[right-to-left][inverted]:not([orientation="vertical"])) .lw-inner-container {
+    left: 0;
+}
+
+.lw-switch-button[right-to-left]:not([orientation="vertical"]) .lw-inner-container,
+.lw-switch-button[checked][right-to-left][inverted]:not([orientation="vertical"]) .lw-inner-container,
+:host(.lw-switch-button[right-to-left]:not([orientation="vertical"])) .lw-inner-container,
+:host(.lw-switch-button[checked][right-to-left][inverted]:not([orientation="vertical"])) .lw-inner-container {
+    left: calc(-1 * (var(--lw-switch-button-default-width) - var(--lw-switch-button-thumb-size)));
+}
+
+.lw-switch-button[checked="null"][right-to-left]:not([orientation="vertical"]) .lw-inner-container,
+:host(.lw-switch-button[checked="null"][right-to-left]:not([orientation="vertical"])) .lw-inner-container {
+    left: calc(-1 * var(--lw-switch-button-default-width)/ 2 + var(--lw-switch-button-thumb-size)/2);
+}
+
+/* --- */

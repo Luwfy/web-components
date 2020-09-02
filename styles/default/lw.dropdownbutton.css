@@ -1,0 +1,53 @@
+lw-drop-down-button {
+    width: var(--lw-drop-down-button-default-width);
+    height: var(--lw-drop-down-button-default-height);
+    visibility: hidden;
+}
+
+    lw-drop-down-button.lw-element {
+        display: inline-block;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        overflow: visible;
+        border: none;
+        visibility: initial;
+    }
+
+.lw-drop-down-button .lw-ripple {
+    background: var(--lw-primary-color);
+}
+
+.lw-drop-down-button .lw-buttons-container > .lw-action-button:empty {
+    padding: 0;
+    width: 0;
+}
+
+.lw-drop-down-container > lw-scroll-viewer {
+    --lw-scroll-viewer-min-width: calc(var(--lw-editor-drop-down-min-width) - 2 * var(--lw-border-width) - 2 * var(--lw-editor-drop-down-padding-size));
+    --lw-scroll-viewer-max-width: calc(var(--lw-editor-drop-down-max-width) - 2 * var(--lw-border-width) - 2 * var(--lw-editor-drop-down-padding-size));
+    --lw-scroll-viewer-min-height: calc(var(--lw-editor-drop-down-min-height) - 2 * var(--lw-border-width) - 2 * var(--lw-editor-drop-down-padding-size));
+    --lw-scroll-viewer-max-height: calc(var(--lw-editor-drop-down-max-height) - 2 * var(--lw-border-width) - 2 * var(--lw-editor-drop-down-padding-size));
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+.lw-drop-down-container:not([resize-mode='none']) > lw-scroll-viewer {
+    --lw-scroll-viewer-min-height: calc(var(--lw-editor-drop-down-min-height) - 2 * var(--lw-border-width) - 2 * var(--lw-editor-drop-down-padding-size) - var(--lw-editor-drop-down-resize-bar-height));
+    --lw-scroll-viewer-max-height: calc(var(--lw-editor-drop-down-max-height) - 2 * var(--lw-border-width) - 2 * var(--lw-editor-drop-down-padding-size) - var(--lw-editor- drop-down-resize-bar-height));
+    height: calc(100% - var(--lw-editor-drop-down-resize-bar-height));
+}
+
+.lw-drop-down-container > lw-scroll-viewer > .lw-container > .lw-scroll-viewer-container > .lw-scroll-viewer-content-container {
+    vertical-align: top; /* Fixes the height issue of display: inline-block */
+    padding: 0;
+}
+
+.lw-drop-down-container[empty] > lw-scroll-viewer > .lw-container > .lw-scroll-viewer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+}

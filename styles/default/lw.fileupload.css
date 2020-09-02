@@ -1,0 +1,468 @@
+
+lw-file-upload {
+    display: inline-block;
+    width: var(--lw-file-upload-default-width);
+    font-size: var(--lw-file-upload-font-size);
+    font-family: var(--lw-file-upload-font-family);
+    color: var(--lw-file-upload-color);
+    overflow: hidden;
+    box-sizing: border-box;
+    border: var(--lw-file-upload-border-width) dashed var(--lw-file-upload-border);
+    background-color: var(--lw-file-upload-background);
+    min-width: 200px;
+    min-height: 100px;
+}
+
+    lw-file-upload[disabled] {
+        opacity: 0.55;
+        cursor: default;
+    }
+
+.lw-file-upload[disabled] .lw-file-upload-container {
+    pointer-events: none;
+    user-select: none;
+}
+
+.lw-file-upload .lw-file-upload-header,
+.lw-file-upload .lw-file-upload-container,
+.lw-file-upload .lw-file-upload-footer {
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.lw-file-upload[hide-footer] .lw-file-upload-footer {
+    display: none;
+}
+
+.lw-file-upload .lw-browse-button {
+    display: block;
+    margin: 4px;
+    width: var(--lw-file-upload-browse-button-width);
+    height: var(--lw-file-upload-browse-button-height);
+}
+
+.lw-file-upload .lw-upload-all-button,
+.lw-file-upload .lw-cancel-all-button,
+.lw-file-upload .lw-pause-all-button {
+    width: var(--lw-file-upload-footer-button-width);
+    height: var(--lw-file-upload-footer-button-height);
+    margin: 4px;
+}
+
+.lw-file-upload .lw-browse-input {
+    display: none;
+}
+
+.lw-drop-zone {
+    width: 100%;
+    height: 100%;
+    background-color: var(--lw-background);
+    position: relative;
+    box-sizing: border-box;
+    border: lightgray dotted 1px;
+}
+
+    .lw-drop-zone:after {
+        font-family: var(--lw-font-family-icon);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        content: var(--lw-file-upload-text-content-drop-zone);
+        color: var(--lw-ui-state);
+        box-sizing: border-box;
+        border: dashed 5px transparent;
+        transition: border 0.5s ease-out;
+    }
+
+    .lw-drop-zone.lw-drag-over:after {
+        content: var(--lw-file-upload-text-content-drop-zone-over);
+        font-size: 50px;
+        border: dashed 3px var(--lw-background-border);
+        transition: border 0.5s ease-out;
+        animation: drop-zone 1s ease-in infinite;
+    }
+
+@-webkit-keyframes drop-zone {
+    0% {
+        color: #b1b1b100;
+    }
+
+    50% {
+        color: #b1b1b199;
+    }
+
+    100% {
+        color: #b1b1b100;
+    }
+}
+
+.lw-file-upload .lw-drop-zone {
+    display: none;
+    width: 100%;
+    height: 100px;
+}
+
+.lw-file-upload[drop-zone] .lw-drop-zone {
+    display: block;
+}
+
+.lw-file-upload[drop-zone] .lw-overflow .lw-drop-zone {
+    display: none;
+}
+
+.lw-selected-files {
+    width: 100%;
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 2px;
+}
+
+.lw-file-upload .lw-total-files {
+    font-family: 'arial';
+    font-size: 12px;
+    color: gray;
+    display: block;
+    box-sizing: border-box;
+    padding: 0px 0px 2px 5px;
+}
+
+    .lw-file-upload .lw-total-files:empty {
+        display: none;
+    }
+
+.lw-selected-files .lw-file {
+    height: auto;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 1px;
+    background-color: #fafafa;
+    transition: border-color 0.5s ease;
+}
+
+
+
+.lw-selected-files .lw-item-name,
+.lw-selected-files .lw-item-upload-button,
+.lw-selected-files .lw-item-pause-button,
+.lw-selected-files .lw-item-cancel-button {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 16px;
+    position: relative;
+}
+
+.lw-selected-files .lw-item-name {
+    width: calc(100% - 40px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: auto;
+}
+
+.lw-selected-files .lw-uploading .lw-item-name {
+    width: calc(100% - 60px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: auto;
+}
+
+.lw-selected-files .lw-item-upload-button,
+.lw-selected-files .lw-item-pause-button,
+.lw-selected-files .lw-item-cancel-button {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 16px;
+    color: #999;
+    transition: color 0.5s ease;
+}
+
+.lw-selected-files .lw-item-pause-button {
+    display: none;
+}
+
+.lw-selected-files .lw-item-upload-button:hover,
+.lw-selected-files .lw-item-cancel-button:hover {
+    cursor: pointer;
+    color: green;
+    transition: color 0.5s ease;
+}
+
+.lw-selected-files .lw-item-cancel-button:hover {
+    color: orange;
+}
+
+.lw-selected-files .lw-item-upload-button:after,
+.lw-selected-files .lw-item-pause-button:after,
+.lw-selected-files .lw-item-cancel-button:after {
+    font-family: var(--lw-font-family-icon);
+    content: var(--lw-icon-up);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-size: 16px;
+    text-shadow: 2px 2px 2px lightgray;
+}
+
+.lw-selected-files .lw-item-pause-button:after,
+.lw-selected-files .lw-item-cancel-button:after {
+    content: var(--lw-icon-close);
+}
+
+.lw-file.lw-uploading-start::before {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-family: 'arial';
+    display: block;
+    content: var(--lw-file-upload-text-content-uploading-start);
+    background-color: #c1c1c169;
+    opacity: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-size: 11px;
+    color: #737373;
+    padding: 0px 0px 2px 5px;
+    pointer-events: none;
+    z-index: 1;
+    animation: connecting 1s linear infinite;
+}
+
+@-webkit-keyframes connecting {
+    0% {
+        color: #73737350;
+    }
+
+    50% {
+        color: #73737399;
+    }
+
+    100% {
+        color: #73737350;
+    }
+}
+
+.lw-file.lw-uploading::before {
+    font-family: 'arial';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+    content: var(--lw-file-upload-text-content-uploading);
+    width: 100%;
+    height: 100%;
+    background-color: #c1c1c169;
+    opacity: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-size: 11px;
+    color: var(--lw-ui-state);
+    padding: 0px 0px 2px 5px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@-webkit-keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.lw-file.lw-pause::before {
+    font-family: 'arial';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+    content: var(--lw-file-upload-text-content-pause);
+    width: 100%;
+    height: 100%;
+    background-color: #ff000030;
+    border-radius: 3px;
+    opacity: 0.8;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-size: 11px;
+    color: #8a0000;
+    padding: 0px 0px 2px 5px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.lw-file.lw-error::before {
+    font-family: 'arial';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+    content: var(--lw-file-upload-text-content-error);
+    width: 100%;
+    height: 100%;
+    background-color: var(--lw-error);
+    border-radius: var(--lw-error-border-radius);
+    opacity: 0;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-size: 11px;
+    color: var(--lw-on-error);
+    padding: 0px 0px 2px 5px;
+    pointer-events: none;
+    z-index: 1;
+    animation: error 6s linear 1;
+}
+
+@-webkit-keyframes error {
+    0% {
+        opacity: 0.8;
+        background-color: #ff000015;
+    }
+
+    3% {
+        background-color: #ff000040;
+    }
+
+    6% {
+        background-color: #ff000015;
+    }
+
+    9% {
+        background-color: #ff000040;
+    }
+
+    12% {
+        background-color: #ff000015;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.lw-file.lw-uploading .lw-item-upload-button {
+    pointer-events: none;
+}
+
+.lw-selected-files .lw-uploading .lw-item-upload-button {
+    opacity: 0.3;
+}
+
+.lw-file.lw-uploading .lw-item-name {
+    opacity: 0.2;
+    user-select: none;
+}
+
+.lw-selected-files .lw-uploading .lw-item-pause-button,
+.lw-selected-files .lw-uploading .lw-item-cancel-button {
+    display: inline-block;
+    cursor: pointer;
+    pointer-events: all;
+    transition: color 0.5s, opacity 0.5s ease;
+    color: #dc1919;
+    opacity: 0.5;
+}
+
+.lw-selected-files .lw-uploading .lw-item-cancel-button {
+    color: darkorange;
+}
+
+    .lw-selected-files .lw-uploading .lw-item-pause-button:hover,
+    .lw-selected-files .lw-uploading .lw-item-cancel-button:hover {
+        transition: color 0.5s, opacity 0.5s ease;
+        color: red;
+        opacity: 1;
+    }
+
+    .lw-selected-files .lw-uploading .lw-item-cancel-button:hover {
+        transition: color 0.5s, opacity 0.5s ease;
+        color: orange;
+        opacity: 1;
+    }
+
+.lw-selected-files .lw-item-pause-button {
+    pointer-events: none;
+}
+
+.lw-selected-files .lw-file:hover {
+    transition: border-color 0.5s ease;
+    border-color: gray;
+}
+
+.lw-file lw-progress-bar {
+    display: none;
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+    .lw-file lw-progress-bar .lw-container {
+        border-style: none;
+    }
+
+    .lw-file lw-progress-bar .lw-value {
+        background-color: orange;
+    }
+
+lw-file-upload[show-progress] .lw-file lw-progress-bar {
+    display: none;
+}
+
+    lw-file-upload[show-progress] .lw-file lw-progress-bar[value] {
+        display: block;
+    }
+
+.lw-file.lw-error lw-progress-bar {
+    opacity: 0.3;
+}
+
+/*lw-file-upload .lw-total-files{
+    min-height:var(--lw-file-upload-total-files-min-height);
+}
+
+lw-file-upload .lw-file-upload-container{
+    min-height:var(--lw-file-upload-container-min-height);
+}*/
+
+lw-file-upload .lw-total-files.lw-hidden,
+lw-file-upload .lw-selected-files .lw-file.lw-hidden {
+    display: none;
+}
+
+/* --- Right-To-Left --- */
+
+lw-file-upload[right-to-left] > .lw-container,
+.lw-file[right-to-left],
+.lw-drop-zone[right-to-left] {
+    direction: rtl;
+}
+
+/* --- */

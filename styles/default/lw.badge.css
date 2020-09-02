@@ -1,0 +1,51 @@
+
+/* .lw-badge */
+
+.lw-badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-weight: 700;
+    line-height: 1;
+}
+
+    .lw-badge.lw-badge-dark {
+        color: #fff;
+        background-color: #333;
+    }
+
+    .lw-badge.lw-badge-primary {
+        color: var(--lw-primary-color);
+        background-color: var(--lw-primary);
+    }
+
+    .lw-badge.lw-badge-info {
+        color: var(--lw-secondary-color);
+        background-color: var(--lw-secondary);
+    }
+
+    .lw-badge.lw-badge-success {
+        color: var(--lw-success-color);
+        background-color: var(--lw-success);
+    }
+
+    .lw-badge.lw-badge-danger {
+        color: var(--lw-error-color);
+        background-color: var(--lw-error);
+    }
+
+    .lw-badge.lw-badge-warning {
+        color: #fff;
+        background-color: #C75200;
+    }
+
+    .lw-badge.lw-badge-pill {
+        border-radius: 10rem;
+    }
+
+    /* --- Right to Left --- */
+
+    .lw-badge[right-to-left] {
+        direction: rtl;
+    }
+
+/* --- */

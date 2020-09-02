@@ -1,0 +1,170 @@
+
+
+/* lw-check-box */
+
+lw-check-box {
+    display: inline-block;
+    outline: none;
+    height: var(--lw-editor-height);
+    font-family: var(--lw-check-box-font-family);
+    font-size: var(--lw-check-box-font-size);
+    cursor: pointer;
+    line-height:1;
+}
+
+    lw-check-box[check-mode="input"],
+    lw-check-box[check-mode="label"] {
+        cursor: default;
+    }
+
+    lw-check-box .lw-container {
+        position: relative;
+        display: flex;
+        /*justify-content: center;*/
+        align-items: center;
+    }
+
+    lw-check-box .lw-ripple {
+        background: var(--lw-check-box-background-active);
+    }
+
+    lw-check-box .lw-overlay {
+        top: 0;
+        height: 100%;
+        background: var(--lw-check-box-background-active);
+        width: var(--lw-editor-height);
+        position: absolute;
+        left: 2px;
+        border-radius: 100%;
+        padding: 0px;
+        opacity: 0;
+        box-sizing: content-box;
+        transition: opacity 280ms ease-in-out;
+    }
+
+    lw-check-box[active]:focus .lw-overlay,
+    lw-check-box[active][focus] .lw-overlay {
+        opacity: 0.4;
+    }
+
+    lw-check-box:focus .lw-overlay,
+    lw-check-box[focus] .lw-overlay {
+        opacity: 0.3;
+    }
+
+    lw-check-box .lw-label {
+        color: var(--lw-check-box-color);
+        font-size: var(--lw-check-box-font-size);
+        font-family: var(--lw-check-box-font-family);
+        margin: 0 8px 0 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: auto;
+    }
+
+    lw-check-box[check-mode="label"] .lw-label {
+        cursor: pointer;
+    }
+
+    lw-check-box .lw-input {
+        width: var(--lw-check-box-default-size);
+        min-width: var(--lw-check-box-default-size);
+        height: var(--lw-check-box-default-size);
+        min-height: var(--lw-check-box-default-size);
+        background-color: var(--lw-check-box-background);
+        box-sizing: initial;
+        border-style: solid;
+        border-width: var(--lw-check-box-border-width);
+        border-color: var(--lw-check-box-border);
+        display: inline-block;
+        color: var(--lw-check-box-color);
+        border-top-left-radius: var(--lw-check-box-border-top-left-radius);
+        border-top-right-radius: var(--lw-check-box-border-top-right-radius);
+        border-bottom-left-radius: var(--lw-check-box-border-bottom-left-radius);
+        border-bottom-right-radius: var(--lw-check-box-border-bottom-right-radius);
+        margin: 0 0 0 8px;
+        transition: background linear 0.2s;
+        position: relative;
+    }
+
+    lw-check-box[check-mode="input"] .lw-input {
+        cursor: pointer;
+    }
+
+    lw-check-box[readonly],
+    lw-check-box[readonly] .lw-input,
+    lw-check-box[readonly] .lw-label {
+        cursor: initial;
+    }
+
+    lw-check-box[active] .lw-input,
+    lw-check-box[checked] .lw-input {
+        border-color: var(--lw-check-box-border-active);
+        background-color: var(--lw-check-box-background-active);
+        color: var(--lw-check-box-color-active);
+    }
+
+    lw-check-box[hover] .lw-input {
+        border-color: var(--lw-check-box-border-hover);
+        background-color: var(--lw-check-box-background-hover);
+        color: var(--lw-check-box-color-hover);
+    }
+
+    lw-check-box:focus .lw-input,
+    lw-check-box[focus] .lw-input {
+        outline: none;
+        overflow: visible;
+        border-color: var(--lw-check-box-border-focus);
+        background-color: var(--lw-check-box-background-focus);
+        color: var(--lw-check-box-color-focus);
+    }
+
+    lw-check-box .lw-input:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        font-style: normal;
+        font-variant: normal;
+        font-family: 'Material icons';
+        font-size: 15px;
+        font-weight: 100;
+        text-decoration: inherit;
+        text-transform: none;
+        color: inherit;
+        line-height: 100%;
+    }
+
+    lw-check-box[checked] .lw-input:after {
+        content: '\e876';
+        font-family: 'Material icons';
+        font-size: 15px;
+        font-weight: 100;
+    }
+
+
+    lw-check-box[checked="null"] .lw-input:after {
+        content: '-';
+    }
+
+    /* --- Right-To-Left --- */
+
+    lw-check-box[right-to-left] .lw-container,
+    lw-check-box[right-to-left] .lw-hidden-input {
+        direction: rtl;
+    }
+
+    lw-check-box[right-to-left] .lw-overlay {
+        left: initial;
+        right: 2px;
+    }
+
+    lw-check-box[right-to-left] .lw-input {
+        margin: 0 8px 0 0;
+    }
+
+    /* --- */

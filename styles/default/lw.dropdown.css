@@ -1,0 +1,1233 @@
+.lw-drop-down-box {
+    background: var(--lw-surface);
+    border-color: var(--lw-border);
+    border-top-left-radius: var(--lw-border-top-left-radius);
+    border-bottom-left-radius: var(--lw-border-bottom-left-radius);
+    border-top-right-radius: var(--lw-border-top-right-radius);
+    border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+    overflow: initial;
+    font-family: var(--lw-font-family);
+    font-size: var(--lw-font-size);
+    outline: none;
+    height: var(--lw-editor-height);
+}
+
+.lw-drop-down-box .lw-buttons-container {
+    width: inherit;
+    height: inherit;
+    display: inherit;
+    flex-direction: inherit;
+    cursor: inherit;
+    position: inherit;
+    overflow: hidden;
+    min-height: inherit;
+}
+
+/* Action Button */
+
+.lw-drop-down-box .lw-action-button .lw-input {
+    color: inherit;
+    background: inherit;
+    border: none;
+    width: calc(100% - var(--lw-editor-addon-width));
+    height: 100%;
+    outline: none;
+    text-overflow: ellipsis;
+}
+
+.lw-drop-down-box .lw-action-button .lw-input::placeholder {
+    color: inherit;
+}
+
+.lw-drop-down-box[drop-down-open-mode="dropDownButton"] .lw-action-button[active], .lw-drop-down-box .lw-drop-down-button[active] {
+    border-color: var(--lw-ui-state-border-active);
+    background-color: var(--lw-ui-state-active);
+    color: var(--lw-ui-state-color-active);
+}
+
+.lw-drop-down-box[resizing] {
+    user-select: none;
+    touch-action: none;
+}
+
+.lw-drop-down-box .lw-drop-down {
+    font-family: var(--lw-font-family);
+    font-size: var(--lw-font-size);
+}
+
+.lw-drop-down-box .lw-action-button {
+    display: flex;
+    padding-left: var(--lw-editor-label-padding);
+    align-content: center;
+    outline: 1px solid transparent;
+    height: 100%;
+    width: calc(100% - var(--lw-editor-addon-width));
+    flex-wrap: wrap;
+    overflow: hidden;
+    position: relative;
+    border-style: solid;
+    border-color: var(--lw-border);
+    border-width: var(--lw-border-width);
+    align-items: center;
+    border-right: none;
+    border-top-left-radius: var(--lw-border-top-left-radius);
+    border-bottom-left-radius: var(--lw-border-bottom-left-radius);
+    user-select: none;
+}
+
+.lw-drop-down-box[drop-down-button-position="left"] .lw-action-button {
+    padding-right: var(--lw-editor-label-padding);
+}
+
+.lw-drop-down-box[drop-down-button-position="right"] .lw-action-button {
+    padding-left: var(--lw-editor-label-padding);
+}
+
+.lw-drop-down-box[drop-down-button-position="top"] .lw-action-button, .lw-drop-down-box[drop-down-button-position="bottom"] .lw-action-button {
+    min-height: var(--lw-editor-height);
+    padding-left: initial;
+}
+
+/*drop-down-button-position*/
+
+.lw-drop-down-box[drop-down-button-position="left"]>.lw-container>.lw-content, .lw-drop-down-box[drop-down-button-position="left"].lw-container>.lw-content {
+    flex-direction: row-reverse;
+}
+
+.lw-drop-down-box[drop-down-button-position="left"] .lw-action-button {
+    border-right: var(--lw-border-width) solid var(--lw-border);
+    border-color: var(--lw-border);
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: var(--lw-border-top-right-radius);
+    border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+    padding-left: initial;
+    flex-direction: row-reverse;
+}
+
+.lw-drop-down-box[drop-down-button-position="left"]:not([drop-down-open-mode="dropDownButton"]) .lw-action-button {
+    border-left: initial;
+}
+
+.lw-drop-down-box[drop-down-button-position="left"] .lw-drop-down-button {
+    border-left: var(--lw-border-width) solid var(--lw-border);
+    border-color: var(--lw-border);
+    border-top-left-radius: var(--lw-border-top-left-radius);
+    border-bottom-left-radius: var(--lw-border-bottom-left-radius);
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.lw-drop-down-box[drop-down-button-position="left"] .lw-drop-down-button, .lw-drop-down-box[drop-down-button-position="left"] .lw-drop-down-button[selected] {
+    border-right: initial;
+}
+
+.lw-drop-down-box[drop-down-open-mode="dropDownButton"][drop-down-button-position="left"]:not([hover]) .lw-drop-down-button:focus {
+    border-color: var(--lw-outline);
+    box-shadow: var(--lw-border-width) 0 0 0 var(--lw-outline);
+}
+
+.lw-drop-down-box[drop-down-open-mode="dropDownButton"][drop-down-button-position="left"]:not([hover]) .lw-action-button:focus {
+    border-color: var(--lw-outline);
+    box-shadow: calc(-1 * var(--lw-border-width)) 0 0 0 var(--lw-outline);
+}
+
+.lw-drop-down-box[drop-down-open-mode="dropDownButton"][drop-down-button-position="right"]:not([hover]) .lw-action-button:focus, .lw-drop-down-box[drop-down-open-mode="dropDownButton"]:not([drop-down-button-position]):not([hover]) .lw-action-button:focus {
+    box-shadow: var(--lw-border-width) 0 0 0 var(--lw-outline);
+    border-color: var(--lw-outline);
+    z-index: 1;
+}
+
+.lw-drop-down-box[drop-down-open-mode="dropDownButton"]:not([drop-down-button-position]):not([hover]) .lw-drop-down-button:focus {
+    border-color: var(--lw-outline);
+}
+
+.lw-drop-down-box[drop-down-button-position="top"] .lw-content {
+    flex-direction: column-reverse;
+}
+
+.lw-drop-down-box[drop-down-button-position="top"] .lw-drop-down-button, .lw-drop-down-box[drop-down-button-position="top"] .lw-action-button, .lw-drop-down-box[drop-down-button-position="bottom"] .lw-drop-down-button, .lw-drop-down-box[drop-down-button-position="bottom"] .lw-action-button {
+    width: 100%;
+    border: var(--lw-border-width) solid var(--lw-border);
+    height: 50%;
+    justify-content: center;
+}
+
+.lw-drop-down-box[drop-down-button-position="bottom"]:not([drop-down-open-mode="dropDownButton"]) .lw-drop-down-button, .lw-drop-down-box[drop-down-button-position="top"]:not([drop-down-open-mode="dropDownButton"]) .lw-action-button {
+    border-top: initial;
+}
+
+.lw-drop-down-box[drop-down-button-position="top"] .lw-drop-down-button, .lw-drop-down-box[drop-down-button-position="bottom"] .lw-action-button {
+    border-bottom: initial;
+}
+
+.lw-drop-down-box[drop-down-button-position="top"], .lw-drop-down-box[drop-down-button-position="bottom"] {
+    min-height: calc(2 * var(--lw-editor-height));
+}
+
+.lw-drop-down-box[drop-down-button-position="bottom"] .lw-content {
+    flex-direction: column;
+}
+
+.lw-drop-down-box[drop-down-button-position="top"] .lw-drop-down-button, .lw-drop-down-box[drop-down-button-position="bottom"] .lw-action-button {
+    border-top-left-radius: var(--lw-border-top-left-radius);
+    border-bottom-left-radius: 0;
+    border-top-right-radius: var(--lw-border-top-right-radius);
+    border-bottom-right-radius: 0;
+}
+
+.lw-drop-down-box[drop-down-button-position="bottom"] .lw-drop-down-button, .lw-drop-down-box[drop-down-button-position="top"] .lw-action-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: var(--lw-border-bottom-left-radius);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+}
+
+.lw-drop-down-box[drop-down-button-position="none"] .lw-action-button {
+    border-right: var(--lw-border-width) solid var(--lw-border);
+    border-top-right-radius: var(--lw-border-top-right-radius);
+    border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+    width: 100%;
+    padding-right: var(--lw-editor-label-padding);
+}
+
+.lw-drop-down-box[drop-down-button-position="none"] .lw-drop-down-button {
+    display: none;
+}
+
+/*End of drop-down-button-position*/
+
+.lw-drop-down-box[readonly] input {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.lw-drop-down-box .lw-drop-down.lw-visibility-hidden {
+    transform: scale(0);
+    transition: transform 0.2s ease-in;
+    transform-origin: left top 0px;
+}
+
+/*Default*/
+
+.lw-drop-down-box[drop-down-open-mode="dropDownButton"] .lw-drop-down-button {
+    border-color: var(--lw-border);
+    background-color: var(--lw-surface);
+    color: var(--lw-surface-color);
+    border-left-style: solid;
+    border-left-width: var(--lw-border-width);
+}
+
+.lw-drop-down-box[drop-down-open-mode="dropDownButton"] .lw-action-button {
+    border-color: var(--lw-border);
+    background-color: var(--lw-background);
+    color: var(--lw-background-color);
+}
+
+/*Default*/
+
+.lw-drop-down-box:not([drop-down-open-mode="dropDownButton"]) .lw-action-button {
+    border-color: var(--lw-border);
+    background-color: var(--lw-surface);
+    color: var(--lw-surface-color);
+}
+
+/*Hover*/
+
+.lw-drop-down-box[hover]:not([drop-down-open-mode="dropDownButton"]) .lw-action-button {
+    border-color: var(--lw-ui-state-border-hover);
+    background-color: var(--lw-ui-state-hover);
+    color: var(--lw-ui-state-color-hover);
+}
+
+.lw-drop-down-box[hover] .lw-drop-down-button {
+    border-color: var(--lw-ui-state-border-hover);
+    background-color: var(--lw-ui-state-hover);
+    color: var(--lw-ui-state-color-hover);
+}
+
+/*Focus*/
+
+.lw-drop-down-box[focus]:not([opened]) .lw-action-button[focus], .lw-drop-down-box[focus]:not([opened]) .lw-drop-down-button[focus], .lw-drop-down-box[focus]:not([opened]) .lw-action-button, .lw-drop-down-box[focus]:not([opened]) .lw-drop-down-button {
+    outline: initial;
+    border-color: var(--lw-outline);
+}
+
+/*Active*/
+
+.lw-drop-down-box[active] .lw-action-button, .lw-drop-down-box .lw-drop-down-button, .lw-drop-down-box[active][focus][drop-down-open-mode="dropDownButton"] .lw-action-button, .lw-drop-down-box[active][focus][drop-down-open-mode="dropDownButton"] .lw-drop-down-button, .lw-drop-down-box[active][drop-down-open-mode="dropDownButton"] .lw-drop-down-button:focus {
+    border-color: var(--lw-ui-state-border-active);
+    background-color: var(--lw-ui-state-active);
+    color: var(--lw-ui-state-color-active);
+}
+
+.lw-drop-down-box[opened]:not([drop-down-open-mode="dropDownButton"]):not(.outlined):not(.underlined) .lw-action-button,
+.lw-drop-down-box[opened]:not(.outlined):not(.underlined) .lw-drop-down-button {
+    border-color: var(--lw-ui-state-active);
+    background-color: var(--lw-ui-state-active);
+    color: var(--lw-ui-state-color-active);
+}
+
+/*Content*/
+
+.lw-drop-down-box>.lw-container>.lw-content, .lw-drop-down-box.lw-container>.lw-content {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/*Auto-Height*/
+
+.lw-drop-down-box.auto-height {
+    height: auto;
+    min-height: var(--lw-editor-height);
+}
+
+.lw-drop-down-box.auto-height>.lw-container, .lw-drop-down-box.auto-height.lw-container, .lw-drop-down-box.auto-height .lw-action-button, .lw-drop-down-box.auto-height .lw-content {
+    min-height: inherit;
+}
+
+.lw-drop-down-box.auto-height .lw-action-button {
+    padding: 3px;
+}
+
+/*Hint & Label*/
+
+.lw-drop-down-box[label].auto-height, .lw-drop-down-box[hint].auto-height {
+    height: auto;
+}
+
+.lw-drop-down-box>.lw-container, .lw-drop-down-box.lw-container, .lw-drop-down-box[label][hint]>.lw-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.lw-drop-down-box[hint]>.lw-container {
+    align-items: flex-start;
+}
+
+.lw-drop-down-box[label]>.lw-container {
+    align-items: flex-end;
+}
+
+.lw-drop-down-box[label] .lw-label, .lw-drop-down-box[hint] .lw-hint {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    font-size: 12px;
+    width: 100%;
+    display: block;
+    padding: var(--lw-editor-label-padding);
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    text-align: initial;
+    line-height: initial;
+    vertical-align: initial;
+}
+
+.lw-drop-down-box[hint] .lw-hint {
+    opacity: 0;
+    transition: opacity 0.2s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.lw-drop-down-box[hint][focus] .lw-hint {
+    opacity: 1;
+    transition: opacity 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.lw-drop-down-box[hint] .lw-hint {
+    top: 100%;
+    bottom: initial;
+}
+
+/*End of Hint & Label*/
+
+/*Disabled*/
+
+.lw-drop-down-box[disabled]>.lw-container, .lw-drop-down-box[disabled] .lw-drop-down-button {
+    cursor: default;
+    background-color: initial;
+}
+
+.lw-drop-down-box[selection-display-mode="tokens"][disabled] .lw-action-button>span {
+    cursor: default;
+}
+
+/*End of Disabled*/
+
+/*Drop-Down-Button*/
+
+.lw-drop-down-box .lw-drop-down-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--lw-editor-addon-width);
+    min-width: var(--lw-editor-addon-width);
+    color: inherit;
+    outline: 1px solid transparent;
+    overflow: hidden;
+    position: relative;
+    background: inherit;
+    border-width: var(--lw-border-width);
+    border-style: solid;
+    border-color: var(--lw-border);
+    border-left: none;
+    color: var(--lw-surface-color);
+    border-top-right-radius: var(--lw-border-top-right-radius);
+    border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+    cursor: pointer;
+}
+
+.lw-drop-down-box[placeholder=""][dropDownButtonPosition="none"] .lw-drop-down-button, .lw-drop-down-box:not([placeholder])[dropDownButtonPosition="none"] .lw-drop-down-button {
+    border-left-width: var(--lw-border-width);
+    border-left-style: solid;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: var(--lw-border-top-right-radius);
+    border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+}
+
+.lw-drop-down-box[placeholder=""]:not([opened])[dropDownButtonPosition="none"] .lw-drop-down-button:not([focus]), .lw-drop-down-box:not([placeholder]):not([opened])[dropDownButtonPosition="none"] .lw-drop-down-button:not([focus]) {
+    border-color: var(--lw-border);
+}
+
+.lw-drop-down-box .lw-drop-down-button .lw-drop-down-button-icon {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center;
+    font-family: var(--lw-font-family-icon);
+}
+
+.lw-drop-down-box .lw-drop-down-button .lw-drop-down-button-icon::after {
+    content: var(--lw-icon-arrow-down);
+}
+
+.lw-drop-down-box:not([animation='none']) .lw-drop-down-button .lw-drop-down-button-icon:after {
+    transition: transform 0.2s;
+}
+
+.lw-drop-down-box[drop-down-position="overlay-center"] .lw-drop-down-button .lw-drop-down-button-icon::after {
+    content: var(--lw-icon-minus);
+}
+
+.lw-drop-down-box[opened] .lw-drop-down-button .lw-drop-down-button-icon:after, .lw-drop-down-box .lw-drop-down-button[top] .lw-drop-down-button-icon:after, .lw-drop-down-box .lw-drop-down-button[center-top] .lw-drop-down-button-icon:after, .lw-drop-down-box[opened] .lw-drop-down-button[bottom] .lw-drop-down-button-icon:after, .lw-drop-down-box[opened] .lw-drop-down-button[center-bottom] .lw-drop-down-button-icon:after {
+    transform: rotate(180deg);
+}
+
+.lw-drop-down-box[opened] .lw-drop-down-button[top] .lw-drop-down-button-icon:after, .lw-drop-down-box[opened] .lw-drop-down-button[center-top] .lw-drop-down-button-icon:after {
+    transform: rotate(0deg);
+}
+
+/* renderMode */
+
+.lw-drop-down-box.outlined, .lw-drop-down-box.outlined[focus], .lw-drop-down-box.outlined[hover]:not([opened]):not([drop-down-open-mode="dropDownButton"]) .lw-action-button:not([active]), .lw-drop-down-box.outlined[drop-down-open-mode="dropDownButton"]:not([hover]) .lw-action-button:not([active]), .lw-drop-down-box.outlined:not([opened]) .lw-action-button:not([active]), .lw-drop-down-box.outlined:not([opened]) .lw-drop-down-button {
+    background-color: transparent;
+}
+
+/* render-mode="underlined" */
+
+.lw-drop-down-box.underlined {
+    background-color: transparent;
+}
+
+.lw-drop-down-box.underlined[right-to-left]:not([drop-down-button-position]) .lw-action-button, .lw-drop-down-box.underlined[right-to-left]:not([hover]) .lw-action-button[focus], .lw-drop-down-box.underlined[right-to-left]:not([drop-down-button-position]) .lw-drop-down-button, .lw-drop-down-box.underlined[right-to-left]:not([drop-down-button-position]) .lw-drop-down-button[focus], .lw-drop-down-box.underlined[hover]:not([opened]):not([drop-down-open-mode="dropDownButton"]) .lw-action-button:not([active]), .lw-drop-down-box.underlined[drop-down-open-mode="dropDownButton"][hover]:not([opened]) .lw-action-button[hover], .lw-drop-down-box.underlined[hover]:not([opened]) .lw-action-button, .lw-drop-down-box.underlined .lw-action-button, .lw-drop-down-box.underlined[opened] .lw-action-button, .lw-drop-down-box.underlined .lw-drop-down-button {
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.lw-drop-down-box.underlined[hover]:not([drop-down-open-mode="dropDownButton"]):not([opened]) .lw-action-button, .lw-drop-down-box.underlined[right-to-left]:not([drop-down-button-position]) .lw-action-button, .lw-drop-down-box.underlined .lw-action-button, .lw-drop-down-box.underlined[right-to-left]:not([hover]) .lw-action-button[focus], .lw-drop-down-box.underlined[opened] .lw-action-button {
+    border-bottom-left-radius: 0;
+}
+
+.lw-drop-down-box.underlined[right-to-left]:not([drop-down-button-position]):not([opened]):not([hover]) .lw-drop-down-button:not([hover]), .lw-drop-down-box.underlined[right-to-left]:not([drop-down-button-position]):not([opened]):not([hover]) .lw-drop-down-button[focus]:not([hover]), .lw-drop-down-box.underlined:not([opened]):not([hover]) .lw-drop-down-button:not([hover]) {
+    border-bottom-left-radius: 0;
+}
+
+.lw-drop-down-box.underlined[right-to-left]:not([drop-down-button-position]) .lw-action-button {
+    border-bottom-right-radius: 0;
+}
+
+.lw-drop-down-box.underlined .lw-action-button, .lw-drop-down-box.underlined[opened] .lw-action-button, .lw-drop-down-box.underlined:not([hover]):not([opened]) .lw-drop-down-button {
+    background-color: transparent;
+    color: var(--lw-background-color);
+}
+
+.lw-drop-down-box.underlined:not([opened]) .lw-action-button:not([active]):not([hover]), .lw-drop-down-box.underlined:not([opened]):not([hover]) .lw-drop-down-button:not([active]):not([hover]) {
+    border-radius: initial;
+}
+
+.lw-drop-down-box.underlined[hover]:not([drop-down-open-mode="dropDownButton"]):not([opened]) .lw-action-button:not([active]) {
+    background-color: transparent;
+}
+
+.lw-drop-down-box.underlined[drop-down-open-mode="dropDownButton"][drop-down-button-position="left"]:not([hover]) .lw-drop-down-button:focus {
+    box-shadow: none;
+}
+
+.lw-drop-down-box.underlined[drop-down-open-mode="dropDownButton"]:not([drop-down-button-position="left"]):not([drop-down-button-position="top"]):not([drop-down-button-position="bottom"]):not([hover]) .lw-action-button:focus {
+    box-shadow: none;
+    z-index: initial;
+}
+
+.lw-drop-down-box.underlined .lw-drop-down-button[active], .lw-drop-down-box.underlined .lw-action-button[active] {
+    background-color: var(--lw-ui-state-active);
+    color: var(--lw-ui-state-color-active);
+}
+
+
+/* underlined*/
+
+.lw-drop-down-box.underlined {
+    border-width:0px;
+    border-bottom-width: 1px;
+    background: var(--lw-background);
+    border-bottom-color:var(--lw-border);
+}
+.lw-drop-down-box.underlined .lw-drop-down-button {
+    border-bottom: 1px solid var(--lw-border) !important;
+}
+
+.lw-invalid.lw-drop-down-box:not([drop-down-open-mode="dropDownButton"]) .lw-action-button,
+.lw-invalid.lw-drop-down-box.underlined  .lw-drop-down-button {
+    border-bottom-color: rgba(var(--lw-error-rgb), 0.5) !important;
+}
+
+
+.lw-drop-down-box.underlined[focus] .lw-action-button,
+.lw-drop-down-box.underlined .lw-action-button input,
+.lw-drop-down-box.underlined[focus] input {
+    border-color:transparent !important;
+}
+.lw-drop-down-box.underlined .lw-spin-button,
+.lw-drop-down-box.underlined .lw-drop-down-button {
+    background: var(--lw-background);
+    border-width:0px;
+}
+
+.lw-drop-down-box.underlined .lw-spin-button[hover],
+.lw-drop-down-box.underlined .lw-drop-down-button[hover] {
+    background: var(--lw-background);
+    color: var(--lw-ui-state-active);
+}
+
+.lw-drop-down-box.underlined .lw-spin-button[active],
+.lw-drop-down-box.underlined .lw-drop-down-button[active] {
+    background: var(--lw-background);
+    color: var(--lw-ui-state-active);
+}
+
+.lw-drop-down-box.underlined .lw-hint{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block !important;
+    box-sizing: border-box;
+    padding: var(--lw-editor-label-padding);
+    color: var(--lw-background-color);
+    pointer-events: none;
+    font-size: 75%;
+    opacity: 0;
+    transition: color 0.2s,  opacity 0.1s, font-size 0.2s, line-height 0.2s, margin-top 0.2s, top 0.2s;
+    margin-top: calc(0px - var(--lw-font-size));
+}
+
+.lw-drop-down-box.underlined  .lw-hint::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--lw-primary);
+    transform-origin: bottom center;
+    transform: scaleX(0);
+    transition: transform 0.2s;
+}
+
+.lw-drop-down-box.underlined:not([focus]) .lw-hint {
+    margin-top:0px;
+}
+
+.lw-drop-down-box.underlined[focus] .lw-drop-down-button,
+.lw-drop-down-box.underlined[focus] .lw-hint {
+    color: var(--lw-primary) !important;
+    opacity: 1;
+    border-color:transparent !important;
+}
+.lw-drop-down-box.underlined[focus] .lw-hint::after {
+    transform: scale(1);
+}
+/*end of underlined */
+/* outlined */
+.lw-drop-down-box.outlined {
+    padding-top:6px;
+    height:auto;
+    min-height: 0;
+    border:none;
+    background: transparent;
+}
+.lw-drop-down-box.outlined .lw-action-button {
+    border: none;
+}
+.lw-drop-down-box.outlined > .lw-container > .lw-content {
+    padding: 4px 3px 4px;
+    border: 1px solid var(--lw-border);
+    height:auto;
+    background: var(--lw-background);
+    border-radius: var(--lw-border-radius);
+    z-index: 5;
+}
+.lw-invalid.lw-drop-down-box.outlined > .lw-container > .lw-content {
+    border-color: rgba(var(--lw-error-rgb), 0.5);
+}
+
+.lw-drop-down-box.outlined .lw-action-button input {
+    padding: 0;
+    border:none !important;
+    z-index: initial;
+}
+.lw-drop-down-box.outlined .lw-spin-button,
+.lw-drop-down-box.outlined .lw-drop-down-button {
+    background: var(--lw-background);
+    border-width:0px;
+}
+.lw-drop-down-box.outlined .lw-drop-down-button {
+    padding: 8px 0px;
+}
+
+.lw-drop-down-box.outlined[focus]  > .lw-container > .lw-content {
+    border-color: var(--lw-primary);
+}
+.lw-drop-down-box.outlined[focus] .lw-drop-down-button {
+    color: var(--lw-primary);
+}
+.lw-drop-down-box.outlined .lw-spin-button[hover],
+.lw-drop-down-box.outlined .lw-drop-down-button.lw-calendar-button[hover] {
+    background: var(--lw-background);
+    color: var(--lw-ui-state-active);
+}
+
+.lw-drop-down-box.outlined .lw-spin-button[active],
+.lw-drop-down-box.outlined .lw-drop-down-button.lw-calendar-button[active] {
+    background: var(--lw-background);
+    color: var(--lw-ui-state-active);
+}
+
+.lw-drop-down-box.outlined.lw-element-init .lw-hint {
+    visibility: hidden;
+    display: none !important;
+}
+
+.lw-drop-down-box.outlined[hint] .lw-hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex !important;
+    border-color: var(--lw-border) !important;
+    width: 100%;
+    max-height: 100%;
+    color: var(--lw-background-color);
+    font-size: 75%;
+    line-height: 15px;
+    cursor: text;
+    margin-top: -6px;
+    z-index: 10;
+    padding:0;
+    transition: color 0.2s, font-size 0.2s, opacity 0.1s, font-size 0.2s, line-height 0.2s;
+}
+
+/* Corners */
+.lw-drop-down-box.outlined[hint] .lw-hint::before,
+.lw-drop-down-box.outlined[hint] .lw-hint::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    margin-top: 6px;
+    border-top: solid 1px;
+    border-top-color: var(--lw-border) !important;
+    min-width: 10px;
+    height: 8px;
+    pointer-events: none;
+    box-shadow: inset 0 1px transparent;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.lw-drop-down-box.outlined[hint] .lw-hint::before{
+    margin-right: 4px;
+    border-left: solid 1px transparent;
+    border-radius: 4px 0;
+}
+
+.lw-drop-down-box.outlined[hint] .lw-hint::after {
+    flex-grow: 1;
+    margin-left: 4px;
+    border-right: solid 1px transparent;
+    border-radius: 0 4px;
+}
+
+.lw-drop-down-box.outlined:not([focus])[hint] .lw-hint {
+    font-size: var(--lw-font-size);
+    line-height: 48px;
+    opacity: 0;
+}
+.lw-drop-down-box.outlined[focus][hint]  > .lw-container > .lw-content
+{
+    border-top-color: transparent !important;
+}
+.lw-drop-down-box.outlined[focus][hint] .lw-hint {
+    color: var(--lw-primary);
+    opacity: 1;
+}
+.lw-drop-down-box.outlined[focus][hint] .lw-hint::before,
+.lw-drop-down-box.outlined[focus][hint] .lw-hint::after {
+    border-top-color: var(--lw-primary) !important;
+}
+
+.lw-drop-down-box.outlined .lw-action-button,
+.lw-drop-down-box.outlined .lw-drop-down-button {
+    background: var(--lw-background) !important;
+    border-color: var(--lw-border) !important;
+    color: var(--lw-background-color) !important;
+}
+
+.lw-drop-down-box.outlined[focus] .lw-drop-down-button {
+    color: var(--lw-ui-state-active) !important;
+}
+
+/* end of outlined */
+/* --- Right-To-Left --- */
+
+.lw-drop-down-box[right-to-left], .lw-drop-down-box[right-to-left] .lw-label, .lw-drop-down-box[right-to-left] .lw-hint {
+    direction: rtl;
+}
+
+.lw-drop-down-box[right-to-left]:not([drop-down-button-position]) .lw-action-button, .lw-drop-down-box[right-to-left][drop-down-button-position="left"] .lw-action-button {
+    padding: 0 var(--lw-editor-label-padding) 0 0;
+    border-right: var(--lw-border-width) solid var(--lw-border);
+    border-top-left-radius: initial;
+    border-top-right-radius: var(--lw-border-top-right-radius);
+    border-bottom-left-radius: initial;
+    border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+}
+
+.lw-drop-down-box[right-to-left]:not([drop-down-button-position]) .lw-action-button, .lw-drop-down-box[right-to-left]:not([drop-down-open-mode="dropDownButton"])[drop-down-button-position="left"] .lw-action-button {
+    border-left: initial;
+}
+
+.lw-drop-down-box[right-to-left]:not([drop-down-button-position]) .lw-drop-down-button, .lw-drop-down-box[right-to-left][drop-down-button-position="left"] .lw-drop-down-button {
+    border-left: var(--lw-border-width) solid var(--lw-border);
+    border-top-right-radius: initial;
+    border-bottom-right-radius: initial;
+    border-top-left-radius: var(--lw-border-top-left-radius);
+    border-bottom-left-radius: var(--lw-border-bottom-left-radius);
+}
+
+.lw-drop-down-box[right-to-left] .lw-drop-down-button:focus, .lw-drop-down-box[right-to-left]:not([hover]) .lw-action-button[focus], .lw-drop-down-box[right-to-left]:not([hover]) .lw-drop-down-button[focus] {
+    border-color: var(--lw-outline);
+}
+
+.lw-drop-down-box[right-to-left][drop-down-button-position="left"] .lw-drop-down-button, .lw-drop-down-box[right-to-left]:not([drop-down-open-mode="dropDownButton"]):not([drop-down-button-position]) .lw-drop-down-button {
+    border-right: initial;
+}
+
+.lw-drop-down-box[right-to-left][opened] .lw-drop-down-button, .lw-drop-down-box[right-to-left][opened] .lw-action-button {
+    border-color: var(--lw-border-active);
+}
+
+.lw-drop-down-box[right-to-left][drop-down-button-position="left"] .lw-action-button, .lw-drop-down-box[right-to-left]:not([drop-down-button-position])>.lw-container>.lw-content, .lw-drop-down-box[right-to-left][drop-down-button-position="left"]>.lw-container>.lw-content {
+    flex-direction: row;
+}
+
+.lw-drop-down-box[right-to-left][drop-down-button-position="right"]>.lw-container>.lw-content {
+    flex-direction: row-reverse;
+}
+
+.lw-drop-down-box[right-to-left][drop-down-open-mode="dropDownButton"][drop-down-button-position="right"]:not([hover]) .lw-action-button:focus, .lw-drop-down-box[right-to-left][drop-down-open-mode="dropDownButton"]:not([drop-down-button-position]):not([hover]) .lw-action-button:focus {
+    box-shadow: calc(-1 * var(--lw-border-width)) 0 0 0 var(--lw-outline);
+}
+
+/* ---- */
+
+@keyframes lw-drop-down-list-lw-animate-overlay-center-opening {
+    0% {
+        opacity: 0.2;
+        transform: scaleY(0) translateY(-50%);
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1) translateY(-50%);
+    }
+}
+
+@keyframes lw-drop-down-list-lw-animate-overlay-center-closing {
+    0% {
+        opacity: 1;
+        transform: scaleY(1) translateY(-50%);
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0.2;
+        transform: scaleY(0) translateY(-50%);
+    }
+}
+
+@keyframes lw-drop-down-list-lw-animate-opening {
+    0% {
+        opacity: 0.2;
+        transform: scaleY(0);
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes lw-drop-down-list-lw-animate-closing {
+    0% {
+        opacity: 1;
+        transform: scaleY(1);
+        pointer-events: none;
+    }
+    50% {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+    100% {
+        opacity: 0.2;
+        transform: scaleY(0);
+        pointer-events: none;
+    }
+}
+
+.lw-drop-down.lw-drop-down-container lw-list-box {
+    top: 2px;
+}
+
+.lw-drop-down:not([resize-mode='none']) lw-list-box {
+    position: relative;
+    width: 100%;
+    height: calc(100% - var(--lw-editor-drop-down-resize-bar-height));
+    border: none;
+}
+
+.lw-drop-down[resize-mode='none'] lw-list-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: none;
+}
+
+.lw-drop-down.lw-drop-down-container lw-list-box:focus {
+    border-color: var(--lw-outline);
+}
+
+.lw-drop-down.lw-drop-down-container .lw-drop-down-resize-bar {
+    position: relative;
+    width: 100%;
+    margin-top: 2.5px;
+    height: calc(var(--lw-editor-drop-down-resize-bar-height) - 2.5px);
+    touch-action: none;
+}
+
+.lw-drop-down[resize-mode="none"] .lw-drop-down-resize-bar {
+    display: none;
+    cursor: default;
+}
+
+.lw-drop-down[top] .lw-drop-down-resize-bar {
+    margin-top: 0;
+    margin-bottom: 2.5px;
+}
+
+.lw-drop-down:not([resize-mode="none"]) .lw-drop-down-resize-bar {
+    border-top: 1px solid var(--lw-border);
+}
+
+.lw-drop-down:not([resize-mode="none"])[top] .lw-drop-down-resize-bar {
+    border-top: initial;
+    border-bottom: 1px solid var(--lw-border);
+}
+
+.lw-drop-down[resize-mode="horizontal"] .lw-drop-down-resize-bar>div, .lw-drop-down[resize-mode="none"] .lw-drop-down-resize-bar>div {
+    display: none;
+}
+
+.lw-drop-down[resize-mode="vertical"] .lw-drop-down-resize-bar>div, .lw-drop-down[resize-mode="both"] .lw-drop-down-resize-bar>div {
+    display: initial;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    left: 50%;
+    /*top: 50%;*/
+    top: calc(50% + 1px);
+    /* Including the BorderTop */
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--lw-border);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.lw-drop-down[resize-mode="vertical"].lw-drop-down-container.lw-drop-down-repositioned .lw-drop-down-resize-bar>div, .lw-drop-down[resize-mode="both"].lw-drop-down-container.lw-drop-down-repositioned .lw-drop-down-resize-bar>div {
+    width: 3px;
+    height: 3px;
+}
+
+.lw-drop-down[resize-mode][top] .lw-drop-down-resize-bar>div {
+    top: calc(50% - 1px);
+    /* Including the BorderBottom */
+}
+
+.lw-drop-down[resize-mode="vertical"] .lw-drop-down-resize-bar>div:after, .lw-drop-down[resize-mode="both"] .lw-drop-down-resize-bar>div:after, .lw-drop-down[resize-mode="vertical"] .lw-drop-down-resize-bar>div:before, .lw-drop-down[resize-mode="both"] .lw-drop-down-resize-bar>div:before {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--lw-border);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.lw-drop-down[resize-mode="vertical"] .lw-drop-down-resize-bar>div:after, .lw-drop-down[resize-mode="both"] .lw-drop-down-resize-bar>div:after {
+    left: 500%;
+}
+
+.lw-drop-down[resize-mode="vertical"] .lw-drop-down-resize-bar>div:before, .lw-drop-down[resize-mode="both"] .lw-drop-down-resize-bar>div:before {
+    left: -400%;
+}
+
+.lw-drop-down[resize-mode="horizontal"][resize-indicator] .lw-drop-down-resize-bar:before, .lw-drop-down[resize-mode="both"][resize-indicator] .lw-drop-down-resize-bar:before {
+    width: 8px;
+    height: 5px;
+    font-family: var(--lw-font-family-icon);
+    content: var(--lw-icon-resize-horizontal);
+    position: absolute;
+    top: calc(100% - 8px);
+    left: calc(100% - 8px);
+    transform: rotate(-45deg);
+    font-size: 10px;
+    cursor: se-resize;
+}
+
+.lw-drop-down[resize-mode="horizontal"][top] .lw-drop-down-resize-bar:before, .lw-drop-down[resize-mode="both"][top] .lw-drop-down-resize-bar:before {
+    transform: rotate(45deg);
+    top: calc(100% - 13px);
+    left: calc(100% - 4px);
+}
+
+.lw-drop-down[resize-mode="horizontal"][resize-indicator] .lw-drop-down-resize-bar:after, .lw-drop-down[resize-mode="both"][resize-indicator] .lw-drop-down-resize-bar:after {
+    width: 8px;
+    height: 12px;
+    font-family: var(--lw-font-family-icon);
+    content: var(--lw-icon-resize-full);
+    position: absolute;
+    top: calc(100% - 12px);
+    left: calc(100% - 7px);
+    transform: rotate(-45deg) scaleX(2.25);
+    font-size: 10px;
+    cursor: e-resize;
+}
+
+.lw-drop-down[resize-mode="vertical"] .lw-drop-down-resize-bar {
+    cursor: n-resize;
+}
+
+.lw-drop-down[resize-mode="horizontal"] .lw-drop-down-resize-bar {
+    cursor: e-resize;
+}
+
+.lw-drop-down[resize-mode="both"] .lw-drop-down-resize-bar {
+    cursor: nwse-resize;
+}
+
+.lw-drop-down[resize-mode="both"][top] .lw-drop-down-resize-bar {
+    cursor: sw-resize;
+}
+
+.lw-drop-down.lw-drop-down-container {
+    box-shadow: var(--lw-elevation-8);
+    border-color: var(--lw-border);
+    font-size: var(--lw-font-size);
+    font-family: var(--lw-font-family);
+}
+
+.lw-drop-down.lw-drop-down-container.lw-visibility-hidden {
+    transform: scale(0);
+}
+
+.lw-path .lw-drop-down, .lw-path .lw-drop-down[bottom], .lw-color-picker .lw-drop-down, .lw-color-picker .lw-drop-down[bottom], .lw-multi-split-button .lw-drop-down, .lw-multi-split-button .lw-drop-down[bottom], .lw-combo-box .lw-drop-down, .lw-drop-down-list .lw-drop-down, .lw-combo-box .lw-drop-down[bottom], .lw-drop-down-list .lw-drop-down[bottom], .lw-text-box .lw-drop-down, .lw-text-box .lw-drop-down[bottom], .lw-drop-down-button .lw-drop-down, .lw-drop-down-button .lw-drop-down[bottom], .lw-date-time-picker .lw-drop-down, .lw-date-time-picker .lw-drop-down[bottom] {
+    cursor: default;
+    left: 0;
+    box-sizing: border-box;
+    font-size: inherit;
+    padding: var(--lw-editor-drop-down-padding-size);
+    margin: calc(var(--lw-editor-drop-down-vertical-offset) + var(--lw-editor-drop-down-padding-size)) 0px;
+    background-color: var(--lw-background);
+    border-width: var(--lw-border-width);
+    border-style: solid;
+    border-color: var(--lw-border);
+    box-shadow: var(--lw-elevation-8);
+    /*border-top: initial;*/
+    display: flex;
+    flex-direction: column;
+    padding-left: 0px;
+}
+
+.lw-date-time-picker .lw-drop-down {
+    border: none;
+}
+
+.lw-path .lw-drop-down[center-bottom], .lw-path .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-color-picker .lw-drop-down[center-bottom], .lw-color-picker .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[center-bottom], .lw-multi-split-button .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-combo-box .lw-drop-down[center-bottom], .lw-combo-box .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[center-bottom], .lw-drop-down-list .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-text-box .lw-drop-down[center-bottom], .lw-text-box .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[center-bottom], .lw-drop-down-button .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[center-bottom], .lw-date-time-picker .lw-drop-down[center-bottom].lw-visibility-hidden {
+    border: var(--lw-border-width) solid var(--lw-border);
+    top: calc(100% - var(--lw-border-width));
+}
+
+.lw-path .lw-drop-down[center-top], .lw-path .lw-drop-down[center-top].lw-visibility-hidden, .lw-color-picker .lw-drop-down[center-top], .lw-color-picker .lw-drop-down[center-top].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[center-top], .lw-multi-split-button .lw-drop-down[center-top].lw-visibility-hidden, .lw-combo-box .lw-drop-down[center-top], .lw-combo-box .lw-drop-down[center-top].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[center-top], .lw-drop-down-list .lw-drop-down[center-top].lw-visibility-hidden, .lw-text-box .lw-drop-down[center-top], .lw-text-box .lw-drop-down[center-top].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[center-top], .lw-drop-down-button .lw-drop-down[center-top].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[center-top], .lw-date-time-picker .lw-drop-down[center-top].lw-visibility-hidden {
+    border: var(--lw-border-width) solid var(--lw-border);
+    top: initial;
+    bottom: calc(100% - var(--lw-border-width));
+}
+
+/*Default position*/
+
+/* NOTES: If not applied the ListBox inside makes the vertical body scrollbar to appear for a second*/
+
+.lw-drop-down.lw-drop-down-container.lw-drop-down-repositioned.lw-visibility-hidden {
+    top: 0;
+    left: 0;
+}
+
+.lw-drop-down.lw-drop-down-container.lw-drop-down-repositioned, .lw-drop-down-container.lw-drop-down-repositioned, .lw-drop-down.lw-drop-down-container, .lw-drop-down.lw-date-time-drop-down.lw-drop-down-repositioned, .lw-path .lw-drop-down, .lw-color-picker .lw-drop-down, .lw-multi-split-button .lw-drop-down, .lw-combo-box .lw-drop-down, .lw-drop-down-list .lw-drop-down, .lw-text-box .lw-drop-down, .lw-drop-down-button .lw-drop-down, .lw-date-time-picker .lw-drop-down {
+    background-color: var(--lw-background);
+    box-sizing: border-box;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    outline: none;
+    border-width: var(--lw-border-width);
+    border-style: solid;
+    border-color: var(--lw-border);
+    display: flex;
+    flex-direction: column;
+    height: var(--lw-editor-drop-down-height);
+    max-height: var(--lw-editor-drop-down-max-height);
+    min-height: var(--lw-editor-drop-down-min-height);
+    width: var(--lw-editor-drop-down-width);
+    max-width: var(--lw-editor-drop-down-max-width);
+    min-width: var(--lw-editor-drop-down-min-width);
+    font-size: var(--lw-font-size);
+    font-family: var(--lw-font-family);
+    margin: calc(var(--lw-editor-drop-down-vertical-offset) + 3px) 0px;
+    padding-left: 0px;
+    padding-right: 0px !important;
+}
+
+.lw-drop-down.lw-date-time-drop-down[drop-down-display-mode="calendar"] {
+    height: calc(var(--lw-editor-drop-down-height) - var(--lw-calendar-title-height));
+}
+
+.lw-drop-down.lw-drop-down-color-picker.lw-drop-down-repositioned, .lw-color-picker .lw-drop-down.lw-drop-down-color-picker {
+    max-height: calc(var(--lw-editor-drop-down-max-height) + 50px);
+}
+
+.lw-color-picker .lw-drop-down, .lw-drop-down-button .lw-drop-down {
+    width: var(--lw-drop-down-button-drop-down-width);
+    height: var(--lw-drop-down-button-drop-down-height);
+}
+
+.lw-drop-down.lw-drop-down-container.lw-drop-down-repositioned, .lw-drop-down-container.lw-drop-down-repositioned, .lw-drop-down.lw-drop-down-container, .lw-drop-down-list .lw-drop-down {
+    width: var(--lw-drop-down-list-drop-down-width);
+    height: var(--lw-drop-down-list-drop-down-height);
+}
+
+.lw-combo-box .lw-drop-down {
+    width: var(--lw-combo-box-drop-down-width);
+    height: var(--lw-combo-box-drop-down-height);
+}
+
+.lw-drop-down.lw-date-time-drop-down, .lw-drop-down.lw-date-time-drop-down.lw-drop-down-repositioned {
+    width: var(--lw-editor-drop-down-width);
+    height: var(--lw-editor-drop-down-height);
+}
+
+/* Microsoft Edge-specific fix */
+
+.lw-path .lw-drop-down.lw-visibility-hidden.not-in-view, .lw-color-picker .lw-drop-down.lw-visibility-hidden.not-in-view, .lw-multi-split-button .lw-drop-down.lw-visibility-hidden.not-in-view, .lw-combo-box .lw-drop-down.lw-visibility-hidden.not-in-view, .lw-drop-down-list .lw-drop-down.lw-visibility-hidden.not-in-view, .lw-text-box .lw-drop-down.lw-visibility-hidden.not-in-view, .lw-drop-down-button .lw-drop-down.lw-visibility-hidden.not-in-view, .lw-drop-down.lw-drop-down-container.lw-drop-down-repositioned.lw-visibility-hidden.not-in-view, .lw-drop-down-container.lw-drop-down-repositioned.lw-visibility-hidden.not-in-view, .lw-drop-down.lw-drop-down-container.lw-visibility-hidden.not-in-view {
+    left: -9999px;
+    top: -9999px;
+    transition: none;
+}
+
+.lw-drop-down[overlay-bottom], .lw-drop-down-container.lw-drop-down-repositioned[overlay-bottom], .lw-drop-down[overlay-center], .lw-drop-down-container.lw-drop-down-repositioned[overlay-center], .lw-drop-down[overlay-top], .lw-drop-down-container.lw-drop-down-repositioned[overlay-top] {
+    margin: unset;
+}
+
+.lw-drop-down.lw-drop-down-container.lw-drop-down-repositioned[top], .lw-drop-down-container.lw-drop-down-repositioned[top], .lw-drop-down.lw-drop-down-container.lw-drop-down-repositioned[center-top], .lw-drop-down-container.lw-drop-down-repositioned[center-top] {
+    margin: calc(-1 * (var(--lw-editor-drop-down-vertical-offset) + 3px)) 0px;
+}
+
+.lw-multi-split-button .lw-drop-down lw-scroll-bar.bottom-corner, .lw-list-box lw-scroll-bar.bottom-corner, .lw-scroll-viewer lw-scroll-bar.bottom-corner, .lw-drop-down-list .lw-drop-down lw-scroll-bar.bottom-corner, .lw-combo-box .lw-drop-down lw-scroll-bar.bottom-corner, .lw-text-box .lw-drop-down lw-scroll-bar.bottom-corner, .lw-drop-down-button .lw-drop-down lw-scroll-bar.bottom-corner {
+    width: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-color-picker .lw-drop-down lw-scroll-bar[orientation="vertical"].bottom-corner, .lw-multi-split-button .lw-drop-down lw-scroll-bar[orientation="vertical"].bottom-corner, .lw-list-box lw-scroll-bar[orientation="vertical"].bottom-corner, .lw-scroll-viewer lw-scroll-bar[orientation="vertical"].bottom-corner, .lw-drop-down-list .lw-drop-down lw-scroll-bar[orientation="vertical"].bottom-corner, .lw-combo-box .lw-drop-down lw-scroll-bar[orientation="vertical"].bottom-corner, .lw-text-box .lw-drop-down lw-scroll-bar[orientation="vertical"].bottom-corner, .lw-drop-down-button .lw-drop-down lw-scroll-bar[orientation="vertical"].bottom-corner {
+    width: calc(var(--lw-scroll-bar-size));
+    height: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-color-picker .lw-drop-down lw-scroll-bar::before, .lw-multi-split-button .lw-drop-down lw-scroll-bar::before, .lw-list-box lw-scroll-bar::before, .lw-scroll-viewer lw-scroll-bar::before, .lw-drop-down-list .lw-drop-down lw-scroll-bar::before, .lw-combo-box .lw-drop-down lw-scroll-bar::before, .lw-text-box .lw-drop-down lw-scroll-bar::before, .lw-drop-down-button .lw-drop-down lw-scroll-bar::before {
+    display: none;
+    background-color: var(--lw-border);
+}
+
+.lw-color-picker .lw-drop-down .lw-list-items-container.vscroll, .lw-multi-split-button .lw-drop-down .lw-list-items-container.vscroll, .lw-list-box .lw-list-items-container.vscroll, .lw-scroll-viewer .lw-list-items-container.vscroll, .lw-combo-box .lw-drop-down .lw-list-items-container.vscroll, .lw-drop-down-list .lw-drop-down .lw-list-items-container.vscroll, .lw-text-box .lw-drop-down .lw-list-items-container.vscroll, .lw-drop-down-button .lw-drop-down .lw-list-items-container.vscroll {
+    width: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-list-box input.vscroll, .lw-multi-split-button .lw-drop-down input:focus, .lw-combo-box .lw-selection-field input, .lw-drop-down-list .lw-drop-down input:focus, .lw-text-box .lw-drop-down input:focus, .lw-drop-down-button .lw-drop-down input:focus {
+    outline: none;
+}
+
+.lw-color-picker .lw-drop-down lw-scroll-bar[orientation="vertical"], .lw-multi-split-button .lw-drop-down lw-scroll-bar[orientation="vertical"], .lw-combo-box .lw-drop-down lw-scroll-bar[orientation="vertical"], .lw-drop-down-list .lw-drop-down lw-scroll-bar[orientation="vertical"], .lw-text-box .lw-drop-down lw-scroll-bar[orientation="vertical"], .lw-drop-down-button .lw-drop-down lw-scroll-bar[orientation="vertical"] {
+    padding-top: initial;
+}
+
+.lw-color-picker .lw-drop-down lw-scroll-bar, .lw-multi-split-button .lw-drop-down lw-scroll-bar, .lw-combo-box .lw-drop-down lw-scroll-bar, .lw-drop-down-list .lw-drop-down lw-scroll-bar, .lw-text-box .lw-drop-down lw-scroll-bar, .lw-drop-down-button .lw-drop-down lw-scroll-bar {
+    height: calc(var(--lw-scroll-bar-size));
+}
+
+.lw-multi-split-button.auto-height .lw-action-button, .lw-drop-down-list.auto-height .lw-action-button, .lw-drop-down-button.auto-height .lw-action-button {
+    white-space: initial;
+    text-overflow: initial;
+    line-height: 1rem;
+    flex-wrap: wrap;
+}
+
+.lw-multi-split-button.auto-height[selection-display-mode="tokens"] .lw-action-button>span, .lw-multi-split-button.auto-height[selection-display-mode="tokens"] .lw-action-button>span:first-of-type, .lw-drop-down-list.auto-height[selection-display-mode="tokens"] .lw-action-button>span, .lw-drop-down-list.auto-height[selection-display-mode="tokens"] .lw-action-button>span:first-of-type, .lw-drop-down-button.auto-height[selection-display-mode="tokens"] .lw-action-button>span, .lw-drop-down-button.auto-height[selection-display-mode="tokens"] .lw-action-button>span:first-of-type {
+    display: inline-block;
+    margin: 0.2em;
+}
+
+.lw-path .lw-drop-down, .lw-path .lw-drop-down.lw-visibility-hidden, .lw-path .lw-drop-down[bottom], .lw-path .lw-drop-down[bottom].lw-visibility-hidden, .lw-color-picker .lw-drop-down, .lw-color-picker .lw-drop-down.lw-visibility-hidden, .lw-color-picker .lw-drop-down[bottom], .lw-color-picker .lw-drop-down[bottom].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down, .lw-multi-split-button .lw-drop-down.lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[bottom], .lw-multi-split-button .lw-drop-down[bottom].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down, .lw-drop-down-list .lw-drop-down.lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[bottom], .lw-drop-down-list .lw-drop-down[bottom].lw-visibility-hidden, .lw-combo-box .lw-drop-down, .lw-combo-box .lw-drop-down.lw-visibility-hidden, .lw-combo-box .lw-drop-down[bottom], .lw-combo-box .lw-drop-down[bottom].lw-visibility-hidden, .lw-text-box .lw-drop-down, .lw-text-box .lw-drop-down.lw-visibility-hidden, .lw-text-box .lw-drop-down[bottom], .lw-text-box .lw-drop-down[bottom].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down, .lw-drop-down-button .lw-drop-down.lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[bottom], .lw-drop-down-button .lw-drop-down[bottom].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down, .lw-date-time-picker .lw-drop-down.lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[bottom], .lw-date-time-picker .lw-drop-down[bottom].lw-visibility-hidden {
+    top: calc(100% - var(--lw-border-width));
+}
+
+.lw-drop-down-container.lw-drop-down-repositioned:focus {
+    border-color: var(--lw-border);
+}
+
+.lw-drop-down-container.lw-drop-down-repositioned:not([animation='none']).lw-visibility-hidden, .lw-path:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-color-picker:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-multi-split-button:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-drop-down-list:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-combo-box:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-text-box:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-drop-down-button:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-date-time-picker:not([animation='none']) .lw-drop-down.lw-visibility-hidden {
+    transition: animation, visibility 0.2s ease-in;
+}
+
+.lw-path .lw-drop-down[overlay-bottom], .lw-path .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-path .lw-drop-down[overlay-center], .lw-path .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-path .lw-drop-down[overlay-top], .lw-path .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-color-picker .lw-drop-down[overlay-bottom], .lw-color-picker .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-color-picker .lw-drop-down[overlay-center], .lw-color-picker .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-color-picker .lw-drop-down[overlay-top], .lw-color-picker .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[overlay-bottom], .lw-multi-split-button.lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[overlay-center], .lw-multi-split-button .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[overlay-top], .lw-multi-split-button .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[overlay-bottom], .lw-drop-down-list.lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[overlay-center], .lw-drop-down-list .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[overlay-top], .lw-drop-down-list .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-combo-box .lw-drop-down[overlay-bottom], .lw-combo-box .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-combo-box .lw-drop-down[overlay-center], .lw-combo-box .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-combo-box .lw-drop-down[overlay-top], .lw-combo-box .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-text-box .lw-drop-down[overlay-bottom], .lw-text-box .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-text-box .lw-drop-down[overlay-center], .lw-text-box .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-text-box .lw-drop-down[overlay-top], .lw-text-box .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[overlay-bottom], .lw-drop-down-button .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[overlay-center], .lw-drop-down-button .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[overlay-top], .lw-drop-down-button .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[overlay-bottom], .lw-date-time-picker .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[overlay-center], .lw-date-time-picker .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[overlay-top], .lw-date-time-picker .lw-drop-down[overlay-top].lw-visibility-hidden {
+    border-color: var(--lw-border);
+    border-width: var(--lw-border-width);
+    border-style: solid;
+    border-color: var(--lw-border);
+}
+
+.lw-path .lw-drop-down[overlay-bottom], .lw-path .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-color-picker .lw-drop-down[overlay-bottom], .lw-color-picker .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[overlay-bottom], .lw-multi-split-button .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[overlay-bottom], .lw-drop-down-list .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-combo-box .lw-drop-down[overlay-bottom], .lw-combo-box .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-text-box .lw-drop-down[overlay-bottom], .lw-text-box .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[overlay-bottom], .lw-drop-down-button .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[overlay-bottom], .lw-date-time-picker .lw-drop-down[overlay-bottom].lw-visibility-hidden {
+    top: 0;
+}
+
+.lw-path .lw-drop-down[overlay-center], .lw-path .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-color-picker .lw-drop-down[overlay-center], .lw-color-picker .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[overlay-center], .lw-multi-split-button .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[overlay-center], .lw-drop-down-list .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-combo-box .lw-drop-down[overlay-center], .lw-combo-box .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-text-box .lw-drop-down[overlay-center], .lw-text-box .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[overlay-center], .lw-drop-down-button .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[overlay-center], .lw-date-time-picker .lw-drop-down[overlay-center].lw-visibility-hidden {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lw-path .lw-drop-down[overlay-top], .lw-path .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-color-picker .lw-drop-down[overlay-top], .lw-color-picker .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[overlay-top], .lw-multi-split-button .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[overlay-top], .lw-drop-down-list .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-combo-box .lw-drop-down[overlay-top], .lw-combo-box .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-text-box .lw-drop-down[overlay-top], .lw-text-box .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[overlay-top], .lw-drop-down-button .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[overlay-top], .lw-date-time-picker .lw-drop-down[overlay-top].lw-visibility-hidden {
+    top: initial;
+    bottom: 0;
+}
+
+.lw-path .lw-drop-down[center-top], .lw-path .lw-drop-down[center-top].lw-visibility-hidden, .lw-path .lw-drop-down[center-bottom], .lw-path .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-color-picker .lw-drop-down[center-top], .lw-color-picker .lw-drop-down[center-top].lw-visibility-hidden, .lw-color-picker .lw-drop-down[center-bottom], .lw-color-picker .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[center-top], .lw-multi-split-button .lw-drop-down[center-top].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[center-bottom], .lw-multi-split-button .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[center-top], .lw-drop-down-list .lw-drop-down[center-top].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[center-bottom], .lw-drop-down-list .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-combo-box .lw-drop-down[center-top], .lw-combo-box .lw-drop-down[center-top].lw-visibility-hidden, .lw-combo-box .lw-drop-down[center-bottom], .lw-combo-box .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-text-box .lw-drop-down[center-top], .lw-text-box .lw-drop-down[center-top].lw-visibility-hidden, .lw-text-box .lw-drop-down[center-bottom], .lw-text-box .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[center-top], .lw-drop-down-button .lw-drop-down[center-top].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[center-bottom], .lw-drop-down-button .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[center-top], .lw-date-time-picker .lw-drop-down[center-top].lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[center-bottom], .lw-date-time-picker .lw-drop-down[center-bottom].lw-visibility-hidden {
+    left: 50%;
+}
+
+.lw-path .lw-drop-down[top], .lw-path .lw-drop-down[top].lw-visibility-hidden, .lw-color-picker .lw-drop-down[top], .lw-color-picker .lw-drop-down[top].lw-visibility-hidden, .lw-multi-split-button .lw-drop-down[top], .lw-multi-split-button .lw-drop-down[top].lw-visibility-hidden, .lw-drop-down-list .lw-drop-down[top], .lw-drop-down-list .lw-drop-down[top].lw-visibility-hidden, .lw-combo-box .lw-drop-down[top], .lw-combo-box .lw-drop-down[top].lw-visibility-hidden, .lw-text-box .lw-drop-down[top], .lw-text-box .lw-drop-down[top].lw-visibility-hidden, .lw-drop-down-button .lw-drop-down[top], .lw-drop-down-button .lw-drop-down[top].lw-visibility-hidden, .lw-drop-down[top].lw-drop-down-container.lw-drop-down-repositioned, .lw-drop-down[top].lw-drop-down-container.lw-drop-down-repositioned.lw-visibility-hidden, .lw-date-time-picker .lw-drop-down[top], .lw-date-time-picker .lw-drop-down[top].lw-visibility-hidden {
+    top: initial;
+    bottom: calc(100% - var(--lw-border-width));
+    flex-direction: column-reverse;
+}
+
+.lw-drop-down-container[top].lw-drop-down-container.lw-drop-down-repositioned, .lw-drop-down-container[top].lw-drop-down-container.lw-drop-down-repositioned.lw-visibility-hidden {
+    bottom: initial;
+}
+
+.lw-drop-down-container.lw-drop-down-repositioned[overlay-bottom]:not([animation='none']), .lw-drop-down-container.lw-drop-down-repositioned[overlay-center]:not([animation='none']), .lw-drop-down-container.lw-drop-down-repositioned[overlay-top]:not([animation='none']), .lw-path:not([animation='none']) .lw-drop-down[overlay-bottom], .lw-path:not([animation='none']) .lw-drop-down[overlay-top], .lw-color-picker:not([animation='none']) .lw-drop-down[overlay-bottom], .lw-color-picker:not([animation='none']) .lw-drop-down[overlay-top], .lw-multi-split-button:not([animation='none']) .lw-drop-down[overlay-bottom], .lw-multi-split-button:not([animation='none']) .lw-drop-down[overlay-top], .lw-drop-down-list:not([animation='none']) .lw-drop-down[overlay-bottom], .lw-drop-down-list:not([animation='none']) .lw-drop-down[overlay-top], .lw-combo-box:not([animation='none']) .lw-drop-down[overlay-bottom], .lw-combo-box:not([animation='none']) .lw-drop-down[overlay-top], .lw-text-box:not([animation='none']) .lw-drop-down[overlay-bottom], .lw-text-box:not([animation='none']) .lw-drop-down[overlay-top], .lw-drop-down-button:not([animation='none']) .lw-drop-down[overlay-bottom], .lw-drop-down-button:not([animation='none']) .lw-drop-down[overlay-top], .lw-date-time-picker:not([animation='none']) .lw-drop-down[overlay-bottom], .lw-date-time-picker:not([animation='none']) .lw-drop-down[overlay-top] {
+    animation: lw-drop-down-list-lw-animate-opening 0.2s ease-out;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+}
+
+.lw-path:not([animation='none']) .lw-drop-down[overlay-center], .lw-color-picker:not([animation='none']) .lw-drop-down[overlay-center], .lw-multi-split-button:not([animation='none']) .lw-drop-down[overlay-center], .lw-drop-down-list:not([animation='none']) .lw-drop-down[overlay-center], .lw-combo-box:not([animation='none']) .lw-drop-down[overlay-center], .lw-text-box:not([animation='none']) .lw-drop-down[overlay-center], .lw-drop-down-button:not([animation='none']) .lw-drop-down[overlay-center] {
+    animation: lw-drop-down-list-lw-animate-overlay-center-opening 0.2s ease-out;
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
+
+.lw-drop-down-container.lw-drop-down-repositioned[overlay-bottom]:not([animation='none']).lw-visibility-hidden, .lw-drop-down-container.lw-drop-down-repositioned[overlay-center]:not([animation='none']).lw-visibility-hidden, .lw-drop-down-container.lw-drop-down-repositioned[overlay-top]:not([animation='none']).lw-visibility-hidden, .lw-path:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-path:not([animation='none']) .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-path:not([animation='none']) .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-color-picker:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-color-picker:not([animation='none']) .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-color-picker:not([animation='none']) .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-multi-split-button:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-multi-split-button:not([animation='none']) .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-multi-split-button:not([animation='none']) .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-drop-down-list:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-drop-down-list:not([animation='none']) .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-drop-down-list:not([animation='none']) .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-combo-box:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-combo-box:not([animation='none']) .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-combo-box:not([animation='none']) .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-text-box:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-text-box:not([animation='none']) .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-text-box:not([animation='none']) .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-drop-down-button:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-drop-down-button:not([animation='none']) .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-drop-down-button:not([animation='none']) .lw-drop-down[overlay-top].lw-visibility-hidden, .lw-date-time-picker:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-date-time-picker:not([animation='none']) .lw-drop-down[overlay-bottom].lw-visibility-hidden, .lw-date-time-picker:not([animation='none']) .lw-drop-down[overlay-top].lw-visibility-hidden {
+    animation: lw-drop-down-list-lw-animate-closing 0.2s ease-in;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+}
+
+.lw-path:not([animation='none']) .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-color-picker:not([animation='none']) .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-multi-split-button:not([animation='none']) .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-drop-down-list:not([animation='none']) .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-combo-box:not([animation='none']) .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-text-box:not([animation='none']) .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-drop-down-button:not([animation='none']) .lw-drop-down[overlay-center].lw-visibility-hidden, .lw-date-time-picker:not([animation='none']) .lw-drop-down[overlay-center].lw-visibility-hidden {
+    animation: lw-drop-down-list-lw-animate-overlay-center-closing 0.2s ease-in;
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
+
+.lw-drop-down-container.lw-drop-down-repositioned[bottom]:not([animation='none']), .lw-drop-down-container.lw-drop-down-repositioned[center-bottom]:not([animation='none']), .lw-path:not([animation='none']) .lw-drop-down, .lw-path:not([animation='none']) .lw-drop-down[bottom], .lw-path:not([animation='none']) .lw-drop-down[center-bottom], .lw-color-picker:not([animation='none']) .lw-drop-down, .lw-color-picker:not([animation='none']) .lw-drop-down[bottom], .lw-color-picker:not([animation='none']) .lw-drop-down[center-bottom], .lw-multi-split-button:not([animation='none']) .lw-drop-down, .lw-multi-split-button:not([animation='none']) .lw-drop-down[bottom], .lw-multi-split-button:not([animation='none']) .lw-drop-down[center-bottom], .lw-drop-down-list:not([animation='none']) .lw-drop-down, .lw-drop-down-list:not([animation='none']) .lw-drop-down[bottom], .lw-drop-down-list:not([animation='none']) .lw-drop-down[center-bottom], .lw-combo-box:not([animation='none']) .lw-drop-down, .lw-combo-box:not([animation='none']) .lw-drop-down[bottom], .lw-combo-box:not([animation='none']) .lw-drop-down[center-bottom], .lw-text-box:not([animation='none']) .lw-drop-down, .lw-text-box:not([animation='none']) .lw-drop-down[bottom], .lw-text-box:not([animation='none']) .lw-drop-down[center-bottom], .lw-drop-down-button:not([animation='none']) .lw-drop-down, .lw-drop-down-button:not([animation='none']) .lw-drop-down[bottom], .lw-drop-down-button:not([animation='none']) .lw-drop-down[center-bottom], .lw-date-time-picker:not([animation='none']) .lw-drop-down, .lw-date-time-picker:not([animation='none']) .lw-drop-down[bottom], .lw-date-time-picker:not([animation='none']) .lw-drop-down[center-bottom] {
+    animation: lw-drop-down-list-lw-animate-opening 0.2s ease-out;
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
+
+.lw-drop-down-container.lw-drop-down-repositioned[bottom]:not([animation='none']).lw-visibility-hidden, .lw-drop-down-container.lw-drop-down-repositioned[center-bottom]:not([animation='none']).lw-visibility-hidden, .lw-path:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-path:not([animation='none']) .lw-drop-down[bottom].lw-visibility-hidden, .lw-path:not([animation='none']) .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-color-picker:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-color-picker:not([animation='none']) .lw-drop-down[bottom].lw-visibility-hidden, .lw-color-picker:not([animation='none']) .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-multi-split-button:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-multi-split-button:not([animation='none']) .lw-drop-down[bottom].lw-visibility-hidden, .lw-multi-split-button:not([animation='none']) .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-drop-down-list:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-drop-down-list:not([animation='none']) .lw-drop-down[bottom].lw-visibility-hidden, .lw-drop-down-list:not([animation='none']) .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-combo-box:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-combo-box:not([animation='none']) .lw-drop-down[bottom].lw-visibility-hidden, .lw-combo-box:not([animation='none']) .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-text-box:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-text-box:not([animation='none']) .lw-drop-down[bottom].lw-visibility-hidden, .lw-text-box:not([animation='none']) .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-drop-down-button:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-drop-down-button:not([animation='none']) .lw-drop-down[bottom].lw-visibility-hidden, .lw-drop-down-button:not([animation='none']) .lw-drop-down[center-bottom].lw-visibility-hidden, .lw-date-time-picker:not([animation='none']) .lw-drop-down.lw-visibility-hidden, .lw-date-time-picker:not([animation='none']) .lw-drop-down[bottom].lw-visibility-hidden, .lw-date-time-picker:not([animation='none']) .lw-drop-down[center-bottom].lw-visibility-hidden {
+    animation: lw-drop-down-list-lw-animate-closing 0.2s ease-in;
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
+
+.lw-drop-down-container.lw-drop-down-repositioned[top]:not([animation='none']), .lw-drop-down-container.lw-drop-down-repositioned[center-top]:not([animation='none']), .lw-path:not([animation='none']) .lw-drop-down[top], .lw-path:not([animation='none']) .lw-drop-down[center-top], .lw-color-picker:not([animation='none']) .lw-drop-down[top], .lw-color-picker:not([animation='none']) .lw-drop-down[center-top], .lw-multi-split-button:not([animation='none']) .lw-drop-down[top], .lw-multi-split-button:not([animation='none']) .lw-drop-down[center-top], .lw-drop-down-list:not([animation='none']) .lw-drop-down[top], .lw-drop-down-list:not([animation='none']) .lw-drop-down[center-top], .lw-combo-box:not([animation='none']) .lw-drop-down[top], .lw-combo-box:not([animation='none']) .lw-drop-down[center-top], .lw-text-box:not([animation='none']) .lw-drop-down[top], .lw-text-box:not([animation='none']) .lw-drop-down[center-top], .lw-drop-down-button:not([animation='none']) .lw-drop-down[top], .lw-drop-down-button:not([animation='none']) .lw-drop-down[center-top], .lw-date-time-picker:not([animation='none']) .lw-drop-down[top], .lw-date-time-picker:not([animation='none']) .lw-drop-down[center-top] {
+    animation: lw-drop-down-list-lw-animate-opening 0.2s ease-out;
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+}
+
+.lw-drop-down-container.lw-drop-down-repositioned[top]:not([animation='none']).lw-visibility-hidden, .lw-drop-down-container.lw-drop-down-repositioned[center-top]:not([animation='none']).lw-visibility-hidden, .lw-path:not([animation='none']) .lw-drop-down[top].lw-visibility-hidden, .lw-path:not([animation='none']) .lw-drop-down[center-top].lw-visibility-hidden, .lw-color-picker:not([animation='none']) .lw-drop-down[top].lw-visibility-hidden, .lw-color-picker:not([animation='none']) .lw-drop-down[center-top].lw-visibility-hidden, .lw-multi-split-button:not([animation='none']) .lw-drop-down[top].lw-visibility-hidden, .lw-multi-split-button:not([animation='none']) .lw-drop-down[center-top].lw-visibility-hidden, .lw-drop-down-list:not([animation='none']) .lw-drop-down[top].lw-visibility-hidden, .lw-drop-down-list:not([animation='none']) .lw-drop-down[center-top].lw-visibility-hidden, .lw-combo-box:not([animation='none']) .lw-drop-down[top].lw-visibility-hidden, .lw-combo-box:not([animation='none']) .lw-drop-down[center-top].lw-visibility-hidden, .lw-text-box:not([animation='none']) .lw-drop-down[top].lw-visibility-hidden, .lw-text-box:not([animation='none']) .lw-drop-down[center-top].lw-visibility-hidden, .lw-drop-down-button:not([animation='none']) .lw-drop-down[top].lw-visibility-hidden, .lw-drop-down-button:not([animation='none']) .lw-drop-down[center-top].lw-visibility-hidden, .lw-date-time-picker:not([animation='none']) .lw-drop-down[top].lw-visibility-hidden, .lw-date-time-picker:not([animation='none']) .lw-drop-down[center-top].lw-visibility-hidden {
+    animation: lw-drop-down-list-lw-animate-closing 0.2s ease-in;
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+}
+
+.lw-drop-down-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9000;
+}

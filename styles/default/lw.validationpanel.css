@@ -1,0 +1,131 @@
+/* On invalid data */
+.lw-on-invalid-data-container {
+    margin-top: var(--lw-validation-panel-invalid-data-vertical-offset);
+    display: grid;
+    grid-template-columns: var(--lw-validation-panel-description-width) var(--lw-validation-panel-content-width);
+    grid-template-rows: auto;
+    grid-column-gap: 0;
+}
+
+/* Appearance */
+.lw-appearance {
+    margin-top: var(--lw-validation-panel-appearance-vertical-offset);
+    display: grid;
+    grid-template-columns: var(--lw-validation-panel-description-width) var(--lw-validation-panel-content-width);
+    grid-template-rows: auto;
+    grid-column-gap: 0;
+}
+
+.lw-appearance .lw-checkbox-appearance {
+    display: block;
+}
+
+.lw-appearance .lw-appearance-text-box-value {
+    display: inline-block;
+    margin-top: var(--lw-validation-panel-appearance-textbox-vertical-offset);
+}
+
+.lw-appearance .reset-appearance {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: var(--lw-validation-panel-appearance-reset-button-left-offset);
+    text-decoration: underline;
+    color: var(--lw-validation-panel-appearance-reset-button-color);
+}
+
+/* Validation container */
+.lw-data-validation-container {
+    margin-top: var(--lw-validation-panel-criteria-container-vertical-offset);
+    display: grid;
+    grid-template-columns: var(--lw-validation-panel-description-width) var(--lw-validation-panel-content-width);
+    grid-template-rows: auto;
+    grid-column-gap: 0;
+}
+
+.lw-data-validation-container .right-elements {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.lw-data-validation-container .criteria-container,
+.lw-criteria-container,
+.lw-criteria-type-container,
+.lw-input-criteria-container {
+    margin-top: var(--lw-validation-panel-criteria-row-margin-top);
+}
+
+.lw-data-validation-container .lw-criteria-container,
+.lw-data-validation-container .lw-criteria-type-container,
+.lw-data-validation-container .lw-input-criteria-container {
+    display: flex;
+    align-items: center;
+}
+
+.lw-data-validation-container .lw-input-criteria,
+.lw-data-validation-container .lw-input-criteria-type {
+    display: inline-block;
+    width: var(--lw-validation-panel-criteria-container-input-width);
+    margin-left: var(--lw-validation-panel-criteria-container-input-horizontal-offset);
+    margin-right: var(--lw-validation-panel-criteria-container-input-horizontal-offset);
+}
+
+.lw-data-validation-container .lw-input-criteria-container {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.lw-data-validation-container .lw-input-criteria-container lw-text-box {
+    display: inline-block;
+    width: var(--lw-validation-panel-criteria-container-textbox-width);
+    margin-left: var(--lw-validation-panel-criteria-container-textbox-horizontal-offset);
+    margin-right: var(--lw-validation-panel-criteria-container-textbox-horizontal-offset);
+}
+
+.lw-data-validation-container .lw-input-criteria-container lw-text-box:nth-child(1) {
+    order: 1;
+}
+
+.lw-data-validation-container .lw-input-criteria-container .lw-text-between-inputs {
+    margin: var(--lw-validation-panel-criteria-container-text-between-inputs-offset);
+    order: 2;
+}
+
+.lw-data-validation-container .lw-input-criteria-container lw-text-box:nth-child(2) {
+    order: 3;
+}
+
+.lw-footer-buttons {
+    margin-top: var(--lw-validation-panel-footer-vertical-offset);
+}
+
+.lw-footer-buttons lw-button {
+    margin-left: var(--lw-validation-panel-footer-button-horizontal-offset);
+    margin-right: var(--lw-validation-panel-footer-button-horizontal-offset);
+}
+
+.lw-footer-buttons .right-elements {
+    float: right;
+}
+
+.right-elements-reset {
+    display: flex;
+    align-items: center;
+}
+
+.lw-footer-buttons lw-button.lw-remove-validation-footer-button {
+    width: auto;
+    color: var(--lw-validation-panel-footer-remove-validation-button-color);
+    font-weight: bold;
+}
+
+.lw-footer-buttons lw-button.lw-cancel-footer-button {
+    color: var(--lw-validation-panel-footer-cancel-button-color);
+    font-weight: bold;
+}
+
+.lw-footer-buttons lw-button.lw-save-footer-button {
+    background: var(--lw-validation-panel-footer-save-button-background);
+    color: var(--lw-validation-panel-footer-save-button-color);
+}

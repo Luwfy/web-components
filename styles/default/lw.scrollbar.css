@@ -1,0 +1,120 @@
+
+/* lw-scroll-bar */
+lw-scroll-bar {
+    display: block;
+    touch-action: none;
+    width: var(--lw-scroll-bar-default-width);
+    height: var(--lw-scroll-bar-default-height);
+}
+
+    lw-scroll-bar[orientation="vertical"] {
+        height: var(--lw-scroll-bar-default-width);
+        width: var(--lw-scroll-bar-default-height);
+    }
+
+    lw-scroll-bar .lw-thumb {
+        position: absolute;
+        width: 40px;
+        height: calc(100% - 2px);
+        top: 1px;
+        cursor: default;
+        box-sizing: border-box;
+        border-width: 1px;
+        border-style: solid;
+        border-color: var(--lw-scroll-bar-thumb-border);
+        background-color: var(--lw-scroll-bar-thumb-background);
+        border-top-left-radius: var(--lw-scroll-bar-thumb-border-top-left-radius);
+        border-top-right-radius: var(--lw-scroll-bar-thumb-border-top-right-radius);
+        border-bottom-left-radius: var(--lw-scroll-bar-thumb-border-bottom-left-radius);
+        border-bottom-right-radius: var(--lw-scroll-bar-thumb-border-bottom-right-radius);
+    }
+
+        lw-scroll-bar .lw-thumb:hover {
+            border-color: var(--lw-scroll-bar-thumb-border-hover);
+            background-color: var(--lw-scroll-bar-thumb-background-hover);
+        }
+
+        lw-scroll-bar .lw-thumb:active {
+            border-color: var(--lw-scroll-bar-thumb-border-active);
+            background-color: var(--lw-scroll-bar-thumb-background-active);
+        }
+
+    lw-scroll-bar[orientation="vertical"] .lw-thumb {
+        width: calc(100% - 2px);
+        height: 40px;
+        left: 1px;
+        top: 0px;
+    }
+
+
+    lw-scroll-bar .lw-track {
+        position: relative;
+        float: left;
+        height: 100%;
+        background-color: var(--lw-scroll-bar-background);
+        width: 100%;
+    }
+
+    lw-scroll-bar[show-buttons] .lw-track {
+        width: calc(calc(100% - var(--lw-scroll-button-size) * 2));
+    }
+
+    lw-scroll-bar[orientation="vertical"] .lw-track {
+        float: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    lw-scroll-bar[orientation="vertical"][show-buttons] .lw-track {
+        height: calc(calc(100% - var(--lw-scroll-button-size) * 2));
+    }
+
+    lw-scroll-bar[spinner][show-buttons] .lw-track {
+        display: none;
+    }
+
+    lw-scroll-bar .lw-scroll-button {
+        display: none;
+    }
+
+    lw-scroll-bar[show-buttons] .lw-scroll-button {
+        display: block;
+        float: left;
+        width: var(--lw-scroll-button-size);
+        height: 100%;
+        cursor: default;
+        background-color: var(--lw-scroll-bar-button-background);
+        color: var(--lw-scroll-bar-button-color);
+        border: 1px solid var(--lw-scroll-bar-button-border);
+        min-height: 0;
+        padding: 0;
+        border-radius: 0px;
+    }
+
+    lw-scroll-bar .lw-scroll-button:hover {
+        background-color: var(--lw-scroll-bar-button-background-hover);
+        color: var(--lw-scroll-bar-button-color-hover);
+        border-color: var(--lw-scroll-bar-button-border-hover);
+    }
+
+    lw-scroll-bar .lw-scroll-button:active {
+        background-color: var(--lw-scroll-bar-button-background-active);
+        color: var(--lw-scroll-bar-button-color-active);
+        border-color: var(--lw-scroll-bar-button-border-active);
+    }
+
+    lw-scroll-bar[spinner][show-buttons] .lw-scroll-button {
+        width: 50%;
+    }
+
+    lw-scroll-bar[orientation="vertical"] .lw-scroll-button {
+        float: none;
+        height: var(--lw-scroll-button-size);
+        width: 100%;
+    }
+
+    lw-scroll-bar[spinner][orientation="vertical"] .lw-scroll-button {
+        height: 50%;
+        width: 100%;
+        float: none;
+    }

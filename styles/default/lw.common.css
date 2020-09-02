@@ -1,0 +1,241 @@
+/* all elements */
+lw-accordion,
+lw-button,
+lw-toggle-button,
+lw-repeat-button,
+lw-switch-button,
+lw-slider,
+lw-led,
+lw-tank,
+lw-check-box,
+lw-calendar,
+lw-carousel,
+lw-card,
+lw-radio-button,
+lw-progress-bar,
+lw-circular-progress-bar,
+lw-scroll-bar,
+lw-gauge,
+lw-grid,
+lw-numeric-text-box,
+lw-list-box,
+lw-combo-box,
+lw-docking-layout,
+lw-drop-down-list,
+lw-drop-down-button,
+lw-multi-split-button,
+lw-power-button,
+lw-text-box,
+lw-multiline-text-box,
+lw-password-text-box,
+lw-masked-text-box,
+lw-tabs,
+lw-date-time-picker,
+lw-array,
+lw-time-picker,
+lw-menu,
+lw-list-menu,
+lw-window,
+lw-alert-window,
+lw-prompt-window,
+lw-multiline-prompt-window,
+lw-progress-window,
+lw-tabs-window,
+lw-dialog-window,
+lw-pager,
+lw-progress-window,
+lw-wait-window,
+lw-splitter,
+lw-tree,
+lw-filter-panel,
+lw-breadcrumb,
+lw-color-panel,
+lw-color-picker,
+lw-sort-panel,
+lw-group-panel,
+lw-column-panel,
+lw-multi-column-filter-panel,
+lw-query-builder,
+lw-card-view,
+lw-tooltip,
+lw-layout,
+lw-path,
+lw-kanban,
+lw-gantt-chart,
+lw-sheduler {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    display: block;
+}
+
+.lw-element {
+    outline: none;
+    box-sizing: border-box;
+    font-family: var(--lw-font-family);
+    font-size: var(--lw-font-size);
+    font-weight: var(--lw-font-weight);
+    /* Apple iOS specific browser CSS variable used for area highlighting on click. Reference link for details:
+        https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/AdjustingtheTextSize/AdjustingtheTextSize.html#//apple_ref/doc/uid/TP40006510-SW5 */
+    -webkit-tap-highlight-color: transparent;
+    background: var(--lw-background);
+    color: var(--lw-background-color);
+}
+
+.lw-root {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+lw-button[disabled],
+lw-calendar[disabled],
+lw-combo-box[disabled],
+lw-chip[disabled],
+lw-toggle-button[disabled],
+lw-repeat-button[disabled],
+lw-switch-button[disabled],
+lw-slider[disabled],
+lw-led[disabled],
+lw-tank[disabled],
+lw-check-box[disabled],
+lw-radio-button[disabled],
+lw-progress-bar[disabled],
+lw-circular-progress-bar[disabled],
+lw-gauge[disabled],
+lw-grid[disabled],
+lw-numeric-text-box[disabled],
+lw-list-item[disabled],
+lw-list-box[disabled],
+lw-drop-down-list[disabled],
+lw-drop-down-button[disabled],
+lw-multi-split-button[disabled],
+lw-scroll-bar[disabled],
+lw-power-button[disabled],
+lw-text-box[disabled],
+lw-multiline-text-box[disabled],
+lw-password-text-box[disabled],
+lw-tab[disabled],
+lw-tabs[disabled],
+lw-time-picker[disabled],
+lw-menu-item[disabled],
+lw-menu-items-group[disabled],
+lw-menu[disabled],
+lw-list-menu[disabled],
+lw-window[disabled],
+lw-dialog-window[disabled],
+lw-progress-window[disabled],
+lw-wait-window[disabled],
+lw-alert-window[disabled],
+lw-prompt-window[disabled],
+lw-card[disabled],
+lw-multiline-prompt-window[disabled],
+lw-splitter[disabled],
+lw-tree-item[disabled] > .lw-tree-item-label-container,
+lw-tree-items-group[disabled] > .lw-tree-item-label-container,
+lw-tree[disabled],
+lw-docking-layout[disabled],
+lw-filter-panel[disabled],
+lw-breadcrumb[disabled],
+lw-pager[disabled],
+lw-pager .lw-pager-button[disabled],
+lw-color-panel[disabled],
+lw-color-picker[disabled],
+lw-input[disabled],
+lw-text-area[disabled],
+lw-sort-panel[disabled],
+lw-group-panel[disabled],
+lw-column-panel[disabled],
+lw-multi-column-filter-panel[disabled],
+lw-card-view[disabled],
+lw-query-builder[disabled],
+lw-date-time-picker[disabled],
+lw-layout[disabled],
+lw-path[disabled],
+lw-kanban[disabled],
+lw-gantt-chart[disabled],
+lw-scheduler[disabled],
+lw-table[disabled],
+lw-pivot-table[disabled] {
+    opacity: 0.55;
+    cursor: default;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+lw-accordion,
+lw-calendar,
+lw-card-view,
+lw-button,
+lw-color-panel,
+lw-docking-layout,
+lw-date-time-picker,
+lw-gantt-chart,
+lw-scheduler,
+lw-grid,
+lw-menu,
+lw-list-menu,
+lw-list-box,
+lw-scroll-viewer,
+lw-progress-bar,
+lw-pager,
+lw-splitter,
+lw-tank,
+lw-time-picker,
+lw-tree,
+lw-text-box,
+lw-multiline-text-box,
+lw-layout,
+lw-window,
+lw-kanban {
+    border-color: var(--lw-border);
+    border-top-left-radius: var(--lw-border-top-left-radius);
+    border-top-right-radius: var(--lw-border-top-right-radius);
+    border-bottom-left-radius: var(--lw-border-bottom-left-radius);
+    border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+    border-width: var(--lw-border-width);
+    border-style: solid;
+}
+
+    lw-numeric-text-box.lw-element,
+    lw-masked-text-box.lw-element,
+    lw-multiline-text-box.lw-element,
+    lw-text-box.lw-element,
+    lw-drop-down-button.lw-element,
+    lw-drop-down-list.lw-element,
+    lw-combo-box.lw-element,
+    lw-password-text-box.lw-element,
+    lw-multi-split-button.lw-element,
+    lw-switch-button.lw-element,
+    lw-multiline-text-box.lw-element,
+    lw-date-time-picker.lw-element,
+    lw-pager.lw-element,
+    lw-menu.lw-element,
+    lw-menu.lw-element,
+    lw-numeric-text-box.lw-element,
+    lw-tabs.lw-element,
+    lw-tank.lw-element,
+    lw-slider.lw-element,
+    lw-filter-panel.lw-element,
+    lw-color-panel.lw-element,
+    lw-color-picker.lw-element,
+    lw-query-builder.lw-element,
+    lw-card-view.lw-element,
+    lw-path.lw-element,
+    lw-kanban.lw-element {
+        overflow: visible;
+    }
+
+/*
+    Common code for Box Components with Content and Action buttons.
+*/
+.lw-element input::selection,
+.lw-input::selection {
+    background: var(--lw-editor-selection);
+    color: var(--lw-editor-selection-color);
+}

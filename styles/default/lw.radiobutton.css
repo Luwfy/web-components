@@ -1,0 +1,174 @@
+
+/* lw-radio-button */
+
+lw-radio-button {
+    display: inline-block;
+    height: var(--lw-editor-height);
+    outline: none;
+    font-family: var(--lw-radio-button-font-family);
+    font-size: var(--lw-radio-button-font-size);
+    cursor: pointer;
+}
+
+    lw-radio-button[check-mode="input"],
+    lw-radio-button[check-mode="label"] {
+        cursor: default;
+    }
+
+    lw-radio-button .lw-ripple {
+        background: var(--lw-radio-button-background-active);
+    }
+
+    lw-radio-button .lw-container {
+        position: relative;
+        display: flex;
+        /*justify-content:center;*/
+        align-items: center;
+    }
+
+    lw-radio-button .lw-overlay {
+        height: 100%;
+        background: var(--lw-radio-button-background-active);
+        width: var(--lw-editor-height);
+        position: absolute;
+        left: 2px;
+        border-radius: 100%;
+        padding: 0px;
+        opacity: 0;
+        box-sizing: content-box;
+        transition: opacity 280ms ease-in-out;
+    }
+
+    lw-radio-button[active]:focus .lw-overlay,
+    lw-radio-button[active][focus] .lw-overlay {
+        opacity: 0.4;
+    }
+
+    lw-radio-button:focus .lw-overlay,
+    lw-radio-button[active][focus] .lw-overlay {
+        opacity: 0.3;
+    }
+
+    lw-radio-button .lw-label {
+        color: var(--lw-on-background);
+        font-size: var(--lw-font-size);
+        font-family: var(--lw-font-family);
+        margin: 0 8px 0 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: auto;
+    }
+
+    lw-radio-button[check-mode="label"] .lw-label {
+        cursor: pointer;
+    }
+
+    lw-radio-button .lw-input {
+        width: var(--lw-radio-button-default-size);
+        min-width: var(--lw-radio-button-default-size);
+        height: var(--lw-radio-button-default-size);
+        min-height: var(--lw-radio-button-default-size);
+        background-color: var(--lw-radio-button-background);
+        box-sizing: initial;
+        border-style: solid;
+        border-width: var(--lw-radio-button-border-width);
+        border-color: var(--lw-radio-button-border);
+        display: inline-block;
+        border-top-left-radius: var(--lw-radio-button-border-top-left-radius);
+        border-top-right-radius: var(--lw-radio-button-border-top-right-radius);
+        border-bottom-left-radius: var(--lw-radio-button-border-bottom-left-radius);
+        border-bottom-right-radius: var(--lw-radio-button-border-bottom-right-radius);
+        color: red;
+        margin: 0 0 0 8px;
+        position: relative;
+    }
+
+    lw-radio-button[check-mode="input"] .lw-input {
+        cursor: pointer;
+    }
+
+    lw-radio-button[readonly],
+    lw-radio-button[readonly] .lw-input,
+    lw-radio-button[readonly] .lw-label {
+        cursor: initial;
+    }
+
+    lw-radio-button:focus .lw-input,
+    lw-radio-button[focus] .lw-input {
+        border-color: var(--lw-radio-button-border-focus);
+        background-color: var(--lw-radio-button-background-focus);
+        color: var(--lw-radio-button-color-focus);
+        outline: none;
+        overflow: visible;
+    }
+
+    lw-radio-button .lw-input:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 50%;
+        font-style: normal;
+        text-decoration: inherit;
+        font-variant: normal;
+        text-transform: none;
+        color: inherit;
+        border-radius: 50%;
+        line-height: 100%;
+    }
+
+    lw-radio-button[hover] .lw-input {
+        border-color: var(--lw-radio-button-border-hover);
+        background-color: var(--lw-radio-button-background-hover);
+        color: var(--lw-radio-button-color-hover);
+    }
+
+    lw-radio-button[checked] .lw-input:after {
+        font-size: 15px;
+        font-weight: 100;
+        background: var(--lw-radio-button-color-active);
+    }
+
+
+    lw-radio-button[active] .lw-input,
+    lw-radio-button[checked] .lw-input {
+        border-color: var(--lw-radio-button-border-active);
+        background-color: var(--lw-radio-button-background-active);
+        color: var(--lw-radio-button-color-active);
+    }
+
+
+    lw-radio-button:focus .lw-input,
+    lw-radio-button[focus] .lw-input {
+        border-color: var(--lw-radio-button-border-focus);
+        outline: none;
+        overflow: visible;
+        background-color: var(--lw-radio-button-background-focus);
+        color: var(--lw-radio-button-color-focus);
+    }
+
+    /* --- Right To Left --- */
+
+    lw-radio-button[right-to-left] .lw-container {
+        justify-content: flex-end;
+    }
+
+    lw-radio-button[right-to-left] .lw-label {
+        direction: rtl;
+        order: 2;
+    }
+
+    lw-radio-button[right-to-left] .lw-input {
+        order: 3;
+        margin: 0 8px 0 0;
+    }
+
+    lw-radio-button[right-to-left] .lw-overlay {
+        left: initial;
+        right: 2px;
+    }
+
+/* --- */

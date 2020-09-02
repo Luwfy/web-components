@@ -1,0 +1,74 @@
+
+/* lw-combo-box */
+
+lw-combo-box {
+    width: var(--lw-combo-box-default-width);
+    height: var(--lw-combo-box-default-height);
+    overflow: initial;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+    /* Overrides lwWidgets Framework - base.css selector */
+    lw-combo-box.lw-element {
+        overflow: visible;
+        visibility: inherit;
+        border-width: 0px;
+    }
+
+/*ListBox*/
+.lw-combo-box lw-list-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: initial;
+    padding: initial;
+    overflow: hidden;
+    font-size: inherit;
+    font-family: inherit;
+    outline: none;
+}
+
+.lw-combo-box .lw-action-button input.lw-input {
+    flex-grow: 1;
+    align-self: center;
+    width: var(--lw-editor-addon-width);
+    min-width: var(--lw-editor-addon-width);
+    min-height: 100%;
+    max-height: 1rem;
+    vertical-align: middle;
+    margin: 0; /* Safari */
+}
+
+.lw-combo-box .lw-buttons-container .lw-token {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0 2px;
+    user-select: none;
+}
+
+/* Auto Complete string helper styles */
+.lw-combo-box .lw-buttons-container .lw-combo-box-auto-complete-string {
+    position: absolute;
+    display: flex;
+    pointer-events: none;
+    align-items: center;
+    padding: var(--lw-editor-label-padding);
+    opacity: 0.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+    .lw-combo-box .lw-buttons-container .lw-combo-box-auto-complete-string:empty {
+        display: none;
+    }
+
+.lw-combo-box.lw-element .lw-drop-down.lw-visibility-hidden {
+    transform: scale(0);
+    transition: transform 0.2s ease-in;
+    transform-origin: left top 0px;
+}

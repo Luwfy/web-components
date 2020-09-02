@@ -1,0 +1,548 @@
+/* .lw-splitter */
+
+lw-splitter {
+    width: var(--lw-splitter-default-width);
+    height: var(--lw-splitter-default-height);
+    position: relative;
+    /* Fixes the issue with the overflow and resize-container */
+}
+
+.lw-splitter[auto-fit-mode="overflow"]>.lw-container {
+    overflow: auto;
+}
+
+.lw-splitter .lw-splitter {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.lw-splitter[dragged] {
+    pointer-events: none;
+    user-select: none;
+    touch-action: none;
+}
+
+.lw-splitter>.lw-container {
+    display: flex;
+    position: relative;
+    overflow: inherit;
+}
+
+lw-splitter-item>.lw-container {
+    overflow: hidden;
+    position: relative;
+    padding: var(--lw-splitter-item-padding);
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container {
+    flex-direction: column;
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-item, .lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar, .lw-splitter[orientation="horizontal"]>.lw-container>.lw-splitter-bar-feedback {
+    width: 100%;
+    height: auto;
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-item {
+    height: var(--lw-splitter-item-size);
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar {
+    width: var(--lw-splitter-bar-fit-size);
+}
+
+.lw-splitter>.lw-container>lw-splitter-item, .lw-splitter>.lw-container>lw-splitter-bar, .lw-splitter>.lw-container>.lw-splitter-bar-feedback {
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.lw-splitter>.lw-container>lw-splitter-item {
+    width: var(--lw-splitter-item-size);
+}
+
+.lw-splitter>.lw-container>lw-splitter-bar {
+    height: var(--lw-splitter-bar-fit-size);
+}
+
+.lw-splitter lw-splitter-bar, .lw-splitter .lw-splitter-bar-feedback {
+    min-width: 5px;
+    width: var(--lw-splitter-bar-size);
+    position: relative;
+    user-select: none;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar {
+    min-height: 5px;
+    height: var(--lw-splitter-bar-size);
+}
+
+.lw-splitter .lw-splitter lw-splitter-bar {
+    background-color: var(--lw-primary);
+    color: var(--lw-primary-color);
+}
+
+.lw-splitter:not([readonly])>.lw-container>lw-splitter-bar[hover], .lw-splitter[dragged] {
+    cursor: w-resize;
+}
+
+.lw-splitter[resize-mode="none"]>.lw-container>lw-splitter-bar, .lw-splitter[disabled]>.lw-container>lw-splitter-bar, .lw-splitter[orientation][disabled]>.lw-container>lw-splitter-bar {
+    cursor: default;
+}
+
+.lw-splitter[disabled]>.lw-container>lw-splitter-bar {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar, .lw-splitter[orientation="horizontal"]>.lw-container>.lw-splitter-bar-feedback {
+    min-height: 5px;
+    height: var(--lw-splitter-bar-size);
+}
+
+.lw-splitter[orientation="horizontal"]:not([resize-mode="none"]):not([readonly])>.lw-container>lw-splitter-bar[hover]:not([locked]), .lw-splitter[orientation="horizontal"][dragged], .lw-splitter[orientation="horizontal"][dragged] {
+    cursor: s-resize;
+}
+
+.lw-splitter[dragging-not-allowed]>.lw-container>lw-splitter-bar, .lw-splitter[dragging-not-allowed]>.lw-container>.lw-splitter-bar-feedback {
+    cursor: default;
+}
+
+.lw-splitter:not([dragged]) lw-splitter-bar.lw-element,
+.lw-splitter:not([dragged]) lw-splitter-bar[hover] {
+    background-color: var(--lw-ui-state-hover);
+    border-color: var(--lw-ui-state-border-hover);
+    color: var(--lw-ui-state-color-hover);
+}
+
+.lw-splitter:not([dragged])>.lw-container>lw-splitter-bar:not([focus]) .lw-splitter-near-collapse-button, .lw-splitter:not([dragged])>.lw-container>lw-splitter-bar:not([focus]) .lw-splitter-far-collapse-button {
+    color: inherit;
+}
+
+.lw-splitter:not([dragged])>.lw-container>lw-splitter-bar[hover]:not([item-collapsed]):not([focus]) .lw-splitter-near-collapse-button, .lw-splitter:not([dragged])>.lw-container>lw-splitter-bar[hover]:not([item-collapsed]):not([focus]) .lw-splitter-far-collapse-button {
+    color: var(--lw-ui-state-color-hover);
+}
+
+.lw-splitter:not([dragged]) lw-splitter-bar[hover]:not([item-collapsed]):not([focus]) .lw-splitter-resize-button span, .lw-splitter:not([dragged]) lw-splitter-bar[hover]:not([item-collapsed]):not([focus]) .lw-splitter-resize-button span:after, .lw-splitter:not([dragged]) lw-splitter-bar[hover]:not([item-collapsed]):not([focus]) .lw-splitter-resize-button span:before {
+    background-color: var(--lw-ui-state-color-hover);
+    border-color: var(--lw-ui-state-color-hover);
+    color: var(--lw-ui-state-color-hover);
+}
+
+.lw-splitter:not([dragged]) lw-splitter-bar:not([item-collapsed]):not([focus]) .lw-splitter-near-collapse-button[hover], .lw-splitter:not([dragged]) lw-splitter-bar:not([item-collapsed]):not([focus]) .lw-splitter-far-collapse-button[hover] {
+    color: var(--lw-ui-state-color-hover);
+}
+
+.lw-splitter lw-splitter-bar[locked][hover] {
+    background-color: var(--lw-ui-state-hover);
+    color: var(--lw-ui-state-color-hover);
+}
+
+.lw-splitter lw-splitter-bar[focus].lw-element {
+    outline: none;
+    background: var(--lw-ui-state-active);
+    color: var(--lw-ui-state-color-active);
+}
+
+.lw-splitter lw-splitter-bar[focus] .lw-splitter-resize-button>span, .lw-splitter lw-splitter-bar[focus] .lw-splitter-resize-button>span::before, .lw-splitter lw-splitter-bar[focus] .lw-splitter-resize-button>span::after {
+    background-color: var(--lw-ui-state-color-active);
+    border-color: var(--lw-ui-state-color-active);
+    color: var(--lw-ui-state-color-active);
+}
+
+.lw-splitter>.lw-container>lw-splitter-bar[locked] {
+    cursor: default;
+}
+
+.lw-splitter lw-splitter-bar[locked] .lw-splitter-resize-button>span {
+    visibility: hidden;
+}
+
+.lw-splitter lw-splitter-bar[locked] .lw-splitter-resize-button>span::before, .lw-splitter lw-splitter-bar[locked] .lw-splitter-resize-button>span::after {
+    content: none;
+}
+
+.lw-splitter .lw-splitter-bar-feedback {
+    position: absolute;
+    background-color: var(--lw-ui-state-hover);
+    color: var(--lw-ui-state-color-hover);
+    opacity: 0.5;
+}
+
+.lw-splitter .lw-splitter-bar-feedback.limit-reached {
+    background-color: var(--lw-error);
+}
+
+.lw-splitter lw-splitter-bar>.lw-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+}
+
+.lw-splitter lw-splitter-bar[show-near-button] .lw-splitter-near-collapse-button, .lw-splitter lw-splitter-bar[show-far-button] .lw-splitter-far-collapse-button {
+    visibility: visible;
+    width: 100%;
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar>.lw-container {
+    flex-direction: row;
+}
+
+.lw-splitter .lw-splitter-resize-button, .lw-splitter .lw-splitter-near-collapse-button, .lw-splitter .lw-splitter-far-collapse-button {
+    width: 100%;
+    height: 20px;
+    position: relative;
+    font-family: var(--lw-font-family-icon);
+}
+
+.lw-splitter .lw-splitter-resize-button, .lw-splitter .lw-splitter-near-collapse-button, .lw-splitter .lw-splitter-far-collapse-button {
+    cursor: pointer;
+}
+
+.lw-splitter .lw-splitter-near-collapse-button, .lw-splitter .lw-splitter-far-collapse-button {
+    visibility: hidden;
+    width: 0;
+}
+
+.lw-splitter lw-splitter-bar[item-collapsed] .lw-splitter-near-collapse-button>span, .lw-splitter lw-splitter-bar[item-collapsed] .lw-splitter-far-collapse-button>span {
+    transform: rotate(270deg);
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar .lw-splitter-resize-button, .lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar[show-near-button] .lw-splitter-near-collapse-button, .lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar[show-far-button] .lw-splitter-far-collapse-button {
+    width: 20px;
+    height: 100%;
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar .lw-splitter-near-collapse-button, .lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar .lw-splitter-far-collapse-button {
+    width: 0;
+    height: 100%;
+}
+
+.lw-splitter .lw-splitter-resize-button {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: inherit;
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar .lw-splitter-resize-button {
+    width: 40px;
+}
+
+.lw-splitter .lw-splitter-near-collapse-button .lw-arrow, .lw-splitter .lw-splitter-far-collapse-button .lw-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+}
+
+.lw-splitter .lw-splitter-near-collapse-button .lw-arrow::after, .lw-splitter .lw-splitter-far-collapse-button .lw-arrow::after {
+    content: var(--lw-icon-arrow-down);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    line-height: normal;
+}
+
+.lw-splitter:not([animation='none']) .lw-splitter-near-collapse-button .lw-arrow, .lw-splitter:not([animation='none']) .lw-splitter-far-collapse-button .lw-arrow {
+    transition: transform 0.2s ease-out;
+}
+
+.lw-splitter .lw-splitter-resize-button>span {
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--lw-surface-color);
+    background-color: var(--lw-surface-color);
+    color: var(--lw-surface-color);
+    border-radius: 50%;
+    cursor: inherit;
+}
+
+.lw-splitter lw-splitter-bar[item-collapsed] .lw-splitter-resize-button {
+    display: none;
+}
+
+.lw-splitter .lw-splitter-resize-button>span::before, .lw-splitter .lw-splitter-resize-button>span::after {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    border: 1px solid var(--lw-surface-color);
+    background-color: var(--lw-surface-color);
+    color: var(--lw-surface-color);
+    pointer-events: none;
+    font-family: var(--lw-font-family-icon);
+}
+
+.lw-splitter .lw-splitter-resize-button>span::before {
+    left: 50%;
+    top: calc(50% - var(--lw-splitter-bar-size));
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar .lw-splitter-resize-button>span::before {
+    left: calc(50% - var(--lw-splitter-bar-size));
+    top: 50%;
+}
+
+.lw-splitter .lw-splitter-resize-button>span::after {
+    top: calc(50% + var(--lw-splitter-bar-size));
+    left: 50%;
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar .lw-splitter-resize-button>span::after {
+    top: 50%;
+    left: calc(50% + var(--lw-splitter-bar-size));
+}
+
+.lw-splitter lw-splitter-bar[item-collapsed] .lw-splitter-resize-button>span::before, .lw-splitter lw-splitter-bar[item-collapsed] .lw-splitter-resize-button>span::after {
+    content: initial;
+}
+
+.lw-splitter .lw-splitter-far-collapse-button>span {
+    transform: translate(-50%, -50%) rotate(270deg);
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar .lw-splitter-far-collapse-button>span {
+    transform: translate(-50%, -45%) rotate(0deg);
+}
+
+.lw-splitter .lw-splitter-near-collapse-button .lw-arrow {
+    transform: translate(-55%, -50%) rotate(90deg);
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar .lw-splitter-near-collapse-button>span {
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.lw-splitter lw-splitter-bar[item-collapsed] {
+    cursor: initial;
+}
+
+.lw-splitter lw-splitter-bar[item-collapsed]>.lw-container {
+    flex-direction: initial;
+}
+
+.lw-splitter lw-splitter-bar[item-collapsed] .lw-splitter-near-collapse-button.lw-visibility-hidden, .lw-splitter lw-splitter-bar[item-collapsed] .lw-splitter-far-collapse-button.lw-visibility-hidden {
+    width: initial;
+}
+
+.lw-splitter lw-splitter-bar[item-collapsed] .lw-splitter-far-collapse-button>span {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar[item-collapsed] .lw-splitter-far-collapse-button>span {
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.lw-splitter lw-splitter-bar[item-collapsed] .lw-splitter-near-collapse-button>span {
+    transform: translate(-50%, -50%) rotate(270deg);
+}
+
+.lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar[item-collapsed] .lw-splitter-near-collapse-button>span {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.lw-splitter lw-splitter-item.lw-element {
+    background-color: inherit;
+    color: inherit;
+    border-radius: initial;
+}
+
+.lw-splitter lw-splitter-bar.lw-element {
+    background: var(--lw-surface);
+    border-color: var(--lw-surface-color);
+    color: var(--lw-surface-color);
+    border-radius: initial;
+}
+
+.lw-splitter lw-splitter-item[collapsed] {
+    overflow: hidden;
+    padding: initial;
+}
+
+.lw-splitter lw-splitter-item>.lw-container>.lw-content {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: var(--lw-splitter-item-content-padding);
+}
+
+.lw-splitter:not([animation='none'])>.lw-container>lw-splitter-item.animate {
+    transition: all 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.lw-splitter[dragged]:not([animation='none'])>.lw-container>lw-splitter-item, .lw-splitter[orientation-change]:not([animation='none'])>.lw-container>lw-splitter-item {
+    transition: none;
+}
+
+.lw-splitter[show-locked-items]>.lw-container>lw-splitter-item[locked]>.lw-container::after {
+    position: absolute;
+    content: var(--lw-icon-lock);
+    font-family: var(--lw-font-family-icon);
+    opacity: 0.25;
+    font-size: calc(2.5 * var(--lw-splitter-font-size));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lw-splitter lw-splitter-item {
+    overflow: hidden;
+}
+
+.lw-splitter[orientation="horizontal"] lw-splitter-item[collapsed] {
+    min-width: 0;
+    min-height: 0;
+}
+
+/* --- Right To Left --- */
+
+.lw-splitter[right-to-left] .lw-splitter>.lw-container {
+    direction: initial;
+}
+
+.lw-splitter[right-to-left] lw-splitter-item>.lw-container>.lw-content {
+    direction: rtl;
+}
+
+/* --- */
+
+/*Shadow DOM */
+
+:host(lw-splitter[auto-fit-mode="overflow"])>.lw-container {
+    overflow: auto;
+}
+
+:host(lw-splitter) lw-splitter {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+:host(lw-splitter)>.lw-container {
+    display: flex;
+    position: relative;
+    overflow: inherit;
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container {
+    flex-direction: column;
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-item, :host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar, :host(lw-splitter[orientation="horizontal"])>.lw-container>.lw-splitter-bar-feedback {
+    width: 100%;
+    height: auto;
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-item {
+    height: var(--lw-splitter-item-size);
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar {
+    width: var(--lw-splitter-bar-fit-size);
+}
+
+:host(lw-splitter)>.lw-container>lw-splitter-item, :host(lw-splitter)>.lw-container>lw-splitter-bar, :host(lw-splitter)>.lw-container>.lw-splitter-bar-feedback {
+    height: 100%;
+    flex-shrink: 0;
+}
+
+:host(lw-splitter)>.lw-container>lw-splitter-item {
+    width: var(--lw-splitter-item-size);
+}
+
+:host(lw-splitter)>.lw-container>lw-splitter-bar {
+    height: var(--lw-splitter-bar-fit-size);
+}
+
+:host(lw-splitter)>.lw-container>lw-splitter-bar[hover], lw-splitter[dragged] {
+    cursor: w-resize;
+}
+
+:host(lw-splitter[resize-mode="none"])>.lw-container>lw-splitter-bar, :host(lw-splitter[disabled])>.lw-container>lw-splitter-bar, :host(lw-splitter[orientation][disabled])>.lw-container>lw-splitter-bar {
+    cursor: default;
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar, :host(lw-splitter[orientation="horizontal"])>.lw-container>.lw-splitter-bar-feedback {
+    min-height: 5px;
+    height: var(--lw-splitter-bar-size);
+}
+
+:host(lw-splitter[orientation="horizontal"]:not([resize-mode="none"]))>.lw-container>lw-splitter-bar[hover]:not([locked]), lw-splitter[orientation="horizontal"][dragged], lw-splitter[orientation="horizontal"][dragged] {
+    cursor: s-resize;
+}
+
+:host(lw-splitter[dragging-not-allowed])>.lw-container>lw-splitter-bar, :host(lw-splitter[dragging-not-allowed])>.lw-container>.lw-splitter-bar-feedback {
+    cursor: default;
+}
+
+:host(lw-splitter)>.lw-container>lw-splitter-bar[locked] {
+    cursor: default;
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar>.lw-container {
+    flex-direction: row;
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar .lw-splitter-resize-button, :host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar[show-near-button] .lw-splitter-near-collapse-button, :host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar[show-far-button] .lw-splitter-far-collapse-button {
+    width: 20px;
+    height: 100%;
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar .lw-splitter-near-collapse-button, :host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar .lw-splitter-far-collapse-button {
+    width: 0;
+    height: 100%;
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar .lw-splitter-resize-button {
+    width: 40px;
+}
+
+:host(lw-splitter) .lw-splitter-resize-button>span::before {
+    left: 50%;
+    top: calc(50% - var(--lw-splitter-bar-size));
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar .lw-splitter-resize-button>span::before {
+    left: calc(50% - var(--lw-splitter-bar-size));
+    top: 50%;
+}
+
+:host(lw-splitter) .lw-splitter-resize-button>span::after {
+    top: calc(50% + var(--lw-splitter-bar-size));
+    left: 50%;
+}
+
+:host(lw-splitter[orientation="horizontal"])>.lw-container>lw-splitter-bar .lw-splitter-resize-button>span::after {
+    top: 50%;
+    left: calc(50% + var(--lw-splitter-bar-size));
+}
+
+/* --- Right To Left --- */
+
+:host(lw-splitter[right-to-left]) .lw-splitter>.lw-container {
+    direction: initial;
+}
+
+:host(lw-splitter[right-to-left]) lw-splitter-item>.lw-container>.lw-content {
+    direction: rtl;
+}
+
+/* --- */
+
+/*End of Shadow DOM*/

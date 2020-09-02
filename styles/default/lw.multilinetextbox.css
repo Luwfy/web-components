@@ -1,0 +1,209 @@
+/* lw-multiline-text-box */
+
+lw-multiline-text-box.lw-element {
+    width: var(--lw-multiline-text-box-default-width);
+    height: var(--lw-multiline-text-box-default-height);
+    background: transparent;
+    overflow: initial;
+}
+
+lw-multiline-text-box[cols] {
+    width: auto;
+}
+
+lw-multiline-text-box[rows] {
+    height: auto;
+}
+
+.lw-multiline-text-box>.lw-resize-trigger-container, .lw-multiline-text-box .lw-container>.lw-resize-trigger-container, .lw-multiline-text-box .lw-inner-container>.lw-resize-trigger-container {
+    margin-bottom: -1px;
+}
+
+.lw-multiline-text-box.lw-drop-down-box>.lw-container, .lw-multiline-text-box.lw-drop-down-box[label][hint]>.lw-container, .lw-multiline-text-box.lw-drop-down-box.lw-container {
+    overflow: visible;
+    display: block;
+    max-height: inherit;
+}
+
+.lw-multiline-text-box .lw-inner-container {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    overflow: hidden;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    max-height: inherit;
+}
+
+.lw-multiline-text-box .lw-initialization-value {
+    display: none;
+}
+
+.lw-multiline-text-box textarea:not(.lw-text-box-hidden) {
+    max-height: inherit;
+}
+
+.lw-multiline-text-box[auto-expand] textarea.lw-text-box-hidden {
+    height: 0;
+}
+
+.lw-multiline-text-box[auto-expand]  {
+    height: auto;
+    min-height: var(--lw-editor-height);
+}
+
+.lw-multiline-text-box textarea {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    color: inherit;
+    border: none;
+    padding: var(--lw-editor-label-padding);
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    background-color: inherit;
+    overflow: hidden;
+    resize: none;
+    float: left;
+}
+
+.lw-multiline-text-box.outlined.lw-element {
+    height: var(--lw-multiline-text-box-default-height);
+}
+
+.lw-multiline-text-box.outlined textarea {
+    border: 1px solid var(--lw-border) !important;
+    padding: 10px;
+}
+.lw-multiline-text-box.outlined[focus] textarea {
+    border: 1px solid var(--lw-primary) !important;
+    border-top-color:transparent !important;
+}
+
+.lw-multiline-text-box textarea.lw-text-box-hidden {
+    visibility: hidden;
+    width: 100%;
+    height: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.lw-multiline-text-box[auto-capitalize="words"] textarea {
+    text-transform: capitalize;
+}
+
+.lw-multiline-text-box[auto-capitalize="characters"] textarea {
+    text-transform: uppercase;
+}
+
+.lw-multiline-text-box[cols] textarea, .lw-multiline-text-box[rows] textarea {
+    width: inherit;
+    height: inherit;
+}
+
+.lw-multiline-text-box[hover] {
+    border-color: var(--lw-ui-state-border-hover);
+}
+
+.lw-multiline-text-box[focus] {
+    border-color: var(--lw-outline);
+}
+
+.lw-multiline-text-box lw-scroll-bar {
+    display: none;
+}
+
+.lw-multiline-text-box .lw-container textarea, .lw-multiline-text-box.lw-container textarea {
+    height: 100%;
+}
+
+.lw-multiline-text-box .lw-container.hscroll textarea, .lw-multiline-text-box.lw-container.hscroll textarea {
+    height: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-multiline-text-box .lw-container.vscroll textarea, .lw-multiline-text-box.lw-container.vscroll textarea {
+    width: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-multiline-text-box .lw-container.hscroll lw-scroll-bar, .lw-multiline-text-box.lw-container.hscroll lw-scroll-bar {
+    width: 100%;
+    height: calc(var(--lw-scroll-bar-size));
+    display: block;
+}
+
+.lw-multiline-text-box .lw-container.hscroll lw-scroll-bar[orientation="vertical"], .lw-multiline-text-box.lw-container.hscroll lw-scroll-bar[orientation="vertical"] {
+    display: none;
+}
+
+.lw-multiline-text-box .lw-container.vscroll lw-scroll-bar[orientation="vertical"], .lw-multiline-text-box.lw-container.vscroll lw-scroll-bar[orientation="vertical"] {
+    float: right;
+    width: calc(var(--lw-scroll-bar-size));
+    height: 100%;
+    display: block;
+    border-top-right-radius: var(--lw-border-top-right-radius);
+    border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+}
+
+.lw-multiline-text-box[resizable] .lw-container.hscroll lw-scroll-bar lw-multiline-text-box .lw-container.vscroll.hscroll lw-scroll-bar, .lw-multiline-text-box[resizable].lw-container.hscroll lw-scroll-bar lw-multiline-text-box .lw-container.vscroll.hscroll lw-scroll-bar {
+    height: calc(var(--lw-scroll-bar-size));
+    width: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-multiline-text-box[resizable] .lw-container.vscroll lw-scroll-bar[orientation="vertical"], .lw-multiline-text-box .lw-container.vscroll.hscroll lw-scroll-bar[orientation="vertical"], .lw-multiline-text-box[resizable].lw-container.vscroll lw-scroll-bar[orientation="vertical"], .lw-multiline-text-box.lw-container.vscroll.hscroll lw-scroll-bar[orientation="vertical"] {
+    height: calc(100% - var(--lw-scroll-bar-size));
+    width: calc(var(--lw-scroll-bar-size));
+}
+
+.lw-multiline-text-box[resizable] .lw-container.hscroll lw-scroll-bar, .lw-multiline-text-box .lw-container.hscroll.vscroll lw-scroll-bar, .lw-multiline-text-box[resizable].lw-container.hscroll lw-scroll-bar, .lw-multiline-text-box.lw-container.hscroll.vscroll lw-scroll-bar {
+    width: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-multiline-text-box[display-mode="escaped"] textarea {
+    white-space: nowrap;
+}
+
+.lw-multiline-text-box .lw-resize-element {
+    box-sizing: border-box;
+    height: calc(var(--lw-scroll-bar-size));
+    width: calc(var(--lw-scroll-bar-size));
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color: lightgray;
+    background-clip: content-box;
+    border: var(--lw-border) solid var(--lw-border-width);
+    display: none;
+    padding: 2px 0px 0px 2px;
+    cursor: nw-resize;
+    touch-action: none;
+}
+
+.lw-multiline-text-box[resizable] .lw-resize-element {
+    display: block;
+}
+
+.lw-multiline-text-box[resizable] .lw-resize, .lw-multiline-text-box[resizable] .lw-resize textarea {
+    user-select: none;
+}
+
+.lw-multiline-text-box .lw-required-message {
+    display: none;
+}
+
+.lw-multiline-text-box[right-to-left] .lw-container.vscroll lw-scroll-bar[orientation="vertical"], .lw-multiline-text-box.lw-container.vscroll[right-to-left] lw-scroll-bar[orientation="vertical"] {
+    border-top-left-radius: var(--lw-border-top-right-radius);
+    border-bottom-left-radius: var(--lw-border-bottom-right-radius);
+    border-top-right-radius: initial;
+    border-bottom-right-radius: initial;
+}
+
+.lw-multiline-text-box[right-to-left] textarea {
+    float: right;
+}

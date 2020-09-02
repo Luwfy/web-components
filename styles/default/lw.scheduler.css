@@ -1,0 +1,402 @@
+lw-scheduler {
+    display: block;
+    width: var(--lw-scheduler-default-width);
+    height: var(--lw-scheduler-default-height);
+    contain: content;
+}
+
+lw-scheduler>.lw-container, .lw-container.lw-scheduler {
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: var(--lw-scheduler-header-height) 1fr;
+}
+
+lw-scheduler[show-footer]>.lw-container, .lw-container.lw-scheduler {
+    grid-template-rows: 1fr var(--lw-scheduler-footer-height);
+}
+
+/* Hides the resize trigger */
+
+.lw-scheduler>.lw-container:not(.hscroll), .lw-container.lw-scheduler:not(.hscroll) {
+    margin-bottom: -2px;
+}
+
+.lw-scheduler[modal] {
+    pointer-events: none;
+}
+
+.lw-scheduler .lw-scheduler-header, .lw-scheduler .lw-scheduler-footer {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: var(--lw-scheduler-header-height);
+    background: var(--lw-surface);
+}
+
+.lw-scheduler .lw-scheduler-header:empty, .lw-scheduler .lw-scheduler-footer:empty {
+    display: none;
+}
+
+.lw-scheduler .lw-timeline-container {
+    width: 100%;
+    height: 100%;
+}
+
+.lw-scheduler .lw-timeline {
+    text-align: center;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+}
+
+.lw-scheduler .lw-timeline-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.lw-scheduler .lw-timeline-header {
+    box-shadow: var(--lw-scheduler-header-box-shadow);
+    position: relative;
+}
+
+.lw-scheduler .lw-timeline-view-cells {
+    width: 100%;
+    min-height: inherit;
+    display: flex;
+}
+
+.lw-scheduler .lw-timeline-view-cell {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--lw-surface);
+    color: var(--lw-surface-color);
+    border-top: var(--lw-border-width) solid var(--lw-border);
+    border-bottom: var(--lw-border-width) solid var(--lw-border);
+    border-left: var(--lw-border-width) solid var(--lw-border);
+    border-right: var(--lw-border-width) solid var(--lw-border);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: var(--lwscheduler-task-bar-fill-padding);
+    border-bottom-color: transparent;
+    height: var(--lw-scheduler-timeline-cell-height);
+    min-height: var(--lw-scheduler-timeline-cell-min-height);
+    width: var(--lw-scheduler-timeline-cell-width);
+    min-width: var(--lw-scheduler-timeline-cell-min-size);
+}
+
+.lw-scheduler .lw-timeline-view-cell:first-of-type {
+    border-left: none;
+}
+
+.lw-scheduler .lw-timeline-view-cell:last-of-type {
+    border-right: none;
+}
+
+.lw-scheduler .lw-timeline-view-cells .lw-timeline-view-cell:not(:first-of-type), .lw-scheduler .lw-timeline-view-details .lw-timeline-view-cell:not(:first-of-type) {
+    border-left-color: transparent;
+}
+
+.lw-scheduler .lw-timeline-view-cells div {
+    border-bottom-color: var(--lw-border);
+}
+
+.lw-scheduler .lw-timeline-content {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* height: calc(100% - 2 * var(--lw-scheduler-task-default-height)); */
+    transition: max-height 0.2s ease-in, min-height 0.2s ease-in, height 0.2s ease-in;
+}
+
+.lw-scheduler>.lw-container.hscroll .lw-timeline, .lw-scheduler.lw-container.hscroll>.lw-timeline {
+    height: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-scheduler>.lw-container.vscroll .lw-timeline, .lw-scheduler.lw-container.vscroll .lw-timeline {
+    width: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-scheduler .lw-timeline-scroll-bar {
+    overflow: visible;
+    position: relative;
+    height: var(--lw-scroll-bar-size);
+    width: 100%;
+}
+
+.lw-scheduler .lw-timeline-scroll-bar.bottom-corner {
+    width: calc(100% - var(--lw-scroll-bar-size));
+}
+
+/* Scroll bar bottom-conrner element */
+
+.lw-scheduler .lw-timeline-scroll-bar::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: var(--lw-scroll-bar-size);
+    background: var(--lw-scroll-bar-background);
+    left: 100%;
+    top: 0;
+}
+
+.lw-scheduler .lw-timeline-scroll-bar[orientation="vertical"] {
+    position: absolute;
+    right: 0;
+    top: calc(2 * var(--lw-scheduler-timeline-cell-height));
+    height: calc(100% - 2 * var(--lw-scheduler-timeline-cell-height));
+    width: calc(var(--lw-scroll-bar-size));
+}
+
+.lw-scheduler .lw-timeline-scroll-bar.lw-resource-scroll-bar {
+    height: calc(100% - var(--lw-scheduler-timeline-cell-height));
+    top: var(--lw-scheduler-timeline-cell-height);
+    /* z-index: 1; */
+}
+
+.lw-scheduler .lw-timeline-scroll-bar[orientation="vertical"]::before {
+    position: absolute;
+    width: 100%;
+    background: var(--lw-scroll-bar-background);
+    content: '';
+    left: 0;
+    top: calc(-2 * var(--lw-scheduler-timeline-cell-height));
+    height: calc(2 * var(--lw-scheduler-timeline-cell-height));
+    border: var(--lw-border-width) solid var(--lw-border);
+    border-top: none;
+    box-sizing: border-box;
+}
+
+.lw-scheduler:not([inverted]) .lw-timeline-scroll-bar[orientation="vertical"]::before {
+    border-right: none;
+}
+
+.lw-scheduler .lw-scheduler-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas: "date view";
+}
+
+.lw-scheduler[header-date-position="far"] .lw-scheduler-header {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "view date";
+}
+
+.lw-scheduler .lw-scheduler-date-selector {
+    grid-area: date;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: var(--lw-scheduler-header-padding);
+    background: var(--lw-background);
+    background-clip: content-box;
+}
+
+.lw-scheduler .lw-scheduler-date-selector [prev-date], .lw-scheduler .lw-scheduler-date-selector [current-date], .lw-scheduler .lw-scheduler-date-selector [next-date] {
+    width: var(--lw-scheduler-timeline-cell-height);
+    height: 100%;
+    position: relative;
+    font-size: initial;
+    display: inline-block;
+    font-weight: inherit;
+    font-family: var(--lw-font-family-icon);
+    background: transparent;
+    border: none;
+    color: inherit;
+    border: var(--lw-border-width) solid var(--lw-border);
+    text-transform: initial;
+}
+
+.lw-scheduler .lw-scheduler-date-selector [current-date] {
+    border-radius: initial;
+}
+
+.lw-scheduler .lw-scheduler-date-selector [prev-date] {
+    border-top-left-radius: var(--lw-item-border-top-left-radius);
+    border-bottom-left-radius: var(--lw-item-border-bottom-left-radius);
+    border-top-right-radius: initial;
+    border-bottom-right-radius: initial;
+    border-right: initial;
+}
+
+.lw-scheduler .lw-scheduler-date-selector [next-date] {
+    border-top-left-radius: initial;
+    border-bottom-left-radius: initial;
+    border-top-right-radius: var(--lw-item-border-top-right-radius);
+    border-bottom-right-radius: var(--lw-item-border-bottom-right-radius);
+    border-left: initial;
+}
+
+.lw-scheduler .lw-scheduler-date-selector [current-date] {
+    width: auto;
+    --lw-button-padding: 0 10px 0 10px;
+}
+
+.lw-scheduler .lw-scheduler-date-selector [prev-date][focus] button, .lw-scheduler .lw-scheduler-date-selector [next-date][focus] button {
+    background-color: var(--lw-background-focus);
+    outline: none;
+}
+
+.lw-scheduler .lw-scheduler-date-selector [prev-date][active] button, .lw-scheduler .lw-scheduler-date-selector [current-date][active] button, .lw-scheduler .lw-scheduler-date-selector [next-date][active] button {
+    background-color: var(--lw-ui-state-hover);
+    color: var(--lw-primary);
+}
+
+.lw-scheduler .lw-scheduler-date-selector [prev-date] .lw-button, .lw-scheduler .lw-scheduler-date-selector [next-date] .lw-button {
+    font-family: var(--lw-font-family-icon);
+    padding: 0px;
+    border-radius: 0px;
+    border: none;
+    border: none;
+    min-height: initial;
+}
+
+.lw-scheduler .lw-scheduler-date-selector [prev-date]::after, .lw-scheduler .lw-scheduler-date-selector [next-date]::after, .lw-scheduler .lw-scheduler-view-items-button::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: var(--lw-font-family-icon);
+    font-size: var(--lw-arrow-size);
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.lw-scheduler .lw-scheduler-date-selector [prev-date]::after {
+    content: var(--lw-icon-arrow-left);
+}
+
+.lw-scheduler .lw-scheduler-date-selector [next-date]::after {
+    content: var(--lw-icon-arrow-right);
+}
+
+/*Date Selector Positioning*/
+
+.lw-scheduler[scroll-buttons-position="far"] .lw-scheduler-date-selector [current-date], .lw-scheduler[scroll-buttons-position="near"] .lw-scheduler-date-selector [prev-date] {
+    order: 1;
+}
+
+.lw-scheduler[scroll-buttons-position="far"] .lw-scheduler-date-selector [prev-date] {
+    border-top-left-radius: initial;
+    border-bottom-left-radius: initial;
+    border-left: initial;
+    border-right: var(--lw-border-width) solid var(--lw-border);
+}
+
+.lw-scheduler[scroll-buttons-position="far"] .lw-scheduler-date-selector [current-date] {
+    border-top-left-radius: var(--lw-item-border-top-left-radius);
+    border-bottom-left-radius: var(--lw-item-border-bottom-left-radius);
+}
+
+.lw-scheduler[scroll-buttons-position="near"] .lw-scheduler-date-selector [next-date], .lw-scheduler[scroll-buttons-position="far"] .lw-scheduler-date-selector [prev-date] {
+    order: 2;
+}
+
+.lw-scheduler[scroll-buttons-position="near"] .lw-scheduler-date-selector [current-date], .lw-scheduler[scroll-buttons-position="far"] .lw-scheduler-date-selector [next-date] {
+    order: 3;
+}
+
+.lw-scheduler[scroll-buttons-position="near"] .lw-scheduler-date-selector [next-date] {
+    border-top-right-radius: initial;
+    border-bottom-right-radius: initial;
+    border-right: initial;
+    border-left: var(--lw-border-width) solid var(--lw-border);
+}
+
+.lw-scheduler .lw-scheduler-view-selector {
+    grid-area: view;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.lw-scheduler .lw-scheduler-view-items-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.lw-scheduler .lw-scheduler-view-items-container .lw-scheduler-view-item[selected] {
+    background: var(--lw-background);
+    border-left: var(--lw-border-width) solid var(--lw-border);
+    border-right: var(--lw-border-width) solid var(--lw-border);
+}
+
+.lw-scheduler .lw-scheduler-view-items-container .lw-scheduler-view-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 100%;
+    /* flex-basis: var(--lw-scheduler-header-view-item-width); */
+    padding: var(--lw-scheduler-header-padding);
+    border: var(--lw-border-width) solid transparent;
+}
+
+.lw-scheduler .lw-scheduler-view-item>div {
+    position: relative;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.lw-scheduler .lw-scheduler-view-items-button {
+    transform: scale(1) rotate(0deg);
+}
+
+.lw-scheduler .lw-scheduler-view-items-button:not(.lw-visibility-hidden)::after {
+    content: var(--lw-icon-plus);
+}
+
+.lw-scheduler:not([animation="none"]) .lw-scheduler-view-items-button {
+    transition: transform 0.2s ease-in-out;
+}
+
+.lw-scheduler .lw-scheduler-view-items-button.lw-visibility-hidden {
+    transform: scale(0) rotate(90deg);
+}
+
+/* --- RightToLeft --- */
+
+lw-scheduler[right-to-left]>.lw-container.vscroll .lw-timeline, .lw-container.lw-scheduler[right-to-left].vscroll .lw-timeline {
+    margin-left: var(--lw-scroll-bar-size);
+}
+
+.lw-scheduler[right-to-left] .lw-timeline-scroll-bar[orientation="vertical"] {
+    right: initial;
+    left: 0;
+}
+
+lw-scheduler[right-to-left]>.lw-container.vscroll .lw-timeline-scroll-bar:not([orientation="vertical"]), .lw-scheduler[right-to-left].lw-container.vscroll .lw-timeline-scroll-bar:not([orientation="vertical"]) {
+    left: calc(var(--lw-scroll-bar-size));
+}
+
+.lw-scheduler[right-to-left] .lw-timeline-scroll-bar[orientation="vertical"]::before {
+    border-left: none;
+    border-right: var(--lw-border-width) solid var(--lw-border);
+}
+
+.lw-scheduler[right-to-left] .lw-timeline-scroll-bar::after {
+    right: 100%;
+    left: initial;
+}
+
+.lw-scheduler[right-to-left] .lw-timeline-scroll-bar[orientation="vertical"]::after {
+    left: calc(-1 * var(--lw-scroll-bar-size));
+}
+
+/* --- */

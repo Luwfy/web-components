@@ -1,0 +1,114 @@
+/* Error styles */
+.lw-validation-error:not(.underlined):not(.outlined),
+.lw-validation-error:not(.underlined):not(.outlined) input,
+.lw-validation-error:not(.underlined):not(.outlined) span {
+    border-color: var(--lw-error) !important;
+    outline: none;
+}
+
+input[type='checkbox'].lw-validation-error, /* input checkbox */
+input[type='radio'].lw-validation-error { /* input radio */
+    outline: auto;
+    outline-color: var(--lw-error);
+}
+
+
+.lw-error-label-like-after-element::after,
+.lw-validation-error:not(lw-check-box) > div.lw-container::after,
+.lw-success-label-like-after-element::after,
+.lw-validation-success:not(lw-check-box) > div.lw-container::after {
+    pointer-events: none;
+    font-weight: bold;
+    font-family: var(--lw-font-family);
+    font-size: var(--lw-font-size);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.lw-success-label-like-after-element::after,
+.lw-error-label-like-after-element::after {
+    display: flex;
+    top: 50%;
+    position: absolute;
+    left: calc(50% + 15px);
+    transform: translate(-50%,-50%);
+    justify-content: center;
+    align-items: center;
+}
+
+.lw-error-label-like-after-element::after,
+.lw-validation-error:not(lw-check-box) > div.lw-container::after {
+    background-color: var(--lw-error);
+    color: var(--lw-error-color);
+    content: '!';
+}
+
+.lw-error-label-like-after-element {
+    position: relative;
+}
+
+.lw-validation-error:not(lw-check-box) > div.lw-container::after {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 20px);
+    transform: translate(-50%, -50%);
+}
+
+input.lw-validation-error {
+    border-style: solid;
+    border-width: 1px;
+}
+
+.lw-validation-summary {
+    font-family: var(--lw-font-family);
+    font-size: var(--lw-font-size);
+    color: var(--lw-error);
+}
+.lw-validation-summary span {
+    display: block;
+    margin-top: 5px;
+}
+
+/* Success styles */
+    .lw-success-label-like-after-element::after,
+    .lw-validation-success:not(lw-check-box) > div.lw-container::after {
+        background-color: var(--lw-success);
+        color: var(--lw-success-color);
+        content: '✓';
+    }
+
+    .lw-validation-success:not(lw-check-box) > div.lw-container::after {
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 20px);
+        transform: translate(-50%, -50%);
+    }
+
+
+
+ .lw-element.lw-validation-success:not(.outlined):not(.underlined) .lw-hint::after {
+    background-color: var(--lw-success);
+ }
+ .lw-element.lw-validation-error:not(.outlined):not(.underlined) .lw-hint::after {
+    background-color: var(--lw-error);
+ }
+.lw-success-label-like-after-element {
+    position: relative;
+}
+
+/* Spans in the bottom of the body - shown on input click */
+.lw-error-holder {
+    position: absolute;
+    font-size: var(--lw-font-size);
+    background-color: var(--lw-error);
+    color: var(--lw-error-color);
+    padding: 10px;
+    pointer-events: none;
+    z-index: var(--lw-editor-drop-down-z-index);
+    margin-top: 10px;
+}

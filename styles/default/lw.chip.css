@@ -1,0 +1,116 @@
+
+/*lw-chip*/
+.lw-chip {
+    min-height: var(--lw-chip-default-height);
+    min-width: var(--lw-chip-default-height);
+    border-radius: calc(var(--lw-chip-default-height)/2);
+    box-sizing: border-box;
+    background-color: var(--lw-primary);
+    color: var(--lw-primary-color);
+    position: relative;
+    margin: 2px;
+}
+lw-chip.lw-element {
+    display: inline-block;
+}
+
+    lw-chip:hover,
+    lw-chip:focus {
+        box-shadow: var(--lw-elevation-2);
+        outline: none;
+    }
+
+    lw-chip[disabled]:hover {
+        box-shadow: none;
+    }
+
+    lw-chip .lw-container,
+    .lw-chip.lw-container {
+        white-space: nowrap;
+    }
+
+    .lw-chip .lw-avatar {
+        width: var(--lw-chip-default-height);
+        height: var(--lw-chip-default-height);
+        line-height: var(--lw-chip-default-height);
+        border-radius: 50%;
+        display: none;
+        vertical-align: middle;
+        font-size: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .lw-chip[avatar] .lw-avatar img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+    .lw-chip .lw-value {
+        line-height: var(--lw-chip-default-height);
+        display: none;
+        vertical-align: middle;
+        padding: 0px 15px 0px 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin: 0px;
+        cursor: default;
+    }
+
+    .lw-chip[avatar] .lw-value {
+        padding-left: 5px;
+    }
+
+    .lw-chip[close-button] .lw-value {
+        padding-right: 5px;
+    }
+
+    .lw-chip[avatar] .lw-value,
+    .lw-chip[close-button] .lw-value {
+        width: calc(100% - var(--lw-chip-default-height));
+    }
+
+    .lw-chip[avatar][close-button] .lw-value {
+        width: calc(100% - 2 * var(--lw-chip-default-height));
+    }
+
+    .lw-chip .lw-close-button {
+        width: var(--lw-chip-default-height);
+        height: var(--lw-chip-default-height);
+        display: none;
+        position: relative;
+        vertical-align: middle;
+    }
+
+        .lw-chip .lw-close-button:after {
+            font-family: var(--lw-font-family-icon);
+            content: var(--lw-icon-close);
+            color: inherit;
+            display: inline-block;
+            line-height: var(--lw-chip-default-height);
+            width: 100%;
+            text-align: center;
+        }
+
+        .lw-chip .lw-close-button:hover:after {
+            color: var(--lw-primary-color);
+            cursor: pointer;
+        }
+
+    .lw-chip[avatar] .lw-avatar,
+    .lw-chip[value] .lw-value,
+    .lw-chip[close-button] .lw-close-button {
+        display: inline-block;
+    }
+
+    /* --- Right-To-Left --- */
+
+    .lw-chip[right-to-left] > .lw-container {
+        direction: rtl;
+    }
+
+/* --- */

@@ -1,0 +1,14 @@
+body[theme="pink"] {
+	--lw-primary-rgb: 255, 51, 153;
+    --lw-primary: rgba(var(--lw-primary-rgb), 1);
+    --lw-disabled: #535353; /* The theme primary color in disabled state. */
+    --lw-disabled-color: #fff; /* Text color on top of a theme background in disabled state */
+    --lw-editor-selection: var(--lw-primary);
+    --lw-editor-selection-color: var(--lw-primary-color);
+    --lw-ui-state-active: var(--lw-primary);
+    --lw-ui-state-color-active: var(--lw-primary-color);
+    --lw-ui-state-border-active: var(--lw-primary); 
+    --lw-ui-state-selected: rgba(var(--lw-primary-rgb), .1);
+    --lw-ui-state-color-selected: var(--lw-primary);
+    --lw-ui-state-border-selected: rgba(var(--lw-primary-rgb), .1);
+}

@@ -1,0 +1,134 @@
+/* .lw-sortable */
+.lw-sortable {
+    display: block;
+}
+
+    .lw-sortable:not([items]).lw-container,
+    .lw-sortable:not([items]) > .lw-container,
+    .lw-sortable .lw-sortable-items-parent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .lw-sortable[dragged] > .lw-container {
+        user-select: none;
+    }
+
+    .lw-sortable:not([items])[mode="horizontal"] > .lw-container,
+    .lw-sortable[mode="horizontal"] .lw-sortable-items-parent {
+        flex-direction: row;
+    }
+
+    .lw-sortable .lw-sortable-item {
+        transform: translate(0, 0);
+        position: relative;
+    }
+
+    .lw-sortable:not([disabled]) .lw-sortable-item {
+        touch-action: none;
+    }
+
+    .lw-sortable:not([drag-mode="handle"]):not([disabled]) .lw-sortable-item {
+        cursor: grab;
+    }
+
+    .lw-sortable:not([animation="none"]) .lw-sortable-item {
+        transition: transform 0.15s ease-in;
+    }
+
+        .lw-sortable:not([animation="none"]) .lw-sortable-item.returning {
+            transition: left 0.15s ease-in, top 0.15s ease-in;
+        }
+
+    .lw-sortable .lw-sortable-item.dragged {
+        position: absolute;
+        box-shadow: var(--lw-elevation-4);
+        z-index: 9999999;
+    }
+
+    .lw-sortable[drag-mode="handle"] .lw-sortable-item:before,
+    .lw-sortable[drag-mode="handle"] .lw-sortable-item:after {
+        content: var(--lw-icon-ellipsis);
+        position: absolute;
+        left: 100%;
+        top: calc(50% - var(--lw-sortable-handle-size) / 2);
+        width: var(--lw-sortable-handle-size);
+        height: var(--lw-sortable-handle-size);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        font-family: var(--lw-font-family-icon);
+        font-size: var(--lw-font-size);
+        line-height: calc(var(--lw-sortable-handle-size) - var(--lw-font-size) / 2);
+        cursor: grab;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.2s ease-in, opacity 0.2s ease-in;
+        color: var(--lw-background-color);
+    }
+
+    .lw-sortable[handle-position="left"] .lw-sortable-item:before,
+    .lw-sortable[handle-position="left"] .lw-sortable-item:after {
+        left: calc(-1 * var(--lw-sortable-handle-size));
+    }
+
+    .lw-sortable[drag-mode="handle"]:not([disabled]) .lw-sortable-item:hover:before,
+    .lw-sortable[drag-mode="handle"]:not([disabled]) .lw-sortable-item:hover:after {
+        z-index: 9999999;
+    }
+
+    .lw-sortable[drag-mode="handle"]:not([disabled]) .lw-sortable-item:hover:before,
+    .lw-sortable[drag-mode="handle"]:not([disabled]) .lw-sortable-item:hover:after,
+    .lw-sortable[drag-mode="handle"][handle-visibility="visible"]:not([disabled]) .lw-sortable-item:before,
+    .lw-sortable[drag-mode="handle"][handle-visibility="visible"]:not([disabled]) .lw-sortable-item:after,
+    .lw-sortable[drag-mode="handle"] .lw-sortable-item.dragged:before,
+    .lw-sortable[drag-mode="handle"] .lw-sortable-item.dragged:after {
+        visibility: visible;
+        opacity: 0.5;
+    }
+
+    .lw-sortable .lw-sortable-item.placeholder:before,
+    .lw-sortable .lw-sortable-item.placeholder:after {
+        content: none;
+    }
+
+    .lw-sortable[drag-mode="handle"] .lw-sortable-item:before {
+        transform: rotate(-90deg);
+    }
+
+
+    .lw-sortable[drag-mode="handle"] .lw-sortable-item:after {
+        transform: rotate(90deg);
+    }
+
+    .lw-sortable[drag-mode="handle"][handle-position="bottom"] .lw-sortable-item:before,
+    .lw-sortable[drag-mode="handle"][handle-position="top"] .lw-sortable-item:before,
+    .lw-sortable[drag-mode="handle"][handle-position="bottom"] .lw-sortable-item:after,
+    .lw-sortable[drag-mode="handle"][handle-position="top"] .lw-sortable-item:after {
+        left: calc(50% - var(--lw-sortable-handle-size) / 2);
+        top: 100%;
+        align-items: center;
+        transform: none;
+    }
+
+    .lw-sortable[drag-mode="handle"][handle-position="bottom"] .lw-sortable-item:after {
+        align-items: flex-start;
+    }
+
+    .lw-sortable[drag-mode="handle"][handle-position="top"] .lw-sortable-item:before,
+    .lw-sortable[drag-mode="handle"][handle-position="top"] .lw-sortable-item:after {
+        top: calc(-1 * var(--lw-sortable-handle-size));
+    }
+
+    .lw-sortable[drag-mode="handle"][handle-position="top"] .lw-sortable-item:after {
+        align-items: flex-end;
+    }
+
+    /* --- Right To Left ---*/
+
+    .lw-sortable[right-to-left] .lw-sortable-items-parent,
+    .lw-sortable[right-to-left] .lw-column-panel-label {
+        direction: rtl;
+    }
+
+/* --- */

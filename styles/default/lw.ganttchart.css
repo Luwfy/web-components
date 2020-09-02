@@ -1,0 +1,1615 @@
+lw-gantt-chart {
+    display: block;
+    width: var(--lw-gantt-chart-default-width);
+    height: var(--lw-gantt-chart-default-height);
+    contain: content;
+}
+
+lw-gantt-chart>.lw-container, .lw-container.lw-gantt-chart {
+    overflow: hidden;
+}
+
+/* Hides the resize trigger */
+
+lw-gantt-chart>.lw-container:not(.hscroll), .lw-container.lw-gantt-chart:not(.hscroll) {
+    margin-bottom: -3px;
+}
+
+/* hide the unnecessary Resize Triggers */
+
+.lw-gantt-chart .lw-tree-splitter .lw-resize-trigger-container {
+    margin-bottom: -1px;
+}
+
+.lw-container .lw-resource-splitter>.lw-resize-trigger-container {
+    margin-bottom: -2px;
+}
+
+.lw-gantt-chart .lw-tree .lw-resize-trigger-container, .lw-gantt-chart .lw-task-splitter>.lw-resize-trigger-container {
+    display: none;
+}
+
+.lw-gantt-chart[dragged], .lw-gantt-chart[resized] {
+    touch-action: none;
+}
+
+.lw-gantt-chart[modal] {
+    pointer-events: none;
+}
+
+.lw-gantt-chart[dragged], .lw-gantt-chart[resized], .lw-gantt-chart .lw-timeline-task-label, .lw-gantt-chart .lw-timeline {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+lw-gantt-chart .lw-splitter,
+/* Necessary in order to set the default size of the Splitters inside the GanttChart */
+
+.lw-gantt-chart .lw-splitter {
+    /*width: auto;*/
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: initial;
+}
+
+/* --lw-gantt-chart-splitter-bar-fit-size in this case shouldn't be changed, because it is used for the collapse/expand animation ! */
+
+.lw-gantt-chart .lw-task-splitter {
+    --lw-gantt-chart-splitter-bar-fit-size: calc(var(--lw-gantt-chart-task-timeline-content-height) + 2 * var(--lw-gantt-chart-task-default-height));
+    --lw-splitter-bar-fit-size: var(--lw-gantt-chart-splitter-bar-fit-size);
+}
+
+.lw-gantt-chart .lw-splitter lw-splitter-bar.lw-element {
+    background: var(--lw-border);
+}
+
+.lw-gantt-chart lw-splitter:not([orientation="horizontal"]).transition-scroll-bars lw-splitter-bar {
+    transition: height 0.2s ease-in;
+}
+
+.lw-gantt-chart lw-splitter-item {
+    background-color: var(--lw-background);
+}
+
+.lw-gantt-chart lw-splitter lw-splitter-bar {
+    overflow: visible;
+}
+
+/* In order to pick the splitter bar's pseudo element from both sides to drag it z-index is necessary */
+
+.lw-gantt-chart lw-splitter lw-splitter-bar, .lw-gantt-chart lw-splitter .lw-splitter-bar-feedback {
+    z-index: 1;
+}
+
+.lw-gantt-chart lw-splitter lw-splitter-bar {
+    min-width: 1px;
+    width: 1px;
+    /*background-color: var(--lw-border);*/
+}
+
+.lw-gantt-chart .lw-task-splitter-item>.lw-container>.lw-content, .lw-gantt-chart .lw-resource-splitter-item>.lw-container>.lw-content {
+    overflow: hidden;
+    /* Can't use Grid, because Gantt uses JS height when it has animations and height is 'auto' */
+    /*display: grid;/*
+    /*grid-template-rows: auto 1fr;*/
+}
+
+.lw-gantt-chart .lw-task-splitter-item[show-header] .lw-task-splitter, .lw-gantt-chart .lw-resource-splitter-item[show-header] .lw-resource-splitter {
+    height: calc(100% - var(--lw-gantt-chart-header-height));
+}
+
+.lw-gantt-chart .lw-resource-splitter-item[show-header] .lw-timeline-view-cells .lw-timeline-view-cell, .lw-gantt-chart .lw-task-splitter-item[show-header] .lw-timeline-view-details .lw-timeline-view-cell, .lw-gantt-chart [show-header] .lw-task-tree-header, .lw-gantt-chart [show-header] .lw-resource-tree-header {
+    border-top: var(--lw-border-width) solid var(--lw-border);
+}
+
+.lw-gantt-chart .lw-task-panel-header, .lw-gantt-chart .lw-resource-panel-header {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: var(--lw-gantt-chart-header-height);
+    background: var(--lw-surface);
+}
+
+.lw-gantt-chart .lw-task-panel-header:empty, .lw-gantt-chart .lw-resource-panel-header:empty {
+    display: none;
+}
+
+.lw-gantt-chart .lw-splitter-bar-feedback[vertical] {
+    width: 1px;
+}
+
+.lw-gantt-chart lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar {
+    min-height: 5px;
+    height: 5px;
+    /*background-color: var(--lw-border);*/
+}
+
+.lw-gantt-chart .lw-splitter-bar-feedback[horizontal] {
+    height: 5px;
+}
+
+.lw-gantt-chart .lw-splitter>.lw-container>lw-splitter-bar>.lw-container {
+    transform: scaleX(5);
+    transform-origin: left;
+}
+
+.lw-gantt-chart .lw-splitter[orientation="horizontal"]>.lw-container>lw-splitter-bar>.lw-container {
+    transform: scaleY(2.5);
+    transform-origin: center;
+}
+
+.lw-gantt-chart lw-splitter-bar .lw-splitter-resize-button {
+    display: none;
+}
+
+.lw-gantt-chart .lw-timeline {
+    text-align: center;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+}
+
+.lw-gantt-chart[hide-timeline-header-details] .lw-timeline-view-details {
+    display: none;
+}
+
+.lw-gantt-chart[hide-timeline-header-details] .lw-task-splitter-item:not([show-header]) .lw-timeline-view-cell {
+    border-top: none;
+}
+
+.lw-gantt-chart[hide-timeline-header-details] .lw-timeline-view-cells, .lw-gantt-chart[hide-timeline-header-details] .lw-task-tree-header {
+    height: var(--lw-gantt-chart-task-default-height);
+}
+
+.lw-gantt-chart[hide-timeline-header-details] .lw-task-splitter {
+    --lw-gantt-chart-splitter-bar-fit-size: calc(var(--lw-gantt-chart-task-timeline-content-height) + var(--lw-gantt-chart-task-default-height));
+}
+
+.lw-gantt-chart .lw-timeline-view-details {
+    display: flex;
+    width: 100%;
+}
+
+.lw-gantt-chart .lw-timeline-view-details .lw-timeline-view-cell {
+    min-width: initial;
+}
+
+.lw-gantt-chart .lw-timeline-view-cells {
+    width: 100%;
+    /*display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));*/
+    /* Lags when DIV's are more than 1000 and 1fr calculates inaccurately*/
+    display: flex;
+}
+
+.lw-gantt-chart .lw-timeline-task:not(.milestone) {
+    min-width: var(--lw-gantt-chart-timeline-task-min-width);
+}
+
+.lw-gantt-chart .lw-resource-splitter .lw-timeline-view-cells .lw-timeline-view-cell {
+    border-top: none;
+}
+
+.lw-gantt-chart .lw-resource-splitter-item .lw-timeline-view-cells .lw-timeline-view-cell::after {
+    height: var(--lw-gantt-chart-resource-timeline-content-height);
+}
+
+.lw-gantt-chart .lw-timeline-view-cells .lw-timeline-view-cell::after {
+    content: '';
+    width: 100%;
+    background-color: transparent;
+    border-left: var(--lw-border-width) solid var(--lw-border);
+    border-right: var(--lw-border-width) solid transparent;
+    position: absolute;
+    top: calc(100% + var(--lw-border-width));
+    right: 0;
+    height: var(--lw-gantt-chart-task-timeline-content-height);
+}
+
+.lw-gantt-chart .lw-timeline-view-cells .lw-timeline-view-cell:last-of-type::after {
+    border-right-color: transparent;
+}
+
+.lw-gantt-chart .lw-timeline-view-cells .lw-timeline-view-cell[weekend]::after {
+    background: var(--lw-gantt-chart-timeline-weekend-color);
+}
+
+.lw-gantt-chart .lw-timeline-view-cells .lw-timeline-view-cell[nonworking]::after {
+    background: var(--lw-gantt-chart-timeline-nonworking-color);
+}
+
+.lw-gantt-chart .lw-timeline-view-cells, .lw-gantt-chart .lw-timeline-task-cell, .lw-gantt-chart .lw-timeline-resource-cell, .lw-gantt-chart .lw-timeline-view-details, .lw-gantt-chart .lw-timeline-task {
+    height: var(--lw-gantt-chart-task-default-height);
+}
+
+.lw-gantt-chart .lw-timeline-task-cell, .lw-gantt-chart .lw-timeline-resource-cell {
+    position: relative;
+}
+
+.lw-gantt-chart .lw-timeline-task:empty {
+    height: 0;
+}
+
+.lw-gantt-chart .lw-timeline-view-details:empty, .lw-gantt-chart .lw-timeline-view-cells:empty {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: var(--lw-surface);
+    color: var(--lw-surface-color);
+    box-shadow: var(--lw-gantt-chart-header-box-shadow);
+    border-bottom: var(--lw-border-width) solid var(--lw-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lw-gantt-chart .lw-timeline-view-details:empty::after, .lw-gantt-chart .lw-timeline-view-cells:empty::after {
+    content: var(--lw-gantt-chart-header-placeholder);
+}
+
+.lw-gantt-chart .lw-timeline-content:empty:after {
+    content: 'No Items';
+    height: var(--lw-gantt-chart-task-default-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    user-select: none;
+}
+
+/*.lw-gantt-chart .lw-timeline-view-cell:empty {
+       visibility: hidden;
+    }*/
+
+.lw-gantt-chart .lw-timeline-view-cell {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--lw-surface);
+    color: var(--lw-surface-color);
+    border-top: var(--lw-border-width) solid var(--lw-border);
+    border-bottom: var(--lw-border-width) solid var(--lw-border);
+    border-left: var(--lw-border-width) solid var(--lw-border);
+    border-right: var(--lw-border-width) solid var(--lw-border);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: var(--lw-gantt-chart-task-bar-fill-padding);
+    height: 100%;
+    border-bottom-color: transparent;
+    height: var(--lw-gantt-chart-task-default-height);
+    min-width: var(--lw-gantt-chart-timeline-cell-min-size);
+    width: var(--lw-gantt-chart-timeline-cell-size);
+}
+
+.lw-gantt-chart .lw-timeline-view-cell>div, .lw-gantt-chart .lw-task-tree-header>div, .lw-gantt-chart .lw-resource-tree-header>div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.lw-gantt-chart .lw-resource-timeline-view-cell {
+    background: var(--lw-gantt-chart-timeline-task-background-color);
+    bottom: 0;
+    border: none;
+}
+
+.lw-gantt-chart .lw-resource-timeline-view-cell::after {
+    position: absolute;
+    content: '';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: var(--lw-font-size);
+    font-family: var(--lw-font-family-icon);
+    box-sizing: border-box;
+}
+
+.lw-gantt-chart:not([resource-timeline-mode="histogram"]) .lw-resource-timeline-view-cell::after {
+    height: calc(var(--lw-gantt-chart-task-default-height) - var(--lw-gantt-chart-task-bar-fill-padding));
+    width: calc(var(--lw-gantt-chart-task-default-height) - var(--lw-gantt-chart-task-bar-fill-padding));
+    border-radius: 50%;
+    transform: scale(0) rotate(360deg);
+    background: var(--lw-success);
+    color: var(--lw-success-color);
+    line-height: 100%;
+}
+
+.lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell.hide-left-border::before, .lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell.hide-right-border::before {
+    width: 100%;
+    content: '';
+    position: absolute;
+    height: 100%;
+    bottom: 0;
+    z-index: 1;
+}
+
+.lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell.hide-left-border.warning::before, .lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell.hide-right-border.warning::before {
+    z-index: initial;
+    left: initial;
+}
+
+.lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell.hide-right-border {
+    border-right: none;
+}
+
+.lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell.hide-right-border::before {
+    border-right: 1px solid var(--lw-border);
+    left: 0;
+}
+
+.lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell.hide-left-border {
+    border-left: none;
+}
+
+.lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell.hide-left-border::before {
+    border-left: 1px solid var(--lw-border);
+    left: -1px;
+}
+
+.lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell::after {
+    width: 100%;
+    content: '-';
+    height: calc(var(--lw-gantt-chart-task-default-height) - 2px);
+    bottom: 0;
+}
+
+.lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell.warning[load]::after {
+    border-radius: initial;
+}
+
+.lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell {
+    /*border-color: var(--lw-primary);*/
+    border: var(--lw-border-width) solid var(--lw-primary);
+    border-bottom: none;
+    height: 0;
+    padding: 0;
+    background: rgba(var(--lw-primary-rgb), 0.15);
+}
+
+.lw-gantt-chart[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell[load] {
+    border-bottom: none;
+    /*border-left: none;
+        border-right: none;*/
+    border-top: var(--lw-border-width) solid var(--lw-primary);
+}
+
+.lw-gantt-chart .lw-resource-timeline-view-cell[load]::after {
+    content: attr(load);
+    transform: scale(1) rotate(0deg);
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-resource-splitter .lw-resource-timeline-view-cell::after {
+    transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-resource-timeline-view-cell[load]::after {
+    transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.6, 1), border-radius 0.2s cubic-bezier(0.4, 0.0, 0.6, 1), background 0.2s cubic-bezier(0.4, 0.0, 0.6, 1), color 0.2s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.lw-gantt-chart:not([animation="none"])[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell {
+    transition: height 0.2s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.lw-gantt-chart:not([animation="none"])[resource-timeline-mode="histogram"] .lw-resource-timeline-view-cell::after {
+    transition: background 0.2s cubic-bezier(0.4, 0.0, 0.6, 1), color 0.2s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.lw-gantt-chart .lw-resource-timeline-view-cell.warning[load]::after {
+    background: var(--lw-error);
+    color: var(--lw-error-color);
+    border-radius: 5px;
+}
+
+.lw-gantt-chart:not([resource-timeline-mode="histogram"]) .lw-timeline-resource-cell:first-of-type .lw-resource-timeline-view-cell {
+    border-top: none;
+}
+
+.lw-gantt-chart .lw-timeline-view-details .lw-timeline-view-cell {
+    border-top: none;
+}
+
+.lw-gantt-chart .lw-timeline-view-cell:first-of-type {
+    border-left: none;
+}
+
+.lw-gantt-chart .lw-timeline-view-cell:last-of-type {
+    border-right: none;
+}
+
+.lw-gantt-chart .lw-timeline-view-cells .lw-timeline-view-cell:not(:first-of-type), .lw-gantt-chart .lw-timeline-view-details .lw-timeline-view-cell:not(:first-of-type) {
+    border-left-color: transparent;
+}
+
+.lw-gantt-chart .lw-timeline-view-cells div {
+    border-bottom-color: var(--lw-border);
+}
+
+.lw-gantt-chart .lw-timeline-task-cell, .lw-gantt-chart .lw-timeline-resource-cell {
+    border-width: var(--lw-border-width);
+    border-style: solid;
+    border-top-color: var(--lw-border);
+    border-bottom-color: var(--lw-border);
+    border-left-color: var(--lw-border);
+    border-right-color: var(--lw-border);
+    background: var(--lw-gantt-chart-timeline-task-background-color);
+    border-left: none;
+    border-right: none;
+}
+
+/*.lw-gantt-chart .lw-resource-splitter .lw-timeline-task-cell {
+    border: none;
+}*/
+
+lw-gantt-chart:not([animation="none"]) .lw-timeline-task-cell, lw-gantt-chart:not([animation="none"]) .lw-timeline-resource-cell {
+    transition: background ease-in-out 0.28s;
+}
+
+.lw-gantt-chart .lw-timeline-task-cell[assigned], .lw-gantt-chart .lw-timeline-resource-cell[assigned] {
+    background: rgba(var(--lw-primary-rgb), .05);
+}
+
+.lw-gantt-chart .lw-timeline-task-cell[focus], .lw-gantt-chart .lw-timeline-resource-cell[focus] {
+    background: var(--lw-ui-state-focus);
+}
+
+.lw-gantt-chart .lw-timeline-task-cell[hover], .lw-gantt-chart .lw-timeline-resource-cell[hover] {
+    background: var(--lw-ui-state-hover);
+}
+
+.lw-gantt-chart .lw-timeline-task-cell[selected], .lw-gantt-chart .lw-timeline-resource-cell[selected] {
+    background: var(--lw-ui-state-selected);
+}
+
+.lw-gantt-chart .lw-timeline-task-cell:first-of-type, .lw-gantt-chart .lw-timeline-resource-cell:first-of-type {
+    border-left-color: var(--lw-border);
+}
+
+.lw-gantt-chart .lw-timeline-task-cell:last-of-type, .lw-gantt-chart .lw-timeline-resource-cell:last-of-type {
+    border-right-color: var(--lw-border);
+}
+
+.lw-gantt-chart .lw-timeline-task-cell, .lw-gantt-chart .lw-timeline-resource-cell {
+    border-top-color: transparent;
+}
+
+.lw-gantt-chart .lw-timeline-task-cells {
+    position: relative;
+    /*overflow: hidden;*/
+}
+
+.lw-gantt-chart .lw-timeline[task-bar-hovered], .lw-gantt-chart .lw-timeline[task-bar-hovered] .lw-timeline-task.project .lw-timeline-task-fill, .lw-gantt-chart .lw-timeline[task-bar-hovered] .lw-timeline-task.task .lw-timeline-task-fill {
+    cursor: e-resize;
+}
+
+.lw-gantt-chart .lw-timeline-task {
+    position: absolute;
+}
+
+.lw-gantt-chart .milestone {
+    height: var(--lw-gantt-chart-task-default-height);
+}
+
+.lw-gantt-chart:not([disable-task-drag]) .lw-timeline-task:not([disable-drag]).milestone .lw-task-container::after, .lw-gantt-chart:not([disable-task-drag]) .lw-timeline-task:not([disable-drag]).milestone .lw-task-container::before, .lw-gantt-chart:not([disable-task-drag]) .lw-timeline-task:not([disable-drag]) .lw-timeline-task-fill {
+    cursor: move;
+}
+
+.lw-gantt-chart[auto-schedule][auto-schedule-strict-mode] .lw-timeline-task.milestone[connected] .lw-task-container::after, .lw-gantt-chart[auto-schedule][auto-schedule-strict-mode] .lw-timeline-task.milestone[connected] .lw-task-container::before, .lw-gantt-chart[auto-schedule][auto-schedule-strict-mode] .lw-timeline:not([task-bar-hovered]) .lw-timeline-task[connected] .lw-timeline-task-fill {
+    cursor: initial;
+}
+
+.lw-gantt-chart .milestone .lw-task-container {
+    padding: 0;
+}
+
+.lw-gantt-chart .milestone .lw-task-container:before, .lw-gantt-chart .milestone .lw-task-container:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.lw-gantt-chart .milestone .lw-task-container:before {
+    left: calc(-1 * var(--lw-gantt-chart-task-default-height) /2);
+    border-right: calc(var(--lw-gantt-chart-task-default-height) /2) solid var(--lw-gantt-chart-milestone-color);
+    border-top: calc(var(--lw-gantt-chart-task-default-height) /2) solid transparent;
+    border-bottom: calc(var(--lw-gantt-chart-task-default-height) /2) solid transparent;
+}
+
+.lw-gantt-chart .milestone .lw-task-container:after {
+    top: 0;
+    border-left: calc(var(--lw-gantt-chart-task-default-height) /2) solid var(--lw-gantt-chart-milestone-color);
+    border-top: calc(var(--lw-gantt-chart-task-default-height) /2) solid transparent;
+    border-bottom: calc(var(--lw-gantt-chart-task-default-height) /2) solid transparent;
+}
+
+.lw-gantt-chart .lw-task-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: var(--lw-gantt-chart-task-bar-fill-padding);
+    padding-bottom: var(--lw-gantt-chart-task-bar-fill-padding);
+}
+
+.lw-gantt-chart .lw-task-connection-point {
+    position: absolute;
+    border: 1px solid #A9A9A9;
+    border-radius: 50%;
+    width: calc(var(--lw-gantt-chart-task-default-height) / 2);
+    height: calc(var(--lw-gantt-chart-task-default-height) / 2);
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    background-color: #DEDEDE;
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-task-connection-point {
+    transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.lw-gantt-chart .lw-task-connection-point.start {
+    left: calc(-1 * var(--lw-gantt-chart-task-default-height) / 1.5);
+}
+
+.lw-gantt-chart .lw-task-connection-point.end {
+    right: calc(-1 * var(--lw-gantt-chart-task-default-height) / 1.5);
+}
+
+.lw-gantt-chart .milestone .lw-task-connection-point.start {
+    left: calc(-1 * var(--lw-gantt-chart-task-default-height) * 1.15);
+}
+
+.lw-gantt-chart .milestone .lw-task-connection-point.end {
+    right: calc(-1 * var(--lw-gantt-chart-task-default-height) * 1.15);
+}
+
+.lw-gantt-chart:not([dragged]):not([resized]) .lw-timeline-task[selected] .lw-task-connection-point, .lw-gantt-chart:not([dragged]):not([resized]) .lw-timeline-task[hover] .lw-task-connection-point {
+    transform: translateY(-50%) scale(1);
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-timeline-task[selected] .lw-task-connection-point, .lw-gantt-chart:not([animation="none"]) .lw-timeline-task[hover] .lw-task-connection-point {
+    transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.lw-gantt-chart .lw-timeline-task-fill, .lw-gantt-chart .lw-timeline-task-progress {
+    width: 100%;
+    height: 100%;
+}
+
+.lw-gantt-chart .lw-timeline-task-progress {
+    transform-origin: left;
+    position: relative;
+}
+
+.lw-gantt-chart[show-progress-label] .lw-timeline-task-progress::after {
+    display: flex;
+    height: 100%;
+    content: attr(value);
+    align-items: center;
+    padding: var(--lw-gantt-chart-progress-label-padding);
+    color: var(--lw-gantt-chart-task-label-color);
+    font-weight: var(--lw-font-weight);
+    font-size: var(--lw-font-size);
+}
+
+.lw-gantt-chart[show-progress-label] [selected] .lw-timeline-task-progress::after {
+    color: var(--lw-gantt-chart-task-label-color-selected);
+}
+
+.lw-gantt-chart[show-progress-label] .project .lw-timeline-task-progress::after {
+    color: var(--lw-gantt-chart-project-label-color);
+}
+
+.lw-gantt-chart[show-progress-label] .project[selected] .lw-timeline-task-progress::after {
+    color: var(--lw-gantt-chart-project-label-color-selected);
+}
+
+.lw-gantt-chart .lw-timeline-task-fill {
+    border-radius: var(--lw-gantt-chart-task-fill-border-radius);
+    overflow: hidden;
+}
+
+.lw-gantt-chart .project .lw-timeline-task-fill {
+    background: var(--lw-gantt-chart-project-color);
+}
+
+.lw-gantt-chart .task .lw-timeline-task-fill {
+    background: var(--lw-gantt-chart-task-color);
+}
+
+.lw-gantt-chart .project .lw-timeline-task-progress {
+    background: var(--lw-gantt-chart-project-progress-color);
+}
+
+.lw-gantt-chart .task .lw-timeline-task-progress {
+    background: var(--lw-gantt-chart-task-progress-color);
+}
+
+.lw-gantt-chart .lw-timeline-task-label {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    padding: var(--lw-gantt-chart-task-label-padding);
+    transform: translate(-50%, -50%);
+    font-size: inherit;
+    font-family: inherit;
+    pointer-events: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.lw-gantt-chart .lw-timeline-task.task .lw-timeline-task-label {
+    color: var(--lw-gantt-chart-task-label-color);
+}
+
+.lw-gantt-chart .lw-timeline-task.task[selected] .lw-timeline-task-label {
+    color: var(--lw-gantt-chart-task-label-color-selected);
+}
+
+.lw-gantt-chart .lw-timeline-task.project .lw-timeline-task-label {
+    color: var(--lw-gantt-chart-project-label-color);
+}
+
+.lw-gantt-chart .lw-timeline-task.project[selected] .lw-timeline-task-label {
+    color: var(--lw-gantt-chart-project-label-color-selected);
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-timeline-task.task .lw-timeline-task-label, .lw-gantt-chart:not([animation="none"]) .lw-timeline-task.project .lw-timeline-task-label, .lw-gantt-chart:not([animation="none"])[show-progress-label] .lw-timeline-task-progress::after {
+    transition: color 0.2s ease-in-out;
+}
+
+.lw-gantt-chart .lw-timeline-task-progress-thumb {
+    position: absolute;
+    right: 0;
+    cursor: e-resize;
+    transform: scale(0);
+    transform-origin: left bottom;
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-timeline-task-progress-thumb {
+    transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-timeline-task[selected] .lw-timeline-task-progress-thumb {
+    transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.lw-gantt-chart .lw-timeline-task[selected] .lw-timeline-task-progress-thumb {
+    transform: scale(1);
+}
+
+.lw-gantt-chart .lw-timeline-task:not(.milestone)::after, .lw-gantt-chart .lw-timeline-task:not(.milestone) .lw-task-container::after {
+    content: '';
+    width: var(--lw-gantt-chart-timeline-task-resize-indicator-width);
+    height: var(--lw-gantt-chart-timeline-task-resize-indicator-width);
+    position: absolute;
+    top: calc(50% - var(--lw-gantt-chart-timeline-task-resize-indicator-width) / 2);
+    left: calc(100% - var(--lw-gantt-chart-timeline-task-resize-indicator-width) / 2);
+    background-color: var(--lw-gantt-chart-timeline-task-resize-indicator-color);
+    box-shadow: 0 0 0 1px var(--lw-gantt-chart-timeline-task-resize-indicator-border-color);
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.lw-gantt-chart .lw-timeline-content .lw-timeline-task:not(.milestone)[disable-resize]::after, .lw-gantt-chart .lw-timeline-content .lw-timeline-task:not(.milestone)[disable-resize] .lw-task-container::after {
+    content: none;
+}
+
+.lw-gantt-chart .lw-timeline-task:not(.milestone) .lw-task-container::after {
+    left: calc(-1 * var(--lw-gantt-chart-timeline-task-resize-indicator-width) / 2);
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-timeline-task::after, .lw-gantt-chart:not([animation="none"]) .lw-timeline-task .lw-task-container::after {
+    transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.lw-gantt-chart .lw-timeline-task[selected]:not([disable-resize])::after, .lw-gantt-chart .lw-timeline-task[selected]:not([disable-resize]) .lw-task-container::after {
+    transform: scale(1);
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-timeline-task[selected]::after, .lw-gantt-chart:not([animation="none"]) .lw-timeline-task[selected] .lw-task-container::after {
+    transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.lw-gantt-chart .lw-timeline-task[selected]:not(.milestone) .lw-timeline-task-fill {
+    box-shadow: var(--lw-elevation-2);
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-timeline-task .lw-timeline-task-fill {
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.lw-gantt-chart .lw-timeline-task .lw-timeline-task-progress-thumb:after {
+    content: "";
+    border-right: var(--lw-gantt-chart-timeline-task-progress-thumb-size) solid transparent;
+    border-left: var(--lw-gantt-chart-timeline-task-progress-thumb-size) solid transparent;
+    border-bottom: var(--lw-gantt-chart-timeline-task-progress-thumb-size) solid var(--lw-gantt-chart-task-thumb-color);
+    box-shadow: 0 1px 0 0 var(--lw-gantt-chart-task-thumb-color);
+    position: absolute;
+    bottom: calc(-1 * var(--lw-gantt-chart-task-bar-fill-padding) / 2);
+    left: calc(-1 * var(--lw-gantt-chart-timeline-task-progress-thumb-size));
+    z-index: 1;
+}
+
+.lw-gantt-chart .lw-task-bar-limitter-min, .lw-gantt-chart .lw-task-bar-limitter-max {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    border-style: dashed;
+    border-width: 1px;
+}
+
+.lw-gantt-chart .lw-task-bar-limitter-min {
+    border-color: lightgreen;
+}
+
+.lw-gantt-chart .lw-task-bar-limitter-max {
+    border-color: red;
+}
+
+.lw-gantt-chart .lw-task-bar-limitter-min-date, .lw-gantt-chart .lw-task-bar-limitter-max-date {
+    position: absolute;
+    top: 0;
+    left: var(--lw-border-width);
+    height: calc(100% - 2 * var(--lw-border-width));
+    background-image: linear-gradient(135deg, rgba(255, 0, 0, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 0, 0, 0.2) 50%, rgba(255, 0, 0, 0.2) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+    border: 1px solid white;
+}
+
+.lw-gantt-chart .lw-task-bar-limitter-max-date {
+    left: inherit;
+    right: 0;
+}
+
+/*.lw-gantt-chart .lw-task-bar-limitter-min-date:after,
+        .lw-gantt-chart .lw-task-bar-limitter-max-date:after {
+            content: '\e833';
+            position: absolute;
+            font-family: 'lw-icons';
+            font-weight: 300;
+            color: rgba(255,0,0,0.5);
+            font-size: var(--lw-gantt-chart-task-default-height);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }*/
+
+.lw-gantt-chart lw-scroll-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: initial;
+}
+
+/*.lw-gantt-chart .lw-scroll-viewer-content-container {
+        vertical-align: top;
+        padding: unset;
+    }*/
+
+.lw-gantt-chart .lw-task-connection-feedback {
+    position: absolute;
+    top: 50%;
+    transform-origin: left;
+    border: var(--lw-gantt-chart-timeline-task-connection-feedback-width) var(--lw-gantt-chart-timeline-task-connection-feedback-style) var(--lw-gantt-chart-timeline-task-connection-feedback-color);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.lw-gantt-chart .lw-task-connection[arrow-direction]:before, .lw-gantt-chart .lw-task-connection-feedback:before {
+    content: '';
+    position: absolute;
+    left: calc(100% - var(--lw-gantt-chart-timeline-task-connection-arrow-width) + 1px);
+    top: calc(-1 * var(--lw-gantt-chart-timeline-task-connection-arrow-width));
+    border-top: var(--lw-gantt-chart-timeline-task-connection-arrow-width) var(--lw-gantt-chart-timeline-task-connection-arrow-type) transparent;
+    border-bottom: var(--lw-gantt-chart-timeline-task-connection-arrow-width) var(--lw-gantt-chart-timeline-task-connection-arrow-type) transparent;
+    border-left: var(--lw-gantt-chart-timeline-task-connection-arrow-width) var(--lw-gantt-chart-timeline-task-connection-arrow-type) var(--lw-gantt-chart-timeline-task-connection-feedback-color);
+}
+
+.lw-gantt-chart .lw-task-connection[arrow-direction="left"]:before {
+    left: calc(-1 * var(--lw-gantt-chart-timeline-task-connection-arrow-width) /2 + 1px);
+    border-right: var(--lw-gantt-chart-timeline-task-connection-arrow-width) var(--lw-gantt-chart-timeline-task-connection-arrow-type) var(--lw-gantt-chart-timeline-task-connection-feedback-color);
+    border-left: none;
+}
+
+.lw-gantt-chart .lw-timeline-task[connection-point="end"] .lw-task-connection-feedback {
+    left: 100%;
+}
+
+.lw-gantt-chart .milestone .lw-task-connection-feedback {
+    left: calc( -1 * var(--lw-gantt-chart-task-default-height) /2);
+}
+
+.lw-gantt-chart .milestone[connection-point="end"] .lw-task-connection-feedback {
+    left: calc(100% + var(--lw-gantt-chart-task-default-height) /2);
+}
+
+.lw-gantt-chart .lw-task-connection {
+    position: absolute;
+    border: var(--lw-gantt-chart-timeline-task-connection-width) var(--lw-gantt-chart-timeline-task-connection-style) var(--lw-gantt-chart-timeline-task-connection-color);
+    top: 50%;
+}
+
+.lw-gantt-chart .lw-task-connection[hover] {
+    border-color: var(--lw-gantt-chart-timeline-task-connection-color-hover);
+    box-shadow: 0 0 2.5px 0 var(--lw-gantt-chart-timeline-task-connection-color);
+}
+
+.lw-gantt-chart .lw-task-connection[hover]::before {
+    border-left-color: var(--lw-gantt-chart-timeline-task-connection-color-hover);
+    border-right-color: var(--lw-gantt-chart-timeline-task-connection-color-hover);
+}
+
+.lw-gantt-chart .lw-task-connection::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: inherit;
+    position: absolute;
+    border-color: transparent;
+    border-width: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lw-gantt-chart[connecting-task] .lw-task-connection {
+    pointer-events: none;
+}
+
+.lw-gantt-chart .lw-timeline-task-cell.lw-visibility-hidden, .lw-gantt-chart .lw-timeline-resource-cell.lw-visibility-hidden {
+    height: 0;
+    border: 0;
+}
+
+/* ---- Timeline Animation Container ----- */
+
+.lw-gantt-chart .lw-timeline-animation-container {
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    height: calc(100% - 2 * var(--lw-gantt-chart-task-default-height));
+    overflow: hidden;
+    transform: scale(1);
+}
+
+.lw-gantt-chart[hide-timeline-header-details] .lw-timeline-animation-container {
+    height: calc(100% - var(--lw-gantt-chart-task-default-height));
+}
+
+.lw-gantt-chart .lw-timeline-animation-container.lw-visibility-hidden {
+    transform: scale(0);
+}
+
+.lw-gantt-chart .lw-timeline-animation-inner-container {
+    width: 100%;
+    position: absolute;
+}
+
+.lw-gantt-chart[animation="none"] .lw-timeline-animation-container {
+    display: none;
+}
+
+.lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task.milestone .lw-task-container {
+    width: 0;
+}
+
+.lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task {
+    position: initial;
+}
+
+.lw-gantt-chart .lw-timeline-animation-inner-container>div {
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: height 0.2s ease-in, transform 0.2s ease-in;
+}
+
+.lw-gantt-chart .lw-timeline-animation-inner-container>div.animate {
+    transform: scaleY(0);
+    height: 0;
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-timeline-view-cells:not([no-transition]) .lw-timeline-view-cell::after {
+    transition: height 0.2s ease-in;
+}
+
+.lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task::after, .lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[selected]::before, .lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task::before {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    border-top: var(--lw-border-width) solid var(--lw-border);
+    top: initial;
+    left: 0;
+    height: 0;
+    box-shadow: none;
+    transform: translateY(-1px);
+}
+
+.lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[selected]::after, .lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[assigned]::after {
+    transform: scale(0);
+}
+
+.lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task::before {
+    transition: background ease-in-out 0.28s;
+    background: var(--lw-gantt-chart-timeline-task-background-color);
+}
+
+.lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[assigned]::before, .lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[selected]::before, .lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[focus]::before, .lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[hover]::before {
+    height: var(--lw-gantt-chart-task-default-height);
+    box-sizing: border-box;
+}
+
+.lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[assigned]::before {
+    background: rgba(var(--lw-primary-rgb), .05);
+}
+
+.lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[focus]::before {
+    background: var(--lw-ui-state-focus);
+}
+
+.lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[hover]::before {
+    background: var(--lw-ui-state-hover);
+}
+
+.lw-gantt-chart .lw-timeline-animation-container .lw-timeline-task[selected]::before {
+    background: var(--lw-ui-state-selected);
+}
+
+/*  ---- ----*/
+
+/* Task Tree Section */
+
+.lw-gantt-chart .lw-tree-splitter {
+    --lw-border-top-left-radius: 0;
+    --lw-border-top-right-radius: 0;
+    --lw-border-bottom-left-radius: 0;
+    --lw-border-bottom-right-radius: 0;
+}
+
+.lw-gantt-chart .lw-tree-splitter {
+    --lw-splitter-bar-fit-size: var(--lw-gantt-chart-task-tree-splitter-bar-fit-size);
+}
+
+.lw-gantt-chart .lw-tree-splitter lw-splitter-bar {
+    --lw-splitter-bar-background: var(--lw-border);
+}
+
+.lw-gantt-chart .lw-resource-splitter .lw-tree-splitter {
+    --lw-splitter-bar-fit-size: var(--lw-gantt-chart-resource-tree-splitter-bar-fit-size);
+}
+
+.lw-gantt-chart .lw-resource-splitter {
+    --lw-splitter-bar-fit-size: calc(var(--lw-gantt-chart-resource-timeline-content-height) + var(--lw-gantt-chart-task-default-height));
+}
+
+.lw-gantt-chart .lw-tree {
+    --lw-tree-default-width: auto;
+    --lw-tree-default-height: 100%;
+    --lw-tree-item-label-height: calc(var(--lw-gantt-chart-task-default-height) - var(--lw-border-width));
+    --lw-tree-item-vertical-offset: 0;
+    --lw-tree-item-horizontal-offset: 0;
+    --lw-item-border-width: 0;
+    --lw-item-border-top-left-radius: 0;
+    --lw-item-border-top-right-radius: 0;
+    --lw-item-border-bottom-left-radius: 0;
+    --lw-item-border-bottom-right-radius: 0;
+    --lw-background: transparent;
+    border: none;
+}
+
+.lw-gantt-chart lw-tree .lw-tree-item-label-container {
+    height: var(--lw-gantt-chart-task-default-height);
+}
+
+.lw-gantt-chart lw-tree-item:not([selected]), .lw-gantt-chart lw-tree[selection-mode="checkBox"] lw-tree-item, .lw-gantt-chart lw-tree[selection-mode="radioButton"] lw-tree-item, .lw-gantt-chart lw-tree-items-group:not([selected])>.lw-tree-item-label-container, .lw-gantt-chart lw-tree[selection-mode="checkBox"] lw-tree-items-group>.lw-tree-item-label-container, .lw-gantt-chart lw-tree[selection-mode="radioButton"] lw-tree-items-group>.lw-tree-item-label-container {
+    border-radius: 0;
+}
+
+.lw-gantt-chart lw-tree:not([selection-display-mode="label"]) lw-tree-items-group>.lw-tree-item-label-container, .lw-gantt-chart .lw-tree-item-label-container, .lw-gantt-chart .lw-task-label-container, .lw-gantt-chart .lw-resource-item-label-container, .lw-gantt-chart .lw-resource-label-container {
+    border-bottom-width: var(--lw-border-width);
+    border-bottom-style: solid;
+    border-top-color: var(--lw-border);
+    border-bottom-color: var(--lw-border);
+}
+
+.lw-gantt-chart lw-tree:not([selection-display-mode="label"]):not([selection-mode="checkBox"]):not([selection-mode="radioButton"]) lw-tree-item[selected], .lw-gantt-chart lw-tree:not([selection-display-mode="label"]):not([selection-mode="checkBox"]):not([selection-mode="radioButton"]) lw-tree-items-group[selected]>.lw-tree-item-label-container {
+    border-top-color: var(--lw-border);
+    border-bottom-color: var(--lw-border);
+}
+
+.lw-gantt-chart .lw-task-tree-header, .lw-gantt-chart .lw-resource-tree-header {
+    height: calc(2 * var(--lw-gantt-chart-task-default-height));
+    padding: var(--lw-gantt-chart-task-bar-fill-padding);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: var(--lw-border-width) solid var(--lw-border);
+    border-left: none;
+    border-right: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: var(--lw-surface);
+    color: var(--lw-surface-color);
+    box-shadow: var(--lw-gantt-chart-header-box-shadow);
+}
+
+.lw-gantt-chart .lw-task-tree-header::after, .lw-gantt-chart .lw-resource-tree-header::after {
+    content: "";
+    position: absolute;
+    right: 2.5%;
+    content: var(--lw-icon-arrow-down);
+    font-family: var(--lw-font-family-icon);
+    font-size: var( --lw-font-size);
+    transform: rotate(0deg) scale(0);
+}
+
+.lw-gantt-chart .lw-splitter-item[sort] .lw-task-tree-content, .lw-gantt-chart .lw-splitter-item[sort] .lw-resource-tree-content {
+    background: var(--lw-grid-cell-background-sort);
+    color: var(--lw-grid-cell-color-sort);
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-task-tree-header::after, .lw-gantt-chart .lw-resource-tree-header::after {
+    transition: transform .2s ease-out, opacity .2s ease-out;
+}
+
+.lw-gantt-chart .lw-splitter-item[sort="asc"] .lw-task-tree-header::after, .lw-gantt-chart .lw-splitter-item[sort="asc"] .lw-resource-tree-header::after {
+    transform: rotate(180deg) scale(1);
+}
+
+.lw-gantt-chart .lw-splitter-item[sort="desc"] .lw-task-tree-header::after, .lw-gantt-chart .lw-splitter-item[sort="desc"] .lw-resource-tree-header::after {
+    transform: rotate(0) scale(1);
+}
+
+.lw-gantt-chart[sortable] .lw-task-tree-header, .lw-gantt-chart[sortable] .lw-resource-tree-header {
+    padding: 0 var(--lw-font-size) 0 var(--lw-font-size);
+}
+
+.lw-gantt-chart .lw-resource-tree-header {
+    height: var(--lw-gantt-chart-task-default-height);
+}
+
+.lw-gantt-chart .lw-task-tree-header:empty, .lw-gantt-chart .lw-resource-tree-header:empty {
+    padding: 0;
+}
+
+.lw-gantt-chart .lw-timeline-header {
+    box-shadow: var(--lw-gantt-chart-header-box-shadow);
+    position: relative;
+}
+
+.lw-gantt-chart .lw-task-tree-content, .lw-gantt-chart .lw-resource-tree-content {
+    height: calc(100% - 2 * var(--lw-gantt-chart-task-default-height));
+    overflow: hidden;
+}
+
+.lw-gantt-chart[hide-timeline-header-details] .lw-task-tree-content {
+    height: calc(100% - var(--lw-gantt-chart-task-default-height));
+}
+
+.lw-gantt-chart .lw-resource-tree-content {
+    height: calc(100% - var(--lw-gantt-chart-task-default-height));
+}
+
+/*.lw-gantt-chart .lw-tree-splitter lw-splitter-item .lw-content,*/
+
+.lw-gantt-chart .lw-tree-splitter lw-splitter-item>.lw-container>.lw-content {
+    padding: 0;
+    overflow: hidden;
+}
+
+/*.lw-gantt-chart .lw-tree-splitter-item {
+        --lw-splitter-item-size: 20%;
+    }*/
+
+.lw-gantt-chart .lw-task-label-container, .lw-gantt-chart .lw-resource-label-container, .lw-gantt-chart .lw-task-connection-point, .lw-gantt-chart .lw-task-connection, .lw-gantt-chart .lw-timeline-task[disable-drag], .lw-gantt-chart:not([disable-task-progress-change]) .lw-timeline-task .lw-timeline-task-progress-thumb:after {
+    cursor: pointer;
+}
+
+.lw-gantt-chart .lw-task-label-container, .lw-gantt-chart .lw-resource-label-container {
+    height: var(--lw-gantt-chart-task-default-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.lw-gantt-chart .lw-task-label-container>span, .lw-gantt-chart .lw-resource-label-container>span {
+    white-space: inherit;
+    overflow: inherit;
+    text-overflow: inherit;
+}
+
+.lw-gantt-chart .lw-task-label-container[assigned], .lw-gantt-chart .lw-resource-label-container[assigned] {
+    /*border-color: rgba(var(--lw-primary-rgb), .05);*/
+    background-color: rgba(var(--lw-primary-rgb), .05);
+    color: rgba(var(--lw-primary), .5);
+}
+
+.lw-gantt-chart .lw-task-label-container[focus], .lw-gantt-chart .lw-resource-label-container[focus] {
+    border-color: var(--lw-ui-state-border-focus);
+    background-color: var(--lw-ui-state-focus);
+    color: var(--lw-ui-state-color-focus);
+}
+
+.lw-gantt-chart .lw-task-label-container[hover], .lw-gantt-chart .lw-resource-label-container[hover] {
+    border-color: var(--lw-ui-state-border-hover);
+    background-color: var(--lw-ui-state-hover);
+    color: var(--lw-ui-state-color-hover);
+}
+
+.lw-gantt-chart .lw-task-label-container[selected], .lw-gantt-chart .lw-resource-label-container[selected] {
+    border-color: var(--lw-ui-state-border-selected);
+    background-color: var(--lw-ui-state-selected);
+    color: var(--lw-ui-state-color-selected);
+}
+
+.lw-gantt-chart:not([animation="none"]) lw-tree:not([selection-display-mode="label"]) lw-tree-item, .lw-gantt-chart:not([animation="none"]) lw-tree:not([selection-display-mode="label"]) lw-tree-items-group>.lw-tree-item-label-container, .lw-gantt-chart:not([animation="none"]) .lw-task-label-container, .lw-gantt-chart:not([animation="none"]) .lw-resource-label-container {
+    transition: color ease-in-out 0.28s, border-color ease-in-out 0.28s, background ease-in-out 0.28s;
+}
+
+.lw-gantt-chart .lw-tree-splitter .lw-task-drop-down {
+    transform: scaleY(1);
+    transform-origin: top;
+    overflow: hidden;
+}
+
+.lw-gantt-chart .lw-tree-splitter .lw-task-drop-down.lw-visibility-hidden {
+    margin-top: 0;
+    height: 0;
+    transform: scaleY(0);
+}
+
+.lw-gantt-chart:not([animation="none"]) .lw-tree-splitter .lw-task-drop-down {
+    transition: height 0.2s ease-in, transform 0.2s ease-in, visibility 0.2s ease-in;
+}
+
+.lw-gantt-chart .lw-tree-splitter lw-tree-item[assigned], .lw-gantt-chart .lw-tree-splitter lw-tree-items-group[assigned]>.lw-tree-item-label-container {
+    /*border-color: rgba(var(--lw-primary-rgb), .05);*/
+    background-color: rgba(var(--lw-primary-rgb), .05);
+    color: rgba(var(--lw-primary), .5);
+}
+
+/* ScrollBars  */
+
+.lw-gantt-chart lw-splitter-item.lw-timeline-splitter-item>.lw-container, .lw-gantt-chart lw-splitter-item.lw-timeline-splitter-item>.lw-container>.lw-content {
+    overflow: hidden;
+}
+
+.lw-gantt-chart>.lw-container, .lw-gantt-chart.lw-container {
+    position: relative;
+}
+
+.lw-gantt-chart>.lw-container.hscroll>lw-splitter, .lw-gantt-chart.lw-container.hscroll>lw-splitter {
+    height: calc(100% - var(--lw-scroll-bar-size));
+}
+
+.lw-gantt-chart>.lw-container.vscroll .lw-timeline, .lw-gantt-chart.lw-container.vscroll .lw-timeline {
+    width: calc(100% - var(--lw-scroll-bar-size));
+}
+
+/*.lw-gantt-chart .lw-task-splitter.vscroll .lw-timeline,
+.lw-gantt-chart .lw-resource-splitter.vscroll .lw-timeline {
+    width: calc(100% - var(--lw-scroll-bar-size));
+}*/
+
+.lw-gantt-chart .lw-timeline-scroll-bar {
+    overflow: visible;
+    position: relative;
+    /*bottom: 0;*/
+    height: calc(var(--lw-scroll-bar-size));
+    width: 100%;
+}
+
+.lw-gantt-chart .lw-timeline-scroll-bar.bottom-corner {
+    width: calc(100% - var(--lw-scroll-bar-size));
+}
+
+/* Scroll bar bottom-conrner element */
+
+.lw-gantt-chart .lw-timeline-scroll-bar::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: var(--lw-scroll-bar-size);
+    background: var(--lw-scroll-bar-background);
+    left: 100%;
+    top: 0;
+    /*left:0;*/
+}
+
+.lw-gantt-chart .lw-timeline-scroll-bar[orientation="vertical"] {
+    position: absolute;
+    right: 0;
+    top: calc(2 * var(--lw-gantt-chart-task-default-height));
+    height: calc(100% - 2 * var(--lw-gantt-chart-task-default-height));
+    width: calc(var(--lw-scroll-bar-size));
+}
+
+.lw-gantt-chart[hide-timeline-header-details] .lw-timeline-scroll-bar[orientation="vertical"] {
+    top: var(--lw-gantt-chart-task-default-height);
+    height: calc(100% - var(--lw-gantt-chart-task-default-height));
+}
+
+.lw-gantt-chart .lw-timeline-scroll-bar.lw-resource-scroll-bar {
+    height: calc(100% - var(--lw-gantt-chart-task-default-height));
+    top: var(--lw-gantt-chart-task-default-height);
+    z-index: 1;
+}
+
+.lw-gantt-chart .lw-timeline-scroll-bar[orientation="vertical"]::before {
+    position: absolute;
+    width: 100%;
+    background: var(--lw-scroll-bar-background);
+    content: '';
+    left: 0;
+    top: calc(-2 * var(--lw-gantt-chart-task-default-height));
+    height: calc(2 * var(--lw-gantt-chart-task-default-height));
+    border: 1px solid var(--lw-border);
+    border-top: none;
+    box-sizing: border-box;
+}
+
+.lw-gantt-chart[hide-timeline-header-details] .lw-timeline-scroll-bar[orientation="vertical"]::before {
+    top: calc(-1 * var(--lw-gantt-chart-task-default-height));
+    height: var(--lw-gantt-chart-task-default-height);
+}
+
+.lw-gantt-chart .lw-timeline-scroll-bar.lw-resource-scroll-bar[orientation="vertical"]::before {
+    top: calc(-1 * var(--lw-gantt-chart-task-default-height));
+    height: var(--lw-gantt-chart-task-default-height);
+}
+
+.lw-gantt-chart .lw-timeline-scroll-bar.lw-resource-scroll-bar[orientation="vertical"][disabled]::after {
+    left: 0;
+    height: 100%;
+}
+
+.lw-gantt-chart:not([inverted]) .lw-timeline-scroll-bar[orientation="vertical"]::before {
+    border-right: none;
+}
+
+.lw-gantt-chart[inverted] .lw-timeline-scroll-bar[orientation="vertical"]::before {
+    border-left: none;
+}
+
+.lw-gantt-chart[inverted] .lw-timeline-scroll-bar[orientation="vertical"] {
+    right: initial;
+}
+
+.lw-gantt-chart[inverted]>.lw-container.vscroll .lw-timeline, .lw-gantt-chart[inverted].lw-container.vscroll .lw-timeline {
+    margin-left: var(--lw-scroll-bar-size);
+}
+
+.lw-gantt-chart[inverted]>.lw-container.vscroll .lw-timeline-scroll-bar:not([orientation="vertical"]), .lw-gantt-chart[inverted].lw-container.vscroll .lw-timeline-scroll-bar:not([orientation="vertical"]) {
+    left: calc(var(--lw-scroll-bar-size));
+}
+
+.lw-gantt-chart[inverted] .lw-timeline-scroll-bar::after {
+    width: calc(var( --lw-scroll-bar-size));
+    left: calc(-1 * var(--lw-scroll-bar-size));
+}
+
+.lw-gantt-chart .lw-timeline-content {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: calc(100% - 2 * var(--lw-gantt-chart-task-default-height));
+    transition: max-height 0.2s ease-in, min-height 0.2s ease-in, height 0.2s ease-in;
+}
+
+.lw-gantt-chart[hide-timeline-header-details] .lw-timeline-content {
+    height: calc(100% - var(--lw-gantt-chart-task-default-height));
+}
+
+/* The Timeline needs some height when all tasks are hidden */
+
+.lw-gantt-chart .lw-timeline-cells-container:empty {
+    min-height: 1px;
+}
+
+.lw-gantt-chart .lw-resource-splitter .lw-timeline-content {
+    height: calc(100% - var(--lw-gantt-chart-task-default-height));
+}
+
+.lw-gantt-chart .lw-timeline-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Fixes a strange issue in FF where the Timeline Header goes outside the element when scrolling */
+
+/* @-moz-document url-prefix() {
+    .lw-gantt-chart .lw-task-splitter-item .lw-timeline-container {
+        top: 0;
+    }
+  } */
+
+/* Popup Windows */
+
+.lw-connection-popup-window, .lw-confirm-popup-window, .lw-task-popup-window {
+    --lw-window-header-height: var(--lw-gantt-chart-popup-window-header-height);
+    --lw-window-footer-height: var(--lw-gantt-chart-popup-window-footer-height);
+    --lw-window-header-footer-padding: 10px;
+    --lw-window-default-height: auto;
+    --lw-window-header-background: transparent;
+}
+
+.lw-task-popup-window {
+    --lw-window-default-width: var(--lw-gantt-chart-task-popup-window-default-width);
+}
+
+.lw-connection-popup-window {
+    --lw-window-default-width: var(--lw-gantt-chart-connection-popup-window-default-width);
+}
+
+.lw-confirm-popup-window {
+    --lw-window-default-width: var(--lw-gantt-chart-confirm-popup-window-default-width);
+}
+
+.lw-connection-popup-window .lw-content-container>.lw-content, .lw-confirm-popup-window .lw-content-container>.lw-content {
+    justify-content: center;
+    max-height: calc(var(--lw-gantt-chart-task-timeline-content-height) - var(--lw-window-header-height));
+}
+
+.lw-gantt-chart-popup-window .lw-content-container>.lw-footer lw-button {
+    width: 100%;
+    height: 100%;
+    --lw-button-padding: 0.2rem;
+}
+
+.lw-gantt-chart-popup-window .lw-popup-window-button.ok {
+    grid-area: buttonOk;
+}
+
+.lw-gantt-chart-popup-window .lw-popup-window-button.cancel {
+    grid-area: buttonCancel;
+}
+
+.lw-gantt-chart-popup-window .lw-popup-window-button.delete {
+    grid-area: buttonDelete;
+}
+
+.lw-gantt-chart-popup-window .lw-content-container>.lw-footer {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    grid-column-gap: 2%;
+    justify-content: center;
+    align-items: center;
+    grid-template-areas: "buttonOk buttonCancel";
+}
+
+/* Safari specific. There's an issue with align-items when display: grid */
+
+@media not all and (min-resolution:.001dpcm) {
+    @media {
+        .lw-connection-popup-window .lw-content-container>.lw-footer, .lw-confirm-popup-window .lw-content-container>.lw-footer, .lw-task-popup-window .lw-content-container>.lw-footer {
+            align-content: start;
+        }
+    }
+}
+
+.lw-window.lw-task-popup-window .lw-content-container>.lw-footer {
+    grid-template-columns: 23% 23% 23% 23%;
+    grid-column-gap: 2%;
+    grid-template-areas: "buttonOk buttonCancel . buttonDelete";
+}
+
+.lw-window.lw-task-popup-window .lw-content-container>.lw-content {
+    display: grid;
+    grid-row-gap: 10px;
+}
+
+.lw-task-popup-window .lw-content-container>.lw-footer .lw-icon {
+    position: relative;
+    height: 100%;
+    font-family: var(--lw-font-family-icon);
+    font-size: 18px;
+    margin-right: 2.5px;
+}
+
+.lw-task-popup-window .lw-popup-window-button.ok .lw-icon::after {
+    content: var(--lw-icon-check);
+}
+
+.lw-gantt-chart-popup-window .lw-popup-window-button.cancel .lw-icon::after {
+    content: var(--lw-icon-cancel);
+}
+
+.lw-gantt-chart-popup-window .lw-popup-window-button.delete .lw-icon::after {
+    content: var(--lw-icon-delete);
+}
+
+.lw-gantt-chart-popup-window .lw-gantt-chart-popup-window-editor {
+    display: grid;
+    grid-row-gap: 5px;
+}
+
+/*.lw-gantt-chart-popup-window .lw-gantt-chart-popup-window-editor lw-input {
+        --lw-text-box-default-width: 100%;
+    }*/
+
+.lw-gantt-chart-popup-window .lw-gantt-chart-popup-window-editor .lw-drop-down-list, .lw-gantt-chart-popup-window .lw-gantt-chart-popup-window-editor .lw-date-time-picker {
+    width: 100%;
+}
+
+.lw-gantt-chart-popup-window .lw-gantt-chart-popup-window-editor>b {
+    text-align: center;
+}
+
+.lw-connection-popup-window .lw-gantt-chart-popup-window-editor, .lw-confirm-popup-window .lw-gantt-chart-popup-window-editor {
+    justify-items: center;
+}
+
+/* --- */
+
+.lw-gantt-chart-popup-window .lw-gantt-chart-popup-window-editor input {
+    height: var(--lw-editor-height);
+}
+
+.lw-gantt-chart-popup-window-editor .lw-input[disabled] {
+    opacity: 0.55;
+    cursor: default;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.lw-gantt-chart>.lw-container>.lw-popup-window-modal, .lw-gantt-chart.lw-container>.lw-popup-window-modal {
+    position: absolute;
+    opacity: 0.5;
+    background-color: var(--lw-disabled);
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: calc(var(--lw-editor-drop-down-z-index) - 1);
+}
+
+/* --- Right To Left --- */
+
+.lw-gantt-chart[right-to-left] .lw-timeline-view-cell, .lw-gantt-chart[right-to-left] .lw-timeline-task-label, .lw-gantt-chart[right-to-left] .lw-task-tree-header, .lw-gantt-chart[right-to-left] .lw-resource-tree-header {
+    direction: rtl;
+}
+
+.lw-gantt-chart[right-to-left] .milestone .lw-task-container {
+    direction: initial;
+}
+
+.lw-task-popup-window[right-to-left]>.lw-container>.lw-footer .lw-icon {
+    margin-left: 2.5px;
+}
+
+.lw-gantt-chart[right-to-left] .lw-timeline-view-cell:last-of-type {
+    border-right: var(--lw-border-width) solid var(--lw-border)
+}
+
+.lw-gantt-chart[right-to-left] .lw-timeline-view-cell:first-of-type {
+    border-right: none;
+    border-left: var(--lw-border-width) solid transparent;
+}
+
+.lw-gantt-chart[right-to-left] .lw-task-connection-point.end {
+    left: calc(-1 * var(--lw-gantt-chart-task-default-height) / 1.5);
+    right: initial;
+}
+
+.lw-gantt-chart[right-to-left] .lw-task-connection-point.start {
+    right: calc(-1 * var(--lw-gantt-chart-task-default-height) / 1.5);
+    left: initial;
+}
+
+.lw-gantt-chart[right-to-left] .milestone .lw-task-connection-point.end {
+    left: calc(-1 * var(--lw-gantt-chart-task-default-height) * 1.15);
+    right: initial;
+}
+
+.lw-gantt-chart[right-to-left] .milestone .lw-task-connection-point.start {
+    right: calc(-1 * var(--lw-gantt-chart-task-default-height) * 1.15);
+    left: initial;
+}
+
+.lw-gantt-chart[right-to-left] .lw-timeline-task[connection-point="end"] .lw-task-connection-feedback {
+    left: initial;
+    right: 100%;
+}
+
+.lw-gantt-chart[right-to-left] .lw-task-connection-feedback:before {
+    left: initial;
+    right: calc(100% - var(--lw-gantt-chart-timeline-task-connection-arrow-width) + 1px);
+    border-right: var(--lw-gantt-chart-timeline-task-connection-arrow-width) var(--lw-gantt-chart-timeline-task-connection-arrow-type) var(--lw-gantt-chart-timeline-task-connection-feedback-color);
+    border-left: initial;
+}
+
+.lw-gantt-chart[right-to-left] .lw-task-connection-feedback {
+    transform-origin: right;
+}
+
+.lw-gantt-chart[right-to-left] .milestone[connection-point="end"] .lw-task-connection-feedback {
+    right: calc(100% + var(--lw-gantt-chart-task-default-height) /2);
+}
+
+.lw-gantt-chart[right-to-left] .milestone .lw-task-connection-feedback {
+    right: calc( -1 * var(--lw-gantt-chart-task-default-height) /2);
+    left: initial;
+}
+
+.lw-gantt-chart[right-to-left] .lw-task-bar-limitter-min-date, .lw-gantt-chart[right-to-left] .lw-task-bar-limitter-max-date {
+    right: var(--lw-gantt-chart-timeline-column-border-width);
+    left: initial;
+}
+
+.lw-gantt-chart[right-to-left] .lw-task-bar-limitter-max-date {
+    right: inherit;
+    left: 0;
+}
+
+.lw-gantt-chart[right-to-left]>.lw-container.vscroll .lw-timeline {
+    margin-left: var(--lw-scroll-bar-size);
+}
+
+.lw-gantt-chart[right-to-left][inverted]>.lw-container.vscroll .lw-timeline {
+    margin-right: var(--lw-scroll-bar-size);
+}
+
+.lw-gantt-chart[right-to-left]:not([inverted]) .lw-timeline-scroll-bar[orientation="vertical"] {
+    right: initial;
+    left: 0;
+}
+
+.lw-gantt-chart[right-to-left][inverted] .lw-timeline-scroll-bar[orientation="vertical"] {
+    right: 0;
+}
+
+.lw-gantt-chart[right-to-left]>.lw-container.vscroll .lw-timeline-scroll-bar:not([orientation="vertical"]) {
+    left: calc(var(--lw-scroll-bar-size));
+}
+
+.lw-gantt-chart[right-to-left][inverted]>.lw-container.vscroll .lw-timeline-scroll-bar:not([orientation="vertical"]) {
+    left: initial;
+}
+
+.lw-gantt-chart[right-to-left]:not([inverted]) .lw-timeline-scroll-bar[orientation="vertical"]::before {
+    border-left: none;
+    border-right: 1px solid var(--lw-border);
+}
+
+.lw-gantt-chart[right-to-left][inverted] .lw-timeline-scroll-bar[orientation="vertical"]::before {
+    border-right: none;
+    border-left: 1px solid var(--lw-border);
+}
+
+.lw-gantt-chart[right-to-left] .lw-timeline-scroll-bar::after {
+    right: 100%;
+    left: initial;
+}
+
+.lw-gantt-chart[right-to-left] .lw-timeline-scroll-bar[orientation="vertical"]::after {
+    left: calc(-1 * var(--lw-scroll-bar-size));
+}
+
+.lw-gantt-chart[right-to-left][inverted] .lw-timeline-scroll-bar::after {
+    right: calc(-1 * var(--lw-scroll-bar-size));
+}
+
+/* --- */

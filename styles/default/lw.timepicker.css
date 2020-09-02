@@ -1,0 +1,193 @@
+
+/* .lw-time-picker */
+
+.lw-time-picker {
+    display: block;
+    width: var(--lw-time-picker-default-width);
+    height: var(--lw-time-picker-default-height);
+    line-height: initial;
+    min-width: 250px;
+}
+
+    .lw-time-picker[view="landscape"] {
+        width: var(--lw-time-picker-default-height);
+        height: var(--lw-time-picker-default-width);
+        min-width: 400px;
+    }
+
+    .lw-time-picker > .lw-container,
+    :host(lw-time-picker) > .lw-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .lw-time-picker[view="landscape"] > .lw-container,
+    :host(lw-time-picker[view="landscape"]) > .lw-container,
+    .lw-time-picker .lw-header,
+    .lw-time-picker .lw-svg-container,
+    .lw-time-picker .lw-hour-minute-container {
+        display: flex;
+    }
+
+    .lw-time-picker .lw-header {
+        width: 100%;
+        height: var(--lw-calendar-title-height);
+        background-color: var(--lw-primary);
+        color: var(--lw-primary-color);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lw-time-picker[view="landscape"] .lw-header {
+        flex-direction: column;
+        width: 33%;
+        height: 100%;
+    }
+
+    .lw-time-picker .lw-main-container {
+        width: 100%;
+        height: calc(100% - var(--lw-calendar-title-height));
+        padding: 2%;
+        background-color: var(--lw-background);
+    }
+
+    .lw-time-picker[view="landscape"] .lw-main-container {
+        width: 67%;
+        height: 100%;
+    }
+
+    .lw-time-picker .lw-svg-container {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .lw-time-picker[footer] .lw-svg-container {
+        height: calc(100% - 30px);
+    }
+
+    .lw-time-picker .lw-footer {
+        display: none;
+    }
+
+    .lw-time-picker[footer] .lw-footer {
+        display: block;
+        width: 100%;
+        height: 30px;
+    }
+
+    .lw-time-picker .lw-hour-minute-container {
+        font-size: 50px;
+    }
+
+    .lw-time-picker .lw-am-pm-container {
+        margin-left: 10px;
+    }
+
+    .lw-time-picker[view="landscape"] .lw-am-pm-container {
+        margin-left: 0;
+    }
+
+    .lw-time-picker .lw-hour-container,
+    .lw-time-picker .lw-minute-container,
+    .lw-time-picker .lw-am-container,
+    .lw-time-picker .lw-pm-container {
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
+    .lw-time-picker[readonly] .lw-hour-container,
+    .lw-time-picker[disabled] .lw-hour-container,
+    .lw-time-picker[readonly] .lw-minute-container,
+    .lw-time-picker[disabled] .lw-minute-container,
+    .lw-time-picker[readonly] .lw-am-container,
+    .lw-time-picker[disabled] .lw-am-container,
+    .lw-time-picker[readonly] .lw-pm-container,
+    .lw-time-picker[disabled] .lw-pm-container {
+        cursor: default;
+    }
+
+    .lw-time-picker .lw-selected {
+        opacity: 1;
+    }
+
+    .lw-time-picker .lw-hour-minute-container div:nth-child(2) {
+        opacity: 0.5;
+    }
+
+    .lw-time-picker .lw-svg-picker {
+        border-radius: 50%;
+        background-color: var(--lw-background);
+        position: relative;
+        box-sizing: content-box;
+        touch-action: none;
+    }
+
+        .lw-time-picker .lw-svg-picker.animate {
+            animation: lw-time-picker-animation 0.5s linear;
+        }
+
+    .lw-time-picker .lw-needle,
+    .lw-time-picker .lw-needle-central-circle {
+        fill: var(--lw-primary);
+    }
+
+    .lw-time-picker .lw-label {
+        fill: var(--lw-background-color);
+    }
+
+        .lw-time-picker .lw-label.lw-selected {
+            fill: var(--lw-primary-color);
+            stroke: var(--lw-primary-color);
+            stroke-width: 0px;
+        }
+
+    .lw-time-picker .lw-header :focus {
+        outline: 1px solid var(--lw-background);
+    }
+
+    .lw-time-picker .lw-svg-picker:focus {
+        border: 1px solid var(--lw-outline);
+        outline: none;
+    }
+
+@keyframes lw-time-picker-animation {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ---  Right-To-Left --- */
+
+.lw-time-picker[right-to-left] .lw-header,
+.lw-time-picker[right-to-left] .lw-footer {
+    direction: rtl;
+}
+
+.lw-time-picker[right-to-left] .lw-am-pm-container {
+    margin: 0 10px 0 0;
+}
+
+.lw-time-picker[view="landscape"][right-to-left] > .lw-container,
+:host(lw-time-picker[view="landscape"][right-to-left]) > .lw-container {
+    flex-direction: row-reverse;
+}
+
+/* --- */

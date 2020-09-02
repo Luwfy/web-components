@@ -1,0 +1,131 @@
+/* lw-color-picker */
+
+lw-color-picker {
+    width: var(--lw-color-picker-default-width);
+    height: var(--lw-color-picker-default-height);
+}
+
+lw-color-picker.lw-element {
+    overflow: initial;
+    border: none;
+}
+
+.lw-color-picker lw-color-panel {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.lw-color-picker .lw-drop-down.lw-drop-down-color-picker.lw-drop-down-container,
+.lw-drop-down.lw-drop-down-color-picker.lw-drop-down-container.lw-drop-down-repositioned,
+ .lw-drop-down.lw-drop-down-color-picker.lw-drop-down-container {
+    width: var(--lw-color-picker-drop-down-width);
+    max-width: none;
+    height: var(--lw-color-picker-drop-down-height);
+    max-height: none;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+
+/*
+  transfered from drop down button
+*/
+
+.lw-color-picker .lw-ripple {
+    background: var(--lw-primary-color);
+}
+
+.lw-color-picker lw-color-panel, .lw-drop-down-repositioned lw-color-panel {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    border: none;
+}
+
+.lw-color-picker .lw-color-box {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--lw-border-radius);
+    border: var(--lw-border-width) solid var(--lw-border);
+    background-color: var(--lw-background);
+    margin-right: 5px;
+    overflow: hidden;
+    background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 74%, #cccccc 75%, #cccccc), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 74%, #cccccc 75%, #cccccc);
+    background-position: 0px 5px, 5px 10px;
+    background-size: 10px 10px;
+}
+
+.lw-color-picker .lw-color-box.no-color {
+    background-image: linear-gradient(45deg, transparent 47.5%, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 52.5%, transparent 52.5%), linear-gradient(-45deg, transparent 47.5%, rgba(0, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0.2) 52.5%, transparent 52.5%);
+    background-position: initial;
+    background-size: initial;
+}
+
+.lw-color-picker .lw-color-box>div {
+    width: 100%;
+    height: 100%;
+}
+
+.lw-color-picker .lw-color-input {
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    color: inherit;
+}
+
+.lw-color-picker:not([opened]) .lw-color-input {
+    color: inherit;
+}
+
+.lw-color-picker[value-display-mode="colorCode"] .lw-color-box, .lw-color-picker[value-display-mode="none"] .lw-color-box {
+    display: none;
+}
+
+.lw-color-picker[value-display-mode="colorBox"] .lw-color-input, .lw-color-picker[value-display-mode="none"] .lw-color-input {
+    display: none;
+}
+
+.lw-color-picker[value-display-mode="none"] .lw-action-button {
+    padding: initial;
+    border: none;
+}
+
+.lw-color-picker[value-display-mode="none"] .lw-drop-down-button {
+    border-top-left-radius: var(--lw-border-top-left-radius);
+    border-bottom-left-radius: var(--lw-border-bottom-left-radius);
+    border-left-width: var(--lw-border-width);
+    border-left-style: solid;
+}
+
+.lw-color-picker[value-display-mode="none"]:not([opened]):not([drop-down-open-mode="dropDownButton"]) .lw-drop-down-button {
+    border-left-color: var(--lw-border);
+}
+
+.lw-color-picker[value-display-mode="text"] .lw-color-box, .lw-color-picker[value-display-mode="colorBox"] .lw-color-input, .lw-color-picker[value-display-mode="none"] .lw-color-box, .lw-color-picker[value-display-mode="none"] .lw-color-input {
+    display: none;
+}
+
+.lw-color-picker[value-display-mode="colorBox"] .lw-color-box, .lw-color-picker[value-display-mode="text"] .lw-color-input {
+    display: block;
+}
+
+.lw-color-picker[editable] .lw-action-button {
+    cursor: initial;
+}
+
+.lw-color-picker[editable]:not([opened]):not([drop-down-open-mode="dropDownButton"])[hover] .lw-action-button {
+    background: var(--lw-background);
+    color: var(--lw-background-color);
+}
+
+.lw-color-picker:not([editable]) .lw-color-input {
+    cursor: pointer;
+    user-select: none;
+}
+
+.lw-color-picker[opened][editable] .lw-action-button {
+    background-color: var(--lw-backgroud);
+    color: var(--lw-background-color);
+}

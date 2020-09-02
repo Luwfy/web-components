@@ -1,0 +1,95 @@
+
+/* lw-array */
+
+lw-array {
+    width: var(--lw-array-default-width);
+    height: var(--lw-array-default-height);
+    display: block;
+    overflow: visible;
+}
+
+    lw-array > .lw-container,
+    lw-array .lw-big-container {
+        display: flex;
+    }
+
+    lw-array .lw-array-indexer {
+        display: block;
+        margin-bottom: 2px;
+        width: 100%;
+    }
+
+    lw-array .lw-big-container {
+        background-color: var(--lw-background);
+    }
+
+    lw-array[show-index-display] .lw-big-container {
+        margin-left: 2px;
+    }
+
+    lw-array .lw-main-container,
+    lw-array .lw-scrollbar-container-horizontal {
+        width: 100%;
+    }
+
+    lw-array .lw-array-element-gap {
+        border-spacing: 0;
+    }
+
+    lw-array .lw-array-table-data {
+        border: 2px solid transparent;
+        padding: 0;
+        min-width: 0;
+        background-color: transparent;
+        white-space: nowrap;
+    }
+
+    lw-array .lw-array-table-data-gap {
+        border-width: var(--lw-array-element-gap);
+        padding: var(--lw-array-element-gap);
+    }
+
+    lw-array .lw-scrollbar-container-horizontal {
+        height: 20px;
+    }
+
+    lw-array .lw-scrollbar-container-vertical {
+        width: 20px;
+    }
+
+        lw-array .lw-scrollbar-container-horizontal > lw-scroll-bar,
+        lw-array .lw-scrollbar-container-vertical > lw-scroll-bar {
+            width: 100%;
+            height: 100%;
+        }
+
+    lw-array .lw-array-element {
+        position: relative;
+    }
+
+    lw-array .lw-array-element-selected {
+        border-color: blue;
+    }
+
+    lw-array .lw-array-element-empty {
+        border-color: #999;
+        color: #999;
+        opacity: 0.7;
+    }
+
+    /*Custom lw-elements in lwArray*/
+    lw-array lw-switch-button.lw-array-element,
+    lw-array lw-text-box.lw-array-element,
+    lw-array .lw-array-element > lw-toggle-button,
+    lw-array .lw-array-element > lw-switch-button,
+    lw-array .lw-array-element > lw-led,
+    lw-array .lw-array-element > lw-power-button,
+    lw-array .lw-array-element > lw-numeric-text-box,
+    lw-array .lw-array-element > lw-check-box,
+    lw-array .lw-array-element > lw-radio-button {
+        display: block;
+    }
+
+    lw-array .lw-array-element > lw-check-box {
+        padding: 0;
+    }

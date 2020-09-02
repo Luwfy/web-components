@@ -1,0 +1,255 @@
+
+/*lw-filter-builder*/
+lw-filter-builder {
+    display: inline-block;
+    width: var(--lw-filter-builder-default-width);
+    height: var(--lw-filter-builder-default-height);
+    font-size: var(--lw-filter-builder-font-size);
+    font-family: var(--lw-filter-builder-font-family);
+    overflow: visible;
+    box-sizing: border-box;
+    background-color: transparent;
+    position: relative
+}
+
+    lw-filter-builder > .lw-container,
+    .lw-filter-builder.lw-container {
+        position: relative;
+        overflow: visible;
+    }
+
+        lw-filter-builder > .lw-container > .lw-inner-container,
+        .lw-filter-builder.lw-container > .lw-inner-container {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+    lw-filter-builder[disabled] {
+        opacity: 0.55;
+        cursor: default;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .lw-filter-builder .lw-filter-group-condition {
+        margin-bottom: 5px;
+    }
+
+    .lw-filter-builder .filter-builder-item {
+        min-height: var(--lw-filter-builder-row-height);
+        vertical-align: middle;
+        margin-right: 5px;
+        border: none;
+        border-radius: 3px;
+        background-color: lightblue;
+        display: inline-flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+        .lw-filter-builder .filter-builder-item:hover {
+        }
+
+    .lw-filter-builder .lw-filter-add-btn,
+    .lw-filter-builder .lw-filter-delete-btn {
+        min-width: var(--lw-filter-builder-row-height);
+        min-height: var(--lw-filter-builder-row-height);
+        box-sizing: border-box;
+        vertical-align: middle;
+        display: inline-block;
+        padding: 5px 0px 5px 0px;
+        opacity: 0.3;
+        font-size: 16px;
+    }
+
+        .lw-filter-builder .lw-filter-add-btn:hover,
+        .lw-filter-builder .lw-filter-delete-btn:hover {
+            opacity: 0.6;
+        }
+
+        .lw-filter-builder .lw-filter-add-btn:active,
+        .lw-filter-builder .lw-filter-delete-btn:active {
+            opacity: 1;
+        }
+
+        .lw-filter-builder .lw-filter-add-btn::after,
+        .lw-filter-builder .lw-filter-delete-btn::after {
+            content: "+";
+            font-family: var(--lw-font-family-icon);
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            vertical-align: middle;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        .lw-filter-builder .lw-filter-add-btn::after {
+            font-weight: bold;
+        }
+
+        .lw-filter-builder .lw-filter-delete-btn::after {
+            content: "\e81F";
+            font-size: 10px;
+        }
+
+    .lw-filter-builder .lw-filter-add-btn {
+        color: var(--lw-background-color);
+    }
+
+    .lw-filter-builder .lw-filter-group-operation {
+    }
+
+    .lw-filter-builder .lw-filter-field-name,
+    .lw-filter-builder .lw-filter-operation,
+    .lw-filter-builder .lw-filter-value {
+    }
+
+        .lw-filter-builder .lw-filter-group-operation:hover,
+        .lw-filter-builder .lw-filter-field-name:hover,
+        .lw-filter-builder .lw-filter-operation:hover {
+        }
+
+    .lw-filter-builder .lw-filter-value {
+        padding: 0px;
+    }
+
+        .lw-filter-builder .lw-filter-value[edited] {
+            padding: 0px;
+            background-color: transparent;
+        }
+
+        .lw-filter-builder .lw-filter-value .lw-value-container {
+            color: gray;
+            width: 100%;
+            height: 100%;
+            display: inline-flex;
+            align-content: center;
+            justify-content: center;
+            padding: 5px;
+            margin: 0px;
+        }
+
+        .lw-filter-builder .lw-filter-value[edited] .lw-value-container {
+            display: none;
+        }
+
+    .lw-filter-builder .lw-filter-group,
+    .lw-filter-builder .lw-filter-group-operator,
+    .lw-filter-builder .lw-filter-group-condition-container,
+    .lw-filter-builder .lw-filter-group-condition {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        white-space: nowrap;
+    }
+
+    .lw-filter-builder .lw-filter-group-condition-container {
+        padding-left: 30px;
+    }
+
+    .lw-filter-builder .lw-content-container > .lw-filter-group > .lw-filter-group-operator {
+        margin-left: 30px;
+    }
+
+        .lw-filter-builder .lw-content-container > .lw-filter-group > .lw-filter-group-operator .lw-filter-delete-btn {
+            display: none;
+        }
+
+    .lw-filter-builder lw-menu[mode="dropDown"] {
+        width: auto;
+        height: auto;
+    }
+
+    .lw-filter-builder .lw-editors-container {
+        position: relative;
+        pointer-events: none;
+        height: 20px;
+    }
+
+        .lw-filter-builder .lw-editors-container[open] {
+            min-width: 100px;
+            width: var(--lw-filter-builder-item-width);
+            min-height: var(--lw-filter-builder-row-height);
+        }
+
+        .lw-filter-builder .lw-editors-container .lw-text-box-editor,
+        .lw-filter-builder .lw-editors-container .lw-numeric-text-box-editor,
+        .lw-filter-builder .lw-editors-container .lw-drop-down-list-editor,
+        .lw-filter-builder .lw-editors-container .lw-combo-box-editor,
+        .lw-filter-builder .lw-editors-container .lw-date-time-picker-editor,
+        .lw-filter-builder .lw-editors-container .lw-check-box-editor,
+        .lw-filter-builder .lw-editors-container .lw-custom-editor > * {
+            pointer-events: all;
+            width: 100%;
+        }
+
+        .lw-filter-builder .lw-editors-container[open] .lw-check-box-editor {
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            align-self: center;
+            justify-self: center;
+            width: 30px;
+            height: 30px;
+        }
+
+            .lw-filter-builder .lw-editors-container[open] .lw-check-box-editor.lw-hidden {
+                display: none;
+            }
+
+    .lw-filter-builder .lw-filter-field-name,
+    .lw-filter-builder .lw-filter-operation,
+    .lw-filter-builder .lw-filter-value {
+        min-width: 100px;
+    }
+
+    .lw-filter-builder .lw-filter-group-operation {
+        min-width: 50px;
+    }
+
+    .lw-filter-builder .lw-selected-menu-item {
+        background-color: lightgray;
+    }
+
+    .lw-filter-builder .lw-filter-builder-icon {
+        width: 40px;
+        height: 100%;
+        display: inline-block;
+        font-weight: bold;
+        border-right: 1px solid gray;
+        margin-right: 5px;
+        padding: 0px 2px 0px 2px;
+        text-align: center;
+    }
+
+    .lw-filter-builder .lw-filter-builder-menu-item {
+        height: 100%;
+        display: inline-block;
+    }
+
+    .lw-filter-builder .lw-hidden {
+        display: none;
+    }
+
+    .lw-filter-builder lw-scroll-viewer {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .lw-filter-builder .lw-scrollable-outer-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .lw-filter-builder .lw-filter-value:hover > * {
+        color: initial;
+        border-color: initial;
+        background-color: initial;
+    }

@@ -1,0 +1,291 @@
+
+/*lw-pager*/
+lw-pager {
+    min-width: 300px;
+    height: var(--lw-pager-default-height);
+    justify-content: center;
+    padding: var(--lw-pager-padding);
+    --lw-item-border-radius: 100%;
+    --lw-item-border-top-left-radius: 100%;
+    --lw-item-border-top-right-radius: 100%;
+    --lw-item-border-bottom-left-radius: 100%;
+    --lw-item-border-bottom-right-radius: 100%;
+}
+
+    lw-pager.lw-element {
+        overflow: visible;
+        border-radius: 0px;
+        background: var(--lw-surface);
+        color: var(--lw-surface-color);
+    }
+
+    lw-pager:focus {
+        border-color: var(--lw-outline);
+    }
+
+    lw-pager > .lw-container,
+    .lw-pager.lw-container {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+    }
+
+.lw-pager-near-buttons-container {
+    order: 0;
+    height: 100%;
+}
+
+.lw-pager-middle-buttons-container {
+    order: 1;
+    height: 100%;
+}
+
+.lw-pager-far-buttons-container {
+    order: 2;
+    height: 100%;
+}
+
+.lw-pager-input-and-label-container {
+    order: 3;
+}
+
+    .lw-pager-input-and-label-container.near {
+        order: -2;
+    }
+
+.lw-pager-size-selector-and-label-container {
+    order: 4;
+}
+
+    .lw-pager-size-selector-and-label-container.near {
+        order: -1;
+    }
+
+.lw-pager-summary-container.near {
+    order: -2;
+}
+
+.lw-pager-summary-container {
+    order: 5;
+}
+
+.lw-pager-near-buttons-container.near {
+    order: 0;
+}
+
+.lw-pager-far-buttons-container.near {
+    order: 0;
+}
+
+.lw-pager-near-buttons-container.far {
+    order: 2;
+}
+
+.lw-pager-far-buttons-container.far {
+    order: 2;
+}
+
+.lw-pager .lw-pager-near-buttons-container,
+.lw-pager .lw-pager-far-buttons-container,
+.lw-pager .lw-pager-middle-buttons-container,
+.lw-pager .lw-pager-input-and-label-container,
+.lw-pager .lw-pager-size-selector-and-label-container,
+.lw-pager .lw-pager-summary-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 4px;
+}
+
+.lw-pager .lw-pager-page-index-selectors-container {
+    display: flex;
+    color: var(--lw-pager-color);
+    width: auto;
+    height: 100%;
+    outline: none;
+    align-items: center;
+}
+
+.lw-pager-page-index-selectors-container:focus .lw-pager-page-index-selector[selected] {
+    text-decoration: underline;
+}
+
+.lw-pager .lw-pager-label {
+    display: flex;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 100%;
+    margin: 0px 8px;
+}
+
+    .lw-pager .lw-pager-label span {
+        padding: 2px;
+    }
+
+.lw-pager .lw-pager-button {
+    display: flex;
+    font-size: inherit;
+    font-family: inherit;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: var(--lw-item-border-top-left-radius);
+    border-top-right-radius: var(--lw-item-border-top-right-radius);
+    border-bottom-left-radius: var(--lw-item-border-bottom-left-radius);
+    border-bottom-right-radius: var(--lw-item-border-bottom-right-radius);
+    width: var(--lw-pager-button-width);
+    height: var(--lw-pager-button-height);
+    position: relative;
+    overflow: hidden;
+    /*margin-left: -1px;*/
+}
+
+
+.lw-pager:not([show-navigation-button-labels]) .lw-pager-button {
+    border-top-left-radius: var(--lw-item-border-top-left-radius);
+    border-top-right-radius: var(--lw-item-border-top-right-radius);
+    border-bottom-left-radius: var(--lw-item-border-bottom-left-radius);
+    border-bottom-right-radius: var(--lw-item-border-bottom-right-radius);
+    width: var(--lw-pager-page-index-selector-width);
+}
+
+.lw-pager .lw-pager-button:hover {
+    background: var(--lw-ui-state-hover);
+    border-color: var(--lw-ui-state-border-hover);
+    color: var(--lw-ui-state-color-hover);
+}
+
+.lw-pager .lw-pager-button:active {
+    background: var(--lw-ui-state-active);
+    border-color: var(--lw-ui-state-border-active);
+    color: var(--lw-ui-state-color-active);
+}
+
+.lw-pager .lw-pager-button[disabled] {
+    opacity: 0.55;
+}
+
+.lw-pager .lw-pager-page-index-selector {
+    font-size: inherit;
+    font-family: inherit;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: var(--lw-pager-page-index-selector-width);
+    height: var(--lw-pager-page-index-selector-height);
+    position: relative;
+    margin-left: var(--lw-pager-page-index-selector-horizontal-offset);
+    border-top-left-radius: var(--lw-item-border-top-left-radius);
+    border-top-right-radius: var(--lw-item-border-top-right-radius);
+    border-bottom-left-radius: var(--lw-item-border-bottom-left-radius);
+    border-bottom-right-radius: var(--lw-item-border-bottom-right-radius);
+}
+
+.lw-pager .lw-previous-ellipsis-button,
+.lw-pager .lw-next-ellipsis-button {
+    width: var(--lw-pager-page-index-ellipsis-selector-width);
+    height: var(--lw-pager-page-index-ellipsis-selector-height);
+}
+
+.lw-pager .lw-pager-page-index-selector:first-child {
+    margin-left: -1px;
+}
+
+.lw-pager[disabled] .lw-pager-page-index-selector {
+    user-select: none;
+    cursor: default;
+}
+
+.lw-pager .lw-pager-page-index-selector:hover {
+    background-color: var(--lw-ui-state-hover);
+    color: var(--lw-ui-state-color-hover);
+    border-color: var(--lw-ui-state-border-hover);
+}
+
+
+.lw-pager .lw-pager-page-index-selector[selected] {
+    background-color: var(--lw-ui-state-active);
+    color: var(--lw-ui-state-color-active);
+    border-color: var(--lw-ui-state-border-active);
+    box-shadow: var(--lw-elevation-2);
+}
+
+.lw-pager .lw-pager-page-index-selector .lw-ripple,
+.lw-pager .lw-pager-button .lw-ripple {
+    background-color: var(--lw-ui-state-active);
+}
+
+.lw-pager .lw-pager-page-index-selector[selected] .lw-ripple,
+.lw-pager .lw-pager-button:active .lw-ripple {
+    background-color: var(--lw-ui-state-color-active);
+}
+
+.lw-pager .lw-page-size-selector {
+    width: var(--lw-pager-page-size-selector-width);
+    background: var(--lw-background);
+    color: var(--lw-background-color);
+    --lw-item-border-top-left-radius: var(--lw-border-radius);
+    --lw-item-border-top-right-radius: var(--lw-border-radius);
+    --lw-item-border-bottom-left-radius: var(--lw-border-radius);
+    --lw-item-border-bottom-right-radius: var(--lw-border-radius);
+}
+
+.lw-pager .lw-pager-input {
+    width: var(--lw-pager-input-width);
+    box-sizing: border-box;
+    padding: 0px var(--lw-editor-label-padding);
+    margin: 0px 5px;
+    background: var(--lw-background);
+    color: var(--lw-background-color);
+    border-top-left-radius: var(--lw-border-top-left-radius);
+    border-top-right-radius: var(--lw-border-top-right-radius);
+    border-bottom-left-radius: var(--lw-border-bottom-left-radius);
+    border-bottom-right-radius: var(--lw-border-bottom-right-radius);
+    border-color: var(--lw-border);
+    border-style: solid;
+    border-width: var(--lw-border-width);
+    height: var(--lw-text-box-default-height);
+}
+
+
+/* --- Right To Left --- */
+
+lw-pager[right-to-left] > .lw-container,
+lw-pager[right-to-left] .lw-pager-middle-buttons-container,
+lw-pager[right-to-left] .lw-pager-near-buttons-container,
+lw-pager[right-to-left] .lw-pager-far-buttons-container,
+lw-pager[right-to-left] .lw-pager-page-index-selectors-container,
+lw-pager[right-to-left] .lw-pager-size-selector-and-label-container,
+lw-pager[right-to-left] .lw-pager-input-and-label-container,
+lw-pager[right-to-left] .lw-pager-label {
+    flex-direction: row-reverse;
+}
+
+lw-pager[right-to-left] .lw-arrow-left:after,
+lw-pager[right-to-left] .lw-arrow-right:after,
+lw-pager[right-to-left] .lw-arrow-left-first:after,
+lw-pager[right-to-left] .lw-arrow-right-last:after {
+    transform: rotate(180deg);
+    transform-origin: center;
+}
+
+lw-pager[right-to-left] .lw-pager-label > span,
+lw-pager[right-to-left] .lw-first-button,
+lw-pager[right-to-left] .lw-last-button,
+lw-pager[right-to-left] .lw-next-page-button,
+lw-pager[right-to-left] .lw-previous-page-button,
+lw-pager[right-to-left] .lw-pager-page-index-selector,
+lw-pager[right-to-left] .lw-pager-input,
+lw-pager[right-to-left] .lw-pager-label {
+    direction: rtl;
+}
+
+/* --- */
